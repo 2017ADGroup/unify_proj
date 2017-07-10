@@ -18,4 +18,8 @@ public class MailDao {
 		return null;
 	}
 
+	public void test(){
+
+	}
+
 }
