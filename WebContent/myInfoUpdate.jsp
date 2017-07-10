@@ -51,7 +51,7 @@ function check(){
 <h2 style="text-align: center;">アカウント情報更新</h2>
 	<br>
 	<div class="col-sm-offset-3 col-sm-9">
-	<form class="form-horizontal"method="POST" action="menu" name="form1" onSubmit="return check()">
+	<form class="form-horizontal"method="POST" action="manu.jsp" name="form1" onSubmit="return check()">
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
@@ -68,8 +68,7 @@ function check(){
 			<div class="form-group">
 				<label for="PASS" class="col-sm-2 control-label" >Password</label>
 				<div class="col-sm-5">
-						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass" value="{fn:escapeXml(user.password)}"
-						>
+						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass" value="${fn:escapeXml(user.password)}">
 				</div>
 			</div>
 			  <div class="form-group">
