@@ -4,7 +4,7 @@ public class Users {
 	private int user_id;
 	private String login_id;
 	private String password;
-	private String property;
+	private int property;
 	private String name;
 	private String kana;
 	private int authority;
@@ -14,7 +14,11 @@ public class Users {
 
 	}
 
+<<<<<<< HEAD
 	public Users(int user_id,String login_id,String password,String property,String name,String kana,int authority,String organization){
+=======
+	Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
+>>>>>>> 047ae51fa0e672957e2624a19bbb099da1e349dc
 		this.user_id = user_id;
 		this.login_id = login_id;
 		this.password = password;
@@ -44,10 +48,10 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getProperty() {
+	public int getProperty() {
 		return property;
 	}
-	public void setProperty(String property) {
+	public void setProperty(int property) {
 		this.property = property;
 	}
 	public String getName() {
