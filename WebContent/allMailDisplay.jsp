@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,22 +45,17 @@
 
 			<div class="form-group">
 				<div class="checkbox">
-					<label> <input type="checkbox"><b>To</b>
+					<label> <input type="checkbox" name="checkbox" value="to"><b>To</b>
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="checkbox">
-					<label> <input type="checkbox"><b>From</b>
+					<label> <input type="checkbox" name="checkbox" value="from"><b>From</b>
 					</label>
 				</div>
 			</div>
 		</div>
-
-
-
-		</div>
-
 	</form>
 
 	<br>
@@ -74,10 +71,26 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%
+					request.getAttribute("mailList");
+					request.getAttribute("mailViewList");
+					int count = 0;
+				%>
+				<c:forEach var="mail" items="${mailList}" varStatus="status">
+					<tr>
+						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
+						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
+						<td><a href="mailDetail.jsp">${mail.subject}</a></td>
+						<td>${mail.daytime}</td>
+						<%
+						count++;
+						%>
+					</tr>
+				</c:forEach>
 				<tr>
 					<td>浅井(ID:a001)</td>
 					<td>市川(ID:a002)</td>
-					<td><a href="mailDetail.jsp">予約重複の件</ar></td>
+					<td><a href="mailDetail.jsp">予約重複の件</a></td>
 					<td>2017/07/06 12:00</td>
 				</tr>
 				<tr>
@@ -98,7 +111,7 @@
 
 	<div class="col-sm-12" style="text-align: center;">
 		<br>
-		<form action="allMailDisplay.jsp" method="get">
+		<form action="AllMailDisplay" method="get">
 
 			<div class="btn-group" role="group">
 				<button type="submit" class="btn btn-default" name="page" value="1">1</button>

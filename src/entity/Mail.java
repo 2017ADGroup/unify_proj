@@ -2,14 +2,13 @@ package entity;
 
 public class Mail {
 	private int mail_id;
-	private String sender;
 	private String receiver;
+	private String sender;
 	private String daytime;
 	private String subject;
 	private String message;
 
-	public Mail(int mail_id, String sender, String receiver, String daytime, String subject, String message) {
-		super();
+	public Mail(int mail_id, String receiver, String sender, String daytime, String subject, String message) {
 		this.mail_id = mail_id;
 		this.sender = sender;
 		this.receiver = receiver;
@@ -18,27 +17,20 @@ public class Mail {
 		this.message = message;
 	}
 
-	public Mail(String sender,String receiver,String daytime,String subject,String message){
-		this.setId(mail_id);
-		this.setTransmitter(sender);
-		this.setReceiver(receiver);
-		this.setMessage(message);
+	public Mail(String receiver, String sender, String daytime, String subject, String message) {
+		this.receiver = receiver;
+		this.sender = sender;
+		this.daytime = daytime;
+		this.subject = subject;
+		this.message = message;
 	}
 
-	public void setId(int id) {
-		this.mail_id = id;
-	}
-
-	public int getId() {
+	public int getMail_id() {
 		return mail_id;
 	}
 
-	public String getTransmitter() {
-		return sender;
-	}
-
-	public void setTransmitter(String sender) {
-		this.sender = sender;
+	public void setMail_id(int mail_id) {
+		this.mail_id = mail_id;
 	}
 
 	public String getReceiver() {
@@ -47,6 +39,14 @@ public class Mail {
 
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
+	}
+
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
 
 	public String getDaytime() {
@@ -72,5 +72,6 @@ public class Mail {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 
 }
