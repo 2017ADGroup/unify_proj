@@ -11,7 +11,6 @@ import entity.Mail;
 
 public class MailDao {
 
-	private static final String SQL_SELECT_ALL = "SELECT * FROM mail";
 	private static final String SQL_SELECT = "SELECT * FROM mail";
 	private static final String SQL_INSERT = "INSERT INTO user_info (sender, receiver, deytime,subject,message) VALUES ( ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,recever = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
@@ -23,30 +22,14 @@ public class MailDao {
 		this.connection = connection;
 	}
 
-	public List<Mail> mailFindAll() {
-		List<Mail> list = new ArrayList<Mail>();
-
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Mail m = new Mail(rs.getInt("mail_id") ,rs.getString("sender"), rs.getString("receiver"), rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
-				list.add(m);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-
-		return list;
-	}
-
-	public List<Mail> mailFind(){
+	public List<Mail> mailSelect(){
 		List<Mail> list = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Mail m = new Mail(rs.getInt("mail_id") ,rs.getString("sender"), rs.getString("receiver"), rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
+				Mail m = new Mail(rs.getInt("mail_id") ,rs.getString("sender"), rs.getString("receiver"), rs.getString("deytime"), rs.getString("subject"), rs.getString("message"));
 				list.add(m);
 			}
 		} catch (SQLException e) {
@@ -66,6 +49,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+
 	}
 
 	public void mailupdate(int id,String to,String from,String time,String subject,String message){

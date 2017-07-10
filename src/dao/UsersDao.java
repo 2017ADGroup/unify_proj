@@ -1,9 +1,10 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.sun.corba.se.pept.transport.Connection;
 
 import entity.Users;
 
@@ -17,6 +18,7 @@ public class UsersDao {
 	public UsersDao(Connection connection) {
 		this.connection = connection;
 	}
+<<<<<<< HEAD
 	public String idByName(String id){
 		System.out.println(id);
 		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
@@ -32,8 +34,10 @@ public class UsersDao {
 		return null;
 	}
 //更新
+=======
+//更新・nameとpassと
+>>>>>>> ad2f1f6399c00e20929fb678ffebe925589e1f6d
 	public int update(Users user) {
-
 		String sql_update = SQL_UPDATE;
 
 		Integer id = user.getUser_id();
@@ -70,7 +74,7 @@ public class UsersDao {
 
 		sql_update += " WHERE login_id = ?";
 
-		try (PreparedStatement stmt =  connection.prepareStatement(SQL_UPDATE)) {
+		try (PreparedStatement stmt =  connection.prepareStatement(sql_update)) {
 			switch (ptn) {
 			case 1:
 				stmt.setString(1, name);

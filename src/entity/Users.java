@@ -14,7 +14,13 @@ public class Users {
 
 	}
 
+
+	public Users(int user_id,String login_id,String password,String property,String name,String kana,int authority,String organization){
+
+	}
+
 	public Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
+
 		this.user_id = user_id;
 		this.login_id = login_id;
 		this.password = password;
