@@ -7,53 +7,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import entity.Mail;
+import service.MailService;
 
-@WebServlet("/mailDetail")
+@WebServlet("/MailDetail")
 public class MailDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MailDetailServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MailDetailServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("mailDetail.jsp").forward(request, response);
+	}
 
-	HttpSession session = request.getSession();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		/* HttpSession session = request.getSession(); */
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
-		String mail_id = (String)request.getAttribute("mail_id");
+		// idをもとにデータで取得
+		String mail_id = (String) request.getAttribute("mail_id");
 
-		//idをもとにデータで取得
-		String to = request.getParameter("to");
-		String from = request.getParameter("from");
-		String time = request.getParameter("time");
-		String subject = request.getParameter("subject");
-		String message = request.getParameter("message");
+		MailService mailservice = new MailService();
+		Mail mail = mailservice.mailFindById(Integer.parseInt(mail_id));
 
-
-		//値を保存
-		request.setAttribute("mail_id", mail_id);
-	/*	request.setAttribute("to", to);
-		request.setAttribute("from", from);
-		request.setAttribute("time", time);
-		request.setAttribute("subject", subject);
-		request.setAttribute("message", message);
-*/
-
-
+		request.setAttribute("mail", mail);
 
 		request.getRequestDispatcher("mailDetail.jsp").forward(request, response);
 	}
