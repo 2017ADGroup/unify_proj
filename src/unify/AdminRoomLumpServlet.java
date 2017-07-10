@@ -69,7 +69,6 @@ public class AdminRoomLumpServlet extends HttpServlet {
 		for (int i = 0; i < reserveId.length; i++) {
 
 			String join = "";
-
 			if (!reserveFixtures1[i].equals("")) {
 				join = join + reserveFixtures1[i] + ",";
 			}
