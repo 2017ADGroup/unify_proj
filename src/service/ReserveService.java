@@ -1,6 +1,8 @@
 package service;
 
 import java.sql.Connection;
+import java.util.Collections;
+import java.util.List;
 
 import dao.ReserveDao;
 import entity.Reserve;
@@ -17,4 +19,14 @@ public class ReserveService {
 		}
 	}
 
+	public List<Reserve> findAll() {
+		try (Connection conn = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(conn);
+			return reserveDao.selectAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Collections.emptyList();
+	}
 }
