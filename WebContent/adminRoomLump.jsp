@@ -69,8 +69,8 @@
 				<tbody>
 					<c:forEach var="reserve" items="${reserveList}">
 						<tr>
-							<td><input type='date' name='reserveDate' value='${reserve.date}'
-								disabled='disabled'></td>
+							<td><input type='date' name='reserveDate'
+								value='${reserve.date}' disabled='disabled'></td>
 							<td><input type="text" name="loginId"
 								value='${reserve.login_id}' disabled='disabled'></td>
 							<td>
@@ -87,22 +87,33 @@
 								<p>
 									<select name="reservePurpose">
 										<option value="${reserve.purpose}">${reserve.purpose}</option>
+										<option value="1">講義</option>
+										<option value="2">課外活動</option>
+										<option value="3">備品整備</option>
+										<option value="4">その他(備考欄記述)</option>
 									</select>
-								</p> <input name="reserveAmount" type="number" value="${reserve.amount}">
+								</p> <input name="reserveAmount" type="number"
+								value="${reserve.amount}">
 							</td>
 							<td><c:set var="facility">${reserve.facility}</c:set> <%
  	String facility = (String) pageContext.getAttribute("facility");
  		String[] facilities = facility.split(",");
- 		for (String f : facilities) {
- 			pageContext.setAttribute("fy", f);
- %> <input type="text" name="reserveFixtures" value='${fy}'><br> <%
- 	}
- %></td>
+ 		pageContext.setAttribute("f1", facilities[0]);
+ 		pageContext.setAttribute("f2", facilities[1]);
+ 		pageContext.setAttribute("f3", facilities[2]);
+ 		pageContext.setAttribute("f4", facilities[3]);
+ 		pageContext.setAttribute("f5", facilities[4]);
+ 		pageContext.setAttribute("f6", facilities[5]);
+ %> <input type="text" name="reserveFixtures1" value='${f1}'><br>
+								<input type="text" name="reserveFixtures2" value='${f2}'><br>
+								<input type="text" name="reserveFixtures3" value='${f3}'><br>
+								<input type="text" name="reserveFixtures4" value='${f4}'><br>
+								<input type="text" name="reserveFixtures5" value='${f5}'><br>
+								<input type="text" name="reserveFixtures6" value='${f6}'><br></td>
 							<td><textarea name="reserveRemarks" rows="5" cols="32">${reserve.remarks}</textarea></td>
 							<td><input name="reserveDelete" type="checkbox"
-								value="${reserve.reserve_id}" />
-								<input name="reserveId" type="hidden"
-								value="${reserve.reserve_id}" /></td>
+								value="${reserve.reserve_id}" /> <input name="reserveId"
+								type="hidden" value="${reserve.reserve_id}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

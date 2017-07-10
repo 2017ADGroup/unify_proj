@@ -19,27 +19,30 @@ import service.ReserveService;
 public class AdminRoomLumpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminRoomLumpServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AdminRoomLumpServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
@@ -48,7 +51,12 @@ public class AdminRoomLumpServlet extends HttpServlet {
 		String[] reserveId = request.getParameterValues("reserveId");
 		String[] reservePurpose = request.getParameterValues("reservePurpose");
 		String[] reserveAmount = request.getParameterValues("reserveAmount");
-		String[] reserveFixtures = request.getParameterValues("reserveFixtures");
+		String[] reserveFixtures1 = request.getParameterValues("reserveFixtures1");
+		String[] reserveFixtures2 = request.getParameterValues("reserveFixtures2");
+		String[] reserveFixtures3 = request.getParameterValues("reserveFixtures3");
+		String[] reserveFixtures4 = request.getParameterValues("reserveFixtures4");
+		String[] reserveFixtures5 = request.getParameterValues("reserveFixtures5");
+		String[] reserveFixtures6 = request.getParameterValues("reserveFixtures6");
 		String[] reserveRemarks = request.getParameterValues("reserveRemarks");
 
 		// 削除するIDの取得
@@ -60,17 +68,38 @@ public class AdminRoomLumpServlet extends HttpServlet {
 		// 一括更新
 		for (int i = 0; i < reserveId.length; i++) {
 
-				reserve = reserveService.find(reserveId[i]);
+			String join = "";
 
-					// 入力情報を取得
-					reserve = new Reserve(Integer.parseInt(lumpId[i]), lumpName[i], lumpTel[i], lumpPass[i]);
-					// ユーザーを更新
-					reserveService.renew(reserve);
+			if (!reserveFixtures1[i].equals("")) {
+				join = join + reserveFixtures1[i] + ",";
 			}
+			if (!reserveFixtures2[i].equals("")) {
+				join = join + reserveFixtures2[i] + ",";
+			}
+			if (!reserveFixtures3[i].equals("")) {
+				join = join + reserveFixtures3[i] + ",";
+			}
+			if (!reserveFixtures4[i].equals("")) {
+				join = join + reserveFixtures4[i] + ",";
+			}
+			if (!reserveFixtures5[i].equals("")) {
+				join = join + reserveFixtures5[i] + ",";
+			}
+			if (!reserveFixtures6[i].equals("")) {
+				join = join + reserveFixtures6[i] + ",";
+			}
+			join = join.substring(0, join.length() - 1);
+
+			// 入力情報を取得
+			reserve = new Reserve(Integer.parseInt(reserveId[i]), Integer.parseInt(reservePurpose[i]),
+					Integer.parseInt(reserveAmount[i]), join, reserveRemarks[i]);
+			// ユーザーを更新
+			reserveService.renew(reserve);
+		}
 
 		// 一括削除
 		if (reserveDelete != null) {
-			for (String reDel: reserveDelete) {
+			for (String reDel : reserveDelete) {
 
 				// ユーザーを削除
 				reserveService.erase(reDel);
