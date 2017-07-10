@@ -1,11 +1,16 @@
 package unify;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import entity.Reserve;
+import service.ReserveService;
 
 /**
  * Servlet implementation class AdminRoomLumpServlet
@@ -13,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AdminRoomLumpServlet")
 public class AdminRoomLumpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,7 +32,14 @@ public class AdminRoomLumpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		ReserveService reserveService = new ReserveService();
+		// 全検索
+		List<Reserve> list = reserveService.findAll();
+		// 検索結果をセッションに保持
+		request.setAttribute("reserveList", list);
+		// 次画面指定
+		request.getRequestDispatcher("lump.jsp").forward(request, response);
 	}
 
 	/**

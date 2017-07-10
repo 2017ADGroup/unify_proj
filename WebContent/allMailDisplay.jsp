@@ -80,31 +80,13 @@
 					<tr>
 						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
 						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
-						<td><a href="mailDetail.jsp">${mail.subject}</a></td>
+						<td><a href="mailDetail?mail_id=${mail.mail_id}">${mail.subject}</a></td>
 						<td>${mail.daytime}</td>
 						<%
 						count++;
 						%>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td>浅井(ID:a001)</td>
-					<td>市川(ID:a002)</td>
-					<td><a href="mailDetail.jsp">予約重複の件</a></td>
-					<td>2017/07/06 12:00</td>
-				</tr>
-				<tr>
-					<td>市川(ID:a002)</td>
-					<td>浅井(ID:a001)</td>
-					<td><a href="mailDetail.jsp">予約重複の件</a></td>
-					<td>2017/07/06 11:00</td>
-				</tr>
-				<tr>
-					<td>市川(ID:a004)</td>
-					<td>浅井(ID:a001)</td>
-					<td><a href="mailDetail.jsp">予約重複の件</a></td>
-					<td>2017/07/06 10:00</td>
-				</tr>
 			</tbody>
 		</table>
 	</div>
