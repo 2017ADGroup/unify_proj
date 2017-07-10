@@ -14,11 +14,7 @@ public class Users {
 
 	}
 
-<<<<<<< HEAD
-	public Users(int user_id,String login_id,String password,String property,String name,String kana,int authority,String organization){
-=======
-	Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
->>>>>>> 047ae51fa0e672957e2624a19bbb099da1e349dc
+	public Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
 		this.user_id = user_id;
 		this.login_id = login_id;
 		this.password = password;
