@@ -25,7 +25,7 @@
 
 		<h2 class="login-header">Login</h2>
 
-		<form class="login-container" action="Login" method ="POST">
+		<form class="login-container" action="./Login" method ="POST">
 			<p>
 				<input type="id" placeholder="ID" name="id"
 					value="${fn:escapeXml(param.id)}">
