@@ -65,14 +65,14 @@ function check(){
 			<tbody>
 				<tr>
 					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
+						<input class="form-control" type="date" name="date1" min="2017-07-01" max="2017-08-31">
 					</td>
 					<td>
-						<input class="form-control" type="text" name="login_id">
+						<input class="form-control" type="text" name="loginId1">
 					</td>
 					<td>
 						<p>
-						<select class="form-control">
+						<select class="form-control" name="room1">
 							<option>A教室</option>
 							<option>B教室</option>
 							<option>C教室</option>
@@ -81,7 +81,7 @@ function check(){
 							<option>F教室</option>
 						</select>
 						</p>
-						<select class="form-control">
+						<select class="form-control" name="period1">
 							<option>1限目</option>
 							<option>2限目</option>
 							<option>3限目</option>
@@ -92,31 +92,31 @@ function check(){
 						</select>
 					</td>
 					<td>
-						<p><select class="form-control">
+						<p><select class="form-control" name="purpose1">
 							<option>講義</option>
 							<option>課外活動</option>
 							<option>備品整備</option>
 							<option>その他(備考欄記述)</option>
 						</select>
 						</p>
-						<input class="form-control" name="ninnzuu" type="number">
+						<input class="form-control" name="number1" type="number">
 					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー<br>
-							<input type="checkbox" name="riyu" value="3">マイク</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
+					<td><input type="checkbox" name="fixtures1" value="1">プロジェクター<br>
+							<input type="checkbox" name="fixtures1" value="2">スピーカー<br>
+							<input type="checkbox" name="fixtures1" value="3">マイク</td>
+					<td><textarea class="form-control" name="fixtures1" rows="5" cols="32"></textarea></td>
 
 				</tr>
-								<tr>
+				<tr>
 					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
+						<input class="form-control" type="date" name="date2" min="2017-07-01" max="2017-08-31">
 					</td>
 					<td>
-						<input class="form-control" type="text" name="login_id">
+						<input class="form-control" type="text" name="loginId2">
 					</td>
 					<td>
 						<p>
-						<select class="form-control">
+						<select class="form-control" name="room2">
 							<option>A教室</option>
 							<option>B教室</option>
 							<option>C教室</option>
@@ -125,8 +125,8 @@ function check(){
 							<option>F教室</option>
 						</select>
 						</p>
-						<select class="form-control">
-							<option>1限目</option>
+						<select class="form-control" name="period2">
+							<option>2限目</option>
 							<option>2限目</option>
 							<option>3限目</option>
 							<option>4限目</option>
@@ -136,31 +136,31 @@ function check(){
 						</select>
 					</td>
 					<td>
-						<p><select class="form-control">
+						<p><select class="form-control" name="purpose2">
 							<option>講義</option>
 							<option>課外活動</option>
 							<option>備品整備</option>
 							<option>その他(備考欄記述)</option>
 						</select>
 						</p>
-						<input class="form-control" name="ninnzuu" type="number">
+						<input class="form-control" name="number2" type="number">
 					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー<br>
-							<input type="checkbox" name="riyu" value="3">マイク</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
+					<td><input type="checkbox" name="fixtures2" value="2">プロジェクター<br>
+							<input type="checkbox" name="fixtures2" value="2">スピーカー<br>
+							<input type="checkbox" name="fixtures2" value="3">マイク</td>
+					<td><textarea class="form-control" name="fixtures2" rows="5" cols="32"></textarea></td>
 
 				</tr>
-								<tr>
+				<tr>
 					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
+						<input class="form-control" type="date" name="date3"  min="2017-07-01" max="2017-08-31">
 					</td>
 					<td>
-						<input class="form-control" type="text" name="login_id">
+						<input class="form-control" type="text" name="loginId3">
 					</td>
 					<td>
 						<p>
-						<select class="form-control">
+						<select class="form-control" name="room3">
 							<option>A教室</option>
 							<option>B教室</option>
 							<option>C教室</option>
@@ -169,8 +169,8 @@ function check(){
 							<option>F教室</option>
 						</select>
 						</p>
-						<select class="form-control">
-							<option>1限目</option>
+						<select class="form-control" name="period3">
+							<option>3限目</option>
 							<option>2限目</option>
 							<option>3限目</option>
 							<option>4限目</option>
@@ -180,30 +180,31 @@ function check(){
 						</select>
 					</td>
 					<td>
-						<p><select class="form-control">
+						<p><select class="form-control" name="purpose3">
 							<option>講義</option>
 							<option>課外活動</option>
 							<option>備品整備</option>
 							<option>その他(備考欄記述)</option>
 						</select>
 						</p>
-						<input class="form-control" name="ninnzuu" type="number">
+						<input class="form-control" name="number3" type="number">
 					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
+					<td><input type="checkbox" name="fixtures3" value="3">プロジェクター<br>
+							<input type="checkbox" name="fixtures3" value="2">スピーカー<br>
+							<input type="checkbox" name="fixtures3" value="3">マイク</td>
+					<td><textarea class="form-control" name="fixtures3" rows="5" cols="32"></textarea></td>
 
 				</tr>
-								<tr>
+				<tr>
 					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
+						<input class="form-control" type="date" name="date4"  min="2017-07-01" max="2017-08-31">
 					</td>
 					<td>
-						<input class="form-control" type="text" name="login_id">
+						<input class="form-control" type="text" name="loginId4">
 					</td>
 					<td>
 						<p>
-						<select class="form-control">
+						<select class="form-control" name="room4">
 							<option>A教室</option>
 							<option>B教室</option>
 							<option>C教室</option>
@@ -212,8 +213,8 @@ function check(){
 							<option>F教室</option>
 						</select>
 						</p>
-						<select class="form-control">
-							<option>1限目</option>
+						<select class="form-control" name="period4">
+							<option>4限目</option>
 							<option>2限目</option>
 							<option>3限目</option>
 							<option>4限目</option>
@@ -223,31 +224,31 @@ function check(){
 						</select>
 					</td>
 					<td>
-						<p><select class="form-control">
+						<p><select class="form-control" name="purpose4">
 							<option>講義</option>
 							<option>課外活動</option>
 							<option>備品整備</option>
 							<option>その他(備考欄記述)</option>
 						</select>
 						</p>
-						<input class="form-control" name="ninnzuu" type="number">
+						<input class="form-control" name="number4" type="number">
 					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー<br>
-							<input type="checkbox" name="riyu" value="3">マイク</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
+					<td><input type="checkbox" name="fixtures4" value="4">プロジェクター<br>
+							<input type="checkbox" name="fixtures4" value="2">スピーカー<br>
+							<input type="checkbox" name="fixtures4" value="3">マイク</td>
+					<td><textarea class="form-control" name="fixtures4" rows="5" cols="32"></textarea></td>
 
 				</tr>
-								<tr>
+				<tr>
 					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
+						<input class="form-control" type="date" name="date5" min="2017-07-01" max="2017-08-31">
 					</td>
 					<td>
-						<input class="form-control" type="text" name="login_id">
+						<input class="form-control" type="text" name="loginId5">
 					</td>
 					<td>
 						<p>
-						<select class="form-control">
+						<select class="form-control" name="room5">
 							<option>A教室</option>
 							<option>B教室</option>
 							<option>C教室</option>
@@ -256,74 +257,30 @@ function check(){
 							<option>F教室</option>
 						</select>
 						</p>
-						<select class="form-control">
-							<option>1限目</option>
+						<select class="form-control" name="period5">
+							<option>5限目</option>
 							<option>2限目</option>
 							<option>3限目</option>
-							<option>4限目</option>
+							<option>5限目</option>
 							<option>5限目</option>
 							<option>6限目</option>
 							<option>7限目以降</option>
 						</select>
 					</td>
 					<td>
-						<p><select class="form-control">
+						<p><select class="form-control" name="purpose5">
 							<option>講義</option>
 							<option>課外活動</option>
 							<option>備品整備</option>
 							<option>その他(備考欄記述)</option>
 						</select>
 						</p>
-						<input class="form-control" name="ninnzuu" type="number">
+						<input class="form-control" name="number5" type="number">
 					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー<br>
-							<input type="checkbox" name="riyu" value="3">マイク</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
-
-				</tr>
-								<tr>
-					<td>
-						<input class="form-control" type="date" name="date" max="2017-08-31" min="2017-07-01">
-					</td>
-					<td>
-						<input class="form-control" type="text" name="login_id">
-					</td>
-					<td>
-						<p>
-						<select class="form-control">
-							<option>A教室</option>
-							<option>B教室</option>
-							<option>C教室</option>
-							<option>D教室</option>
-							<option>E教室</option>
-							<option>F教室</option>
-						</select>
-						</p>
-						<select class="form-control">
-							<option>1限目</option>
-							<option>2限目</option>
-							<option>3限目</option>
-							<option>4限目</option>
-							<option>5限目</option>
-							<option>6限目</option>
-							<option>7限目以降</option>
-						</select>
-					</td>
-					<td>
-						<p><select class="form-control">
-							<option>講義</option>
-							<option>課外活動</option>
-							<option>備品整備</option>
-							<option>その他(備考欄記述)</option>
-						</select>
-						</p>
-						<input class="form-control" name="ninnzuu" type="number">
-					</td>
-					<td><input type="checkbox" name="riyu" value="1">プロジェクター<br>
-							<input type="checkbox" name="riyu" value="2">スピーカー<br>
-							<input type="checkbox" name="riyu" value="3">マイク</td>
-					<td><textarea class="form-control" name="bikou" rows="5" cols="32"></textarea></td>
+					<td><input type="checkbox" name="fixtures5" value="5">プロジェクター<br>
+							<input type="checkbox" name="fixtures5" value="2">スピーカー<br>
+							<input type="checkbox" name="fixtures5" value="3">マイク</td>
+					<td><textarea class="form-control" name="fixtures5" rows="5" cols="32"></textarea></td>
 
 				</tr>
 				</tbody>
