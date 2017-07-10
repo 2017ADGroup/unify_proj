@@ -17,12 +17,12 @@
 <br>
 
 	<div class="col-sm-offset-2 col-sm-10">
-	<form class="form-horizontal" action="roomInfoInsertServlet" method="POST" enctype="multipart/form-data" >
+	<form class="form-horizontal" action="roomInfoInsert" method="POST" enctype="multipart/form-data" >
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-6">
-					<input type="text" name="name" class="form-control" id="NAME" placeholder="名前"><th><font color="red">※必須</font></th>
+					<input type="text" name="room" class="form-control" id="NAME" placeholder="名前"><th><font color="red">※必須</font></th>
 				</div>
 			</div>
 			<div class="form-group">
