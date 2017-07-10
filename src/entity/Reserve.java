@@ -12,7 +12,24 @@ public class Reserve {
 	private String remarks;
 	private String reserve_host;
 
-	public Reserve(){}
+
+
+	public Reserve(){
+
+	}
+
+
+
+	public Reserve(int reserve_id, int purpose, int amount, String facility, String remarks) {
+		super();
+		this.reserve_id = reserve_id;
+		this.purpose = purpose;
+		this.amount = amount;
+		this.facility = facility;
+		this.remarks = remarks;
+	}
+
+
 
 	public Reserve(int reserve_id,int month,int day,int term,
 			String room,int purpose,int amount,String facility,String remarks,String reserve_host){
