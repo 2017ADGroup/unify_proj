@@ -104,9 +104,14 @@
 								</select>
 							</p> <input class="form-control" name="number1" type="number">
 						</td>
-						<td><input type="checkbox" name="fixtures1" value="1">プロジェクター<br>
-							<input type="checkbox" name="fixtures1" value="2">スピーカー<br>
-							<input type="checkbox" name="fixtures1" value="3">マイク</td>
+
+						<td><input type="text" name="fixtures1"><br>
+							<input type="text" name="fixtures1"><br>
+							<input type="text" name="fixtures1"><br>
+							<input type="text" name="fixtures1"><br>
+							<input type="text" name="fixtures1"><br>
+							<input type="text" name="fixtures1"></td>
+
 						<td><textarea class="form-control" name="remarks1" rows="5"
 								cols="32"></textarea></td>
 

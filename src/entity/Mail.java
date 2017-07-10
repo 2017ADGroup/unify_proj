@@ -2,14 +2,13 @@ package entity;
 
 public class Mail {
 	private int mail_id;
-	private String sender;
 	private String receiver;
+	private String sender;
 	private String daytime;
 	private String subject;
 	private String message;
 
-	public Mail(int mail_id, String sender, String receiver, String daytime, String subject, String message) {
-		super();
+	public Mail(int mail_id, String receiver, String sender, String daytime, String subject, String message) {
 		this.mail_id = mail_id;
 		this.sender = sender;
 		this.receiver = receiver;
@@ -18,11 +17,12 @@ public class Mail {
 		this.message = message;
 	}
 
-	public Mail(String sender,String receiver,String daytime,String subject,String message){
-		this.setId(mail_id);
-		this.setTransmitter(sender);
-		this.setReceiver(receiver);
-		this.setMessage(message);
+	public Mail(String receiver, String sender, String daytime, String subject, String message) {
+		this.receiver = receiver;
+		this.sender = sender;
+		this.daytime = daytime;
+		this.subject = subject;
+		this.message = message;
 	}
 
 	public void setId(int id) {

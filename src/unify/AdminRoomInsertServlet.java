@@ -49,8 +49,10 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		String period1 = request.getParameter("period1");
 		String purpose1 = request.getParameter("purpose1");
 		String number1 = request.getParameter("number1");
-		String fixtures1 = request.getParameter("fixtures1");
+		String fixtures1 = String.join(",", request.getParameterValues("fixtures1"));
 		String remarks1 = request.getParameter("remarks1");
+
+		System.out.println(fixtures1);
 
 
 		// NULLチェック

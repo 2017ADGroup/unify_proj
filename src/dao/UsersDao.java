@@ -1,8 +1,9 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import com.sun.corba.se.pept.transport.Connection;
 
 import entity.Users;
 
@@ -15,9 +16,8 @@ public class UsersDao {
 	public UsersDao(Connection connection) {
 		this.connection = connection;
 	}
-//更新
+//更新・nameとpassと
 	public int update(Users user) {
-
 		String sql_update = SQL_UPDATE;
 
 		Integer id = user.getUser_id();
