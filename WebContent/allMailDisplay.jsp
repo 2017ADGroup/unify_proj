@@ -74,17 +74,13 @@
 				<%
 					request.getAttribute("mailList");
 					request.getAttribute("mailViewList");
-					int count = 0;
 				%>
 				<c:forEach var="mail" items="${mailList}" varStatus="status">
 					<tr>
 						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
 						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
-						<td><a href="mailDetail?mail_id=${mail.mail_id}">${mail.subject}</a></td>
+						<td><a href="MailDetail?mail_id=${mail.mail_id}">${mail.subject}</a></td>
 						<td>${mail.daytime}</td>
-						<%
-						count++;
-						%>
 					</tr>
 				</c:forEach>
 			</tbody>

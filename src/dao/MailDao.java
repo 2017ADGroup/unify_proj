@@ -12,11 +12,11 @@ import entity.Mail;
 public class MailDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM mail";
-	private static final String SQL_SELECT_BY_ID = "SELECT * FROM mail WHERE mail_id = ?";
+	private static final String SQL_SELECT_BY_MAILID = "SELECT * FROM mail WHERE mail_id = ?";
+	private static final String SQL_SELECT_BY_LOGINID = "SELECT * FROM mail WHERE receiver = ? OR sender = ?";
 	private static final String SQL_INSERT = "INSERT INTO user_info (sender, receiver, deytime,subject,message) VALUES ( ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,recever = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
+	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,receiver = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
 	private static final String SQL_DELETE = "DELETE FROM mail WHERE mail_id = ?";
-	private static final Mail Mail = null;
 
 	private Connection connection;
 
@@ -41,14 +41,14 @@ public class MailDao {
 		return list;
 	}
 
-	public Mail mailFindById(int mail_id) {
-		List<Mail> list = new ArrayList<Mail>();
+	public Mail mailFindByMailId(int mail_id) {
 
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_ID)) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_MAILID)) {
 			stmt.setInt(1, mail_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				return	new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
+				return new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -56,70 +56,8 @@ public class MailDao {
 		return null;
 	}
 
-	public List<Mail> mailFind(String name) {
-
-		List<Mail> list = new ArrayList<Mail>();
-		String sql = SQL_SELECT_ALL;
-		int count = 0;
-		int[] arr = { 0, 0, 0 };
-		if (!"-1".equals(id)) {
-			if (count == 0) {
-				sql += " WHERE user_id = ? ";
-			}
-			arr[0] = 1;
-			count++;
-		}
-		if (!"".equals(name)) {
-			if (count == 0) {
-				sql += " WHERE user_name = ?";
-			} else {
-				sql += " AND user_name = ?";
-			}
-			arr[1] = 1;
-			count++;
-		}
-		if (!"".equals(tel)) {
-			if (count == 0) {
-				sql += " WHERE telephone = ?";
-			} else {
-				sql += " AND telephone = ?";
-			}
-			arr[2] = 1;
-			count++;
-		}
-		sql += " ORDER BY user_id";
-
-		System.out.println(sql);
-		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			int count2 = 1;
-			for (int i = 0; i < 3; i++) {
-				if (arr[i] == 1) {
-					switch (i) {
-					case 0:
-						stmt.setInt(count2, Integer.valueOf(id));
-						count2++;
-						break;
-					case 1:
-						stmt.setString(count2, name);
-						count2++;
-						break;
-					case 2:
-						stmt.setString(count2, tel);
-						count2++;
-						break;
-					}
-				}
-			}
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Mail m = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
-						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
-				list.add(m);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-		return list;
+	public List<Mail> mailFind() {
+		return null;
 	}
 
 	public void mailInsert(String to, String from, String time, String subject, String message) {
@@ -156,5 +94,23 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public List<Mail> mailFindByLoginId(String login_id) {
+		List<Mail> list = new ArrayList<Mail>();
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_LOGINID)) {
+			stmt.setString(1, login_id);
+			stmt.setString(2, login_id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Mail m =new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+		return list;
 	}
 }

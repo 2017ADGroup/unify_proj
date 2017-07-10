@@ -17,7 +17,7 @@ import service.MailService;
 import service.UsersService;
 
 @WebServlet("/AllMailDisplay")
-public class AllMailDisplay extends HttpServlet {
+public class AllMailDisplayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,8 +37,6 @@ public class AllMailDisplay extends HttpServlet {
 				mailViewList.add(mailView);
 			}
 			session.setAttribute("mailViewList", mailViewList);
-
-			System.out.println(mailViewList.get(0).getSendername()+"通ってる");
 			session.setAttribute("mailList", mailList);
 		}
 		catch (Exception e) {
