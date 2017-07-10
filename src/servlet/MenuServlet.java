@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import service.MenuService;
 
@@ -32,9 +33,11 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		MenuService menuService = new MenuService();
-		//スケジュールのための日付を取得
-		Integer scheduleDay = Integer.valueOf(request.getParameter("days"));
+		//スケジュールのための日付を取得(date型に変更の可能性有)
+		String scheduleDay = (String) request.getParameter("days");
+		request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
 		prepData(request);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 	        //  フォワードによるページ遷移
