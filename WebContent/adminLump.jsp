@@ -65,29 +65,16 @@ function check(){
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach var="user" items="${usersList}">
 			<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='00a0004' readonly='readonly'>
+						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='東利通' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='あずまとしお' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='00a0003' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='加賀君枝' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='かがきみえ' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
 						<input type="checkbox">
@@ -95,27 +82,13 @@ function check(){
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='00a0005' readonly='readonly'>
+						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='西城柏' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='さいじょうかしわ' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='00a0001' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='関光義' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='せきみつよし' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
 						<input type="checkbox">
@@ -123,26 +96,55 @@ function check(){
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='00a0002' readonly='readonly'>
+						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='田中幸男' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='たなかゆきお' readonly='readonly'>
+						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
 						<input type="checkbox">
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
+					</td>
+					<td>
+						<input type="checkbox">
+					</td>
+				</tr>
+				</c:forEach>
 			</tbody>
 			</table>
 			</div>
 														    <div class="col-sm-12" style="text-align:center;">
 
 			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="adminLump.html?page=1">1</a>
-				<a class="btn btn-default" href="adminLump.html?page=2">2</a>
+				<a class="btn btn-default" href="adminLump.jsp?page=1">1</a>
+				<a class="btn btn-default" href="adminLump.jsp?page=2">2</a>
 			</div>
 
 		<br>
@@ -163,7 +165,7 @@ function check(){
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
 	<br>
-		<a href="adminMenu.html" class="btn btn-default">Menu</a>
+		<a href="adminMenu.jsp" class="btn btn-default">Menu</a>
 	</div>
 </form>
 </body>
