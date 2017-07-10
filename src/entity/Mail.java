@@ -25,20 +25,12 @@ public class Mail {
 		this.message = message;
 	}
 
-	public void setId(int id) {
-		this.mail_id = id;
-	}
-
-	public int getId() {
+	public int getMail_id() {
 		return mail_id;
 	}
 
-	public String getTransmitter() {
-		return sender;
-	}
-
-	public void setTransmitter(String sender) {
-		this.sender = sender;
+	public void setMail_id(int mail_id) {
+		this.mail_id = mail_id;
 	}
 
 	public String getReceiver() {
@@ -47,6 +39,14 @@ public class Mail {
 
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
+	}
+
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
 
 	public String getDaytime() {
@@ -72,5 +72,6 @@ public class Mail {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 
 }

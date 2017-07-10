@@ -12,17 +12,27 @@ public class MailService {
 	public List<Mail> mailFind() {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			return mailDao.mailFind();
+			return mailDao.mailFindAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	public List<Mail> mailFindAll() {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
 			return mailDao.mailFindAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Mail mailFindById(int mail_id) {
+		try (Connection con = DbUtil.getConnection()) {
+			MailDao mailDao = new MailDao(con);
+			return mailDao.mailFindById(mail_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
