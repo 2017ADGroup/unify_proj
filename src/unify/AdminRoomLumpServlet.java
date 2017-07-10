@@ -94,7 +94,7 @@ public class AdminRoomLumpServlet extends HttpServlet {
 			reserve = new Reserve(Integer.parseInt(reserveId[i]), Integer.parseInt(reservePurpose[i]),
 					Integer.parseInt(reserveAmount[i]), join, reserveRemarks[i]);
 			// ユーザーを更新
-			reserveService.renew(reserve);
+			reserveService.reserveRenew(reserve);
 		}
 
 		// 一括削除
@@ -102,7 +102,7 @@ public class AdminRoomLumpServlet extends HttpServlet {
 			for (String reDel : reserveDelete) {
 
 				// ユーザーを削除
-				reserveService.erase(reDel);
+				reserveService.reserveErase(Integer.parseInt(reDel));
 
 			}
 		}
@@ -111,7 +111,7 @@ public class AdminRoomLumpServlet extends HttpServlet {
 		List<Reserve> list = reserveService.findAll();
 
 		// 検索結果をセッションに保持
-		request.setAttribute("adminRoomList", list);
+		request.setAttribute("reserveList", list);
 
 		// 次画面指定
 		request.getRequestDispatcher("adminRoomLump.jsp").forward(request, response);

@@ -28,6 +28,16 @@ public class ReserveService {
 		}
 	}
 
+	public void reserveErase(int reDel) {
+		try (Connection con = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(con);
+			reserveDao.reserveDelete(reDel);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	public List<Reserve> findAll() {
 		try (Connection conn = DbUtil.getConnection()) {
 			ReserveDao reserveDao = new ReserveDao(conn);
