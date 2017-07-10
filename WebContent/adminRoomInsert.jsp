@@ -84,22 +84,23 @@
 								</select>
 							</p> <select class="form-control" name="period1">
 								<option></option>
-								<option value="1限目">1限目</option>
-								<option value="2限目">2限目</option>
-								<option value="3限目">3限目</option>
-								<option value="4限目">4限目</option>
-								<option value="5限目">5限目</option>
-								<option value="6限目">6限目</option>
-								<option value="7限目以降">7限目以降</option>
+								<option value="1">1限目</option>
+								<option value="2">2限目</option>
+								<option value="3">3限目</option>
+								<option value="4">4限目</option>
+								<option value="5">5限目</option>
+								<option value="6">6限目</option>
+								<option value="7">7限目以降</option>
 						</select>
 						</td>
 						<td>
 							<p>
 								<select class="form-control" name="purpose1">
-									<option>講義</option>
-									<option>課外活動</option>
-									<option>備品整備</option>
-									<option>その他(備考欄記述)</option>
+									<option></option>
+									<option value="1">講義</option>
+									<option value="2">課外活動</option>
+									<option value="3">備品整備</option>
+									<option value="4">その他(備考欄記述)</option>
 								</select>
 							</p> <input class="form-control" name="number1" type="number">
 						</td>

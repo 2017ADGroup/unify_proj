@@ -8,8 +8,17 @@ public class Mail {
 	private String subject;
 	private String message;
 
+	public Mail(int mail_id, String sender, String receiver, String daytime, String subject, String message) {
+		super();
+		this.mail_id = mail_id;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.daytime = daytime;
+		this.subject = subject;
+		this.message = message;
+	}
 
-	public Mail(String sender,String receiver,String subject,String message){
+	public Mail(String sender,String receiver,String daytime,String subject,String message){
 		this.setId(mail_id);
 		this.setTransmitter(sender);
 		this.setReceiver(receiver);
