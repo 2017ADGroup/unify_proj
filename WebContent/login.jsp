@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -15,20 +15,29 @@
 <!-- BootstrapのJS読み込み -->
 <script src="js/bootstrap.min.js"></script>
 </head>
-<body style="background-image: url(image/book.jpg); background-size: cover;">
-<c:if test="${not empty errmsg}">
-  <p class="error">${fn:escapeXml(errmsg)}</p>
-</c:if>
-<div class="login">
-  <div class="login-triangle"></div>
+<body
+	style="background-image: url(image/book.jpg); background-size: cover;">
+	<c:if test="${not empty errmsg}">
+		<p class="error">${fn:escapeXml(errmsg)}</p>
+	</c:if>
+	<div class="login">
+		<div class="login-triangle"></div>
 
-  <h2 class="login-header">Login</h2>
+		<h2 class="login-header">Login</h2>
 
-  <form class="login-container" action="Login">
-    <p><input type="id" placeholder="ID" name="id" value="${fn:escapeXml(param.id)}"></p>
-    <p><input type="password" placeholder="Password" name="pass" value="${fn:escapeXml(param.pass)}"></p>
-    <p><input type="submit" value="Login"></p>
-  </form>
-</div>
+		<form class="login-container" action="./Login" method ="POST">
+			<p>
+				<input type="id" placeholder="ID" name="id"
+					value="${fn:escapeXml(param.id)}">
+			</p>
+			<p>
+				<input type="password" placeholder="Password" name="pass"
+					value="${fn:escapeXml(param.pass)}">
+			</p>
+			<p>
+				<input type="submit" value="Login">
+			</p>
+		</form>
+	</div>
 </body>
 </html>

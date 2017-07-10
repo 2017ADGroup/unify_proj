@@ -51,16 +51,6 @@ public class Login extends HttpServlet {
 			request.setAttribute("errmsg", "IDまたはPASSが間違っています");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-
-		/*
-		if (users != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", users);
-			response.sendRedirect(request.getContextPath() + "/menu.jsp");
-		} else {
-			request.setAttribute("errmsg", "IDまたはPASSが間違っています");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}*/
 	}
 
 }
