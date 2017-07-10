@@ -38,7 +38,7 @@ public class AdminRoomServlet extends HttpServlet {
 		// 検索結果をセッションに保持
 		request.setAttribute("reserveList", list);
 		// 次画面指定
-		request.getRequestDispatcher("lump.jsp").forward(request, response);
+		request.getRequestDispatcher("adminRoomLump.jsp").forward(request, response);
 	}
 
 	/**

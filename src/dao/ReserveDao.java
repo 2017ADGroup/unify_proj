@@ -25,10 +25,13 @@ public class ReserveDao {
 	}
 
 	public List<Reserve> selectAll(){
+
+		List<Reserve> reserveList = new ArrayList<Reserve>();
+
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
 
 			ResultSet rs = stmt.executeQuery();
-			List<Reserve> reserveList = new ArrayList<Reserve>();
+
 			while (rs.next()) {
 				Reserve reserve = new Reserve(
 					rs.getInt("reserve_id"),
@@ -39,16 +42,15 @@ public class ReserveDao {
 					rs.getInt("purpose"),
 					rs.getInt("amount"),
 					rs.getString("facility"),
-					rs.getString("Remarks()"),
+					rs.getString("remarks"),
 					rs.getString("reserve_host")
 					);
 				reserveList.add(reserve);
-				return reserveList;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return reserveList;
 	}
 
 	public void reserveInsert(Reserve reserve){
