@@ -48,7 +48,7 @@ function check(){
 </head>
 <body>
 <h2 style="text-align: center;">教室一括予約</h2>
-<form id="reserveUpdateForm" action="menu.html" method="POST" name="form1" onSubmit="return check()">
+<form id="reserveUpdateForm" action="adminRoomInsert" method="POST" name="form1" onSubmit="return check()">
 	<fieldset>
 		<table class="table">
 			<caption>予約一覧</caption>
@@ -346,7 +346,7 @@ function check(){
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
 	<br>
-		<a href="menu.html" class="btn btn-default">Menu</a>
+		<a href="menu.jsp" class="btn btn-default">Menu</a>
 	</div>
 		<br>
 	<br>
