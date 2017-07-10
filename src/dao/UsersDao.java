@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.Users;
@@ -9,11 +10,26 @@ import entity.Users;
 public class UsersDao {
 
 	private static final String SQL_UPDATE = "UPDATE users SET";
+	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
 
 	private Connection connection;
 
 	public UsersDao(Connection connection) {
 		this.connection = connection;
+	}
+	public String idByName(String id){
+		System.out.println(id);
+		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
+			stmt.setString(1,id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				return rs.getString("name");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 //更新
 	public int update(Users user) {
@@ -54,7 +70,7 @@ public class UsersDao {
 
 		sql_update += " WHERE login_id = ?";
 
-		try (PreparedStatement stmt =  connection.prepareStatement(sql_update)) {
+		try (PreparedStatement stmt =  connection.prepareStatement(SQL_UPDATE)) {
 			switch (ptn) {
 			case 1:
 				stmt.setString(1, name);

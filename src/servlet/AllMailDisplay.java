@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entity.Mail;
+import entity.MailView;
 import service.MailService;
+import service.UsersService;
 
 @WebServlet("/AllMailDisplay")
 public class AllMailDisplay extends HttpServlet {
@@ -24,6 +27,18 @@ public class AllMailDisplay extends HttpServlet {
 		try {
 			MailService mailService = new MailService();
 			List<Mail> mailList = mailService.mailFindAll();
+			List<MailView> mailViewList = new ArrayList<MailView>();
+			for(Mail mail: mailList){
+				UsersService UsersService = new UsersService();
+
+				String receivername  = UsersService.idByName(mail.getReceiver());
+				String sendername  = UsersService.idByName(mail.getSender());
+				MailView mailView = new MailView(receivername,sendername);
+				mailViewList.add(mailView);
+			}
+			session.setAttribute("mailViewList", mailViewList);
+
+			System.out.println(mailViewList.get(0).getSendername()+"通ってる");
 			session.setAttribute("mailList", mailList);
 		}
 		catch (Exception e) {
@@ -42,14 +57,24 @@ public class AllMailDisplay extends HttpServlet {
 		String id = request.getParameter("id");
 		String keyword = request.getParameter("keyword");
 		String time = request.getParameter("time");
-		String checkbox = request.getParameter("checkbox");
+		String[] checkbox = request.getParameterValues("checkbox");
 		int page = Integer.parseInt(request.getParameter("page"));
 
 		MailService mailService = new MailService();
-		List<Mail> mailList = mailService.mailFind();
+		List<Mail> mailList = mailService.mailFindAll();
+		List<MailView> mailViewList = new ArrayList<MailView>();
+		for(Mail mail: mailList){
+			UsersService UsersService = new UsersService();
 
+			String receivername  = UsersService.idByName(mail.getReceiver());
+			String sendername  = UsersService.idByName(mail.getSender());
+			MailView mailView = new MailView(receivername,sendername);
+			mailViewList.add(mailView);
+		}
+		session.setAttribute("mailViewList", mailViewList);
+
+		System.out.println(mailViewList.get(0).getSendername()+"通ってる");
 		session.setAttribute("mailList", mailList);
-		request.setAttribute("min",1);
 		} catch (Exception e) {
 
 		}
