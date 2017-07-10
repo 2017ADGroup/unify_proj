@@ -72,8 +72,6 @@ public class AllMailDisplay extends HttpServlet {
 			mailViewList.add(mailView);
 		}
 		session.setAttribute("mailViewList", mailViewList);
-
-		System.out.println(mailViewList.get(0).getSendername()+"通ってる");
 		session.setAttribute("mailList", mailList);
 		} catch (Exception e) {
 
