@@ -48,7 +48,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">予約内容一括更新・削除</h2>
-	<form class="form-hrizonatal" method="POST" action="adminRoomDelete"
+	<form class="form-hrizonatal" method="POST" action="adminRoomLump"
 		name="form1" onSubmit="return check()">
 		<fieldset>
 			<table class="table">
@@ -69,39 +69,50 @@
 				<tbody>
 					<c:forEach var="reserve" items="${reserveList}">
 						<tr>
-							<td><input type='date' name='date' value='${reserve.date}'
-								disabled='disabled'></td>
-							<td><input type="text" name="login_id"
-								value='${reserve.login_id}' disabled='disabled'></td>
+							<td><input type='date' name='reserveDate'
+								value='2017-${reserve.month}-${reserve.day}' disabled='disabled'></td>
+							<td><input type="text" name="loginId"
+								value='${reserve.reserve_host}' disabled='disabled'></td>
 							<td>
 								<p>
-									<select name="room" disabled='disabled'>
+									<select name="reserveRoom" disabled='disabled'>
 										<option value="${reserve.room}" selected='selected'>${reserve.room}</option>
 
 									</select>
-								</p> <select name="term" disabled='disabled'>
+								</p> <select name="reserveTerm" disabled='disabled'>
 									<option value="${reserve.term}">${reserve.term}限目</option>
 							</select>
 							</td>
 							<td>
 								<p>
-									<select>
+									<select name="reservePurpose">
 										<option value="${reserve.purpose}">${reserve.purpose}</option>
+										<option value="1">講義</option>
+										<option value="2">課外活動</option>
+										<option value="3">備品整備</option>
+										<option value="4">その他(備考欄記述)</option>
 									</select>
-								</p> <input name="amount" type="number" value="${reserve.amount}">
+								</p> <input name="reserveAmount" type="number"
+								value="${reserve.amount}">
 							</td>
 							<td><c:set var="facility">${reserve.facility}</c:set> <%
  	String facility = (String) pageContext.getAttribute("facility");
  		String[] facilities = facility.split(",");
- 		for (String f : facilities) {
- 			pageContext.setAttribute("fy", f);
- %> <input type="text" name="fixtures" value='${fy}'><br>
-								<%
-									}
-								%></td>
-							<td><textarea name="bikou" rows="5" cols="32">${reserve.remarks}</textarea></td>
+
+ 		for (int i=0; i<facilities.length; i++) {
+ 			pageContext.setAttribute("f"+ i, facilities[i]);
+ 		}
+ %> <input type="text" name="reserveFixtures6" value='${f0}'><br>
+ <input type="text" name="reserveFixtures1" value='${f1}'><br>
+								<input type="text" name="reserveFixtures2" value='${f2}'><br>
+								<input type="text" name="reserveFixtures3" value='${f3}'><br>
+								<input type="text" name="reserveFixtures4" value='${f4}'><br>
+								<input type="text" name="reserveFixtures5" value='${f5}'><br>
+								</td>
+							<td><textarea name="reserveRemarks" rows="5" cols="32">${reserve.remarks}</textarea></td>
 							<td><input name="reserveDelete" type="checkbox"
-								value="${reserve.reserve_id}" /></td>
+								value="${reserve.reserve_id}" /> <input name="reserveId"
+								type="hidden" value="${reserve.reserve_id}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

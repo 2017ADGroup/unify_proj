@@ -13,6 +13,8 @@ public class ReserveDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM reserve";
 	private static final String SQL_INSERT = "INSERT INTO reserve (month, day, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_UPDATE = "UPDATE reserve SET purpose=?, amount=?, facility=?, remarks=? WHERE reserve_id=?";
+	private static final String SQL_DELETE = "DELETE FROM reserve WHERE reserve_id=?";
 	private static final String SQL_SELECT_LOGINID_DAYTIME = "SELECT * FROM reserve WHERE login_id=? AND reserve_date=?";
 	private static final String SQL_SELECT_LOGINID_DAYTIME_TERM = "SELECT * FROM reserve WHERE login_id=? AND reserve_date=? AND term=?";
 
@@ -23,10 +25,13 @@ public class ReserveDao {
 	}
 
 	public List<Reserve> selectAll(){
+
+		List<Reserve> reserveList = new ArrayList<Reserve>();
+
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
 
 			ResultSet rs = stmt.executeQuery();
-			List<Reserve> reserveList = new ArrayList<Reserve>();
+
 			while (rs.next()) {
 				Reserve reserve = new Reserve(
 					rs.getInt("reserve_id"),
@@ -37,20 +42,20 @@ public class ReserveDao {
 					rs.getInt("purpose"),
 					rs.getInt("amount"),
 					rs.getString("facility"),
-					rs.getString("Remarks()"),
+					rs.getString("remarks"),
 					rs.getString("reserve_host")
 					);
 				reserveList.add(reserve);
-				return reserveList;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return reserveList;
 	}
 
 	public void reserveInsert(Reserve reserve){
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
+
 			stmt.setInt(1, reserve.getMonth());
 			stmt.setInt(2, reserve.getDay());
 			stmt.setInt(3, reserve.getTerm());
@@ -60,6 +65,32 @@ public class ReserveDao {
 			stmt.setString(7, reserve.getFacility());
 			stmt.setString(8, reserve.getRemarks());
 			stmt.setString(9, reserve.getReserve_host());
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void reserveUpdate(Reserve reserve){
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+
+			stmt.setInt(1, reserve.getPurpose());
+			stmt.setInt(2, reserve.getAmount());
+			stmt.setString(3, reserve.getFacility());
+			stmt.setString(4, reserve.getRemarks());
+			stmt.setInt(5, reserve.getReserve_id());
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void reserveDelete(int reDel){
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
+
+			stmt.setInt(1, reDel);
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {

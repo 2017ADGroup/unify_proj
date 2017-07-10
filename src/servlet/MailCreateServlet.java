@@ -42,7 +42,7 @@ public class MailCreateServlet extends HttpServlet{
 		catch (Exception e) {
 
 		}
-		request.getRequestDispatcher("allMailDisplay.jsp").forward(request, response);
+		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
 	}
 	    	/**
 	    	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

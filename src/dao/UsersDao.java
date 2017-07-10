@@ -11,12 +11,31 @@ public class UsersDao {
 
 	private static final String SQL_UPDATE = "UPDATE users SET";
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
+	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE users_id = ? AND password = ?";
 
 	private Connection connection;
 
 	public UsersDao(Connection connection) {
 		this.connection = connection;
 	}
+
+	//ログイン
+	public Users findByIDAndPassword(String login_id, String password) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ID_AND_PASS)) {
+			stmt.setString(1, login_id);
+			stmt.setString(2, password);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return new Users(rs.getString("login_id"), rs.getString("password"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 
 	public String idByName(String id){
 		System.out.println(id);
@@ -32,7 +51,7 @@ public class UsersDao {
 		}
 		return null;
 	}
-	
+
 	public String nameById(String id){
 		System.out.println(id);
 		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
