@@ -75,12 +75,14 @@
 							<p>
 								<select class="form-control" name="room1">
 									<option></option>
-									<option value="A教室">A教室</option>
-									<option value="B教室">B教室</option>
-									<option value="C教室">C教室</option>
-									<option value="D教室">D教室</option>
-									<option value="E教室">E教室</option>
-									<option value="F教室">F教室</option>
+									<option value="A101教室">A101教室</option>
+									<option value="A203教室">A203教室</option>
+									<option value="B102教室">B102教室</option>
+									<option value="B202教室">B202教室</option>
+									<option value="C204教室">C204教室</option>
+									<option value="C303教室">C303教室</option>
+									<option value="D103教室">D103教室</option>
+									<option value="D401教室">D401教室</option>
 								</select>
 							</p> <select class="form-control" name="period1">
 								<option></option>
@@ -125,36 +127,43 @@
 							<p>
 								<select class="form-control" name="room2">
 									<option></option>
-									<option value="A教室">A教室</option>
-									<option value="B教室">B教室</option>
-									<option value="C教室">C教室</option>
-									<option value="D教室">D教室</option>
-									<option value="E教室">E教室</option>
-									<option value="F教室">F教室</option>
+									<option value="A101教室">A101教室</option>
+									<option value="A203教室">A203教室</option>
+									<option value="B102教室">B102教室</option>
+									<option value="B202教室">B202教室</option>
+									<option value="C204教室">C204教室</option>
+									<option value="C303教室">C303教室</option>
+									<option value="D103教室">D103教室</option>
+									<option value="D401教室">D401教室</option>
 								</select>
 							</p> <select class="form-control" name="period2">
-								<option>2限目</option>
-								<option>2限目</option>
-								<option>3限目</option>
-								<option>4限目</option>
-								<option>5限目</option>
-								<option>6限目</option>
-								<option>7限目以降</option>
+								<option></option>
+								<option value="1">1限目</option>
+								<option value="2">2限目</option>
+								<option value="3">3限目</option>
+								<option value="4">4限目</option>
+								<option value="5">5限目</option>
+								<option value="6">6限目</option>
+								<option value="7">7限目以降</option>
 						</select>
 						</td>
 						<td>
 							<p>
 								<select class="form-control" name="purpose2">
-									<option>講義</option>
-									<option>課外活動</option>
-									<option>備品整備</option>
-									<option>その他(備考欄記述)</option>
+									<option></option>
+									<option value="1">講義</option>
+									<option value="2">課外活動</option>
+									<option value="3">備品整備</option>
+									<option value="4">その他(備考欄記述)</option>
 								</select>
 							</p> <input class="form-control" name="number2" type="number">
 						</td>
-						<td><input type="checkbox" name="fixtures2" value="2">プロジェクター<br>
-							<input type="checkbox" name="fixtures2" value="2">スピーカー<br>
-							<input type="checkbox" name="fixtures2" value="3">マイク</td>
+						<td><input type="text" name="fixtures2"><br>
+							<input type="text" name="fixtures2"><br>
+							<input type="text" name="fixtures2"><br>
+							<input type="text" name="fixtures2"><br>
+							<input type="text" name="fixtures2"><br>
+							<input type="text" name="fixtures2"></td>
 						<td><textarea class="form-control" name="fixtures2" rows="5"
 								cols="32"></textarea></td>
 
@@ -167,36 +176,44 @@
 						<td>
 							<p>
 								<select class="form-control" name="room3">
-									<option>A教室</option>
-									<option>B教室</option>
-									<option>C教室</option>
-									<option>D教室</option>
-									<option>E教室</option>
-									<option>F教室</option>
+									<option></option>
+									<option value="A101教室">A101教室</option>
+									<option value="A203教室">A203教室</option>
+									<option value="B102教室">B102教室</option>
+									<option value="B202教室">B202教室</option>
+									<option value="C204教室">C204教室</option>
+									<option value="C303教室">C303教室</option>
+									<option value="D103教室">D103教室</option>
+									<option value="D401教室">D401教室</option>
 								</select>
 							</p> <select class="form-control" name="period3">
-								<option>3限目</option>
-								<option>2限目</option>
-								<option>3限目</option>
-								<option>4限目</option>
-								<option>5限目</option>
-								<option>6限目</option>
-								<option>7限目以降</option>
+								<option></option>
+								<option value="1">1限目</option>
+								<option value="2">2限目</option>
+								<option value="3">3限目</option>
+								<option value="4">4限目</option>
+								<option value="5">5限目</option>
+								<option value="6">6限目</option>
+								<option value="7">7限目以降</option>
 						</select>
 						</td>
 						<td>
 							<p>
 								<select class="form-control" name="purpose3">
-									<option>講義</option>
-									<option>課外活動</option>
-									<option>備品整備</option>
-									<option>その他(備考欄記述)</option>
+									<option></option>
+									<option value="1">講義</option>
+									<option value="2">課外活動</option>
+									<option value="3">備品整備</option>
+									<option value="4">その他(備考欄記述)</option>
 								</select>
 							</p> <input class="form-control" name="number3" type="number">
 						</td>
-						<td><input type="checkbox" name="fixtures3" value="3">プロジェクター<br>
-							<input type="checkbox" name="fixtures3" value="2">スピーカー<br>
-							<input type="checkbox" name="fixtures3" value="3">マイク</td>
+						<td><input type="text" name="fixtures3"><br>
+							<input type="text" name="fixtures3"><br>
+							<input type="text" name="fixtures3"><br>
+							<input type="text" name="fixtures3"><br>
+							<input type="text" name="fixtures3"><br>
+							<input type="text" name="fixtures3"></td>
 						<td><textarea class="form-control" name="fixtures3" rows="5"
 								cols="32"></textarea></td>
 
@@ -209,36 +226,44 @@
 						<td>
 							<p>
 								<select class="form-control" name="room4">
-									<option>A教室</option>
-									<option>B教室</option>
-									<option>C教室</option>
-									<option>D教室</option>
-									<option>E教室</option>
-									<option>F教室</option>
+									<option></option>
+									<option value="A101教室">A101教室</option>
+									<option value="A203教室">A203教室</option>
+									<option value="B102教室">B102教室</option>
+									<option value="B202教室">B202教室</option>
+									<option value="C204教室">C204教室</option>
+									<option value="C303教室">C303教室</option>
+									<option value="D103教室">D103教室</option>
+									<option value="D401教室">D401教室</option>
 								</select>
 							</p> <select class="form-control" name="period4">
-								<option>4限目</option>
-								<option>2限目</option>
-								<option>3限目</option>
-								<option>4限目</option>
-								<option>5限目</option>
-								<option>6限目</option>
-								<option>7限目以降</option>
+									<option></option>
+								<option value="1">1限目</option>
+								<option value="2">2限目</option>
+								<option value="3">3限目</option>
+								<option value="4">4限目</option>
+								<option value="5">5限目</option>
+								<option value="6">6限目</option>
+								<option value="7">7限目以降</option>
 						</select>
 						</td>
 						<td>
 							<p>
 								<select class="form-control" name="purpose4">
-									<option>講義</option>
-									<option>課外活動</option>
-									<option>備品整備</option>
-									<option>その他(備考欄記述)</option>
+									<option></option>
+									<option value="1">講義</option>
+									<option value="2">課外活動</option>
+									<option value="3">備品整備</option>
+									<option value="4">その他(備考欄記述)</option>
 								</select>
 							</p> <input class="form-control" name="number4" type="number">
 						</td>
-						<td><input type="checkbox" name="fixtures4" value="4">プロジェクター<br>
-							<input type="checkbox" name="fixtures4" value="2">スピーカー<br>
-							<input type="checkbox" name="fixtures4" value="3">マイク</td>
+						<td><input type="text" name="fixtures4"><br>
+							<input type="text" name="fixtures4"><br>
+							<input type="text" name="fixtures4"><br>
+							<input type="text" name="fixtures4"><br>
+							<input type="text" name="fixtures4"><br>
+							<input type="text" name="fixtures4"></td>
 						<td><textarea class="form-control" name="fixtures4" rows="5"
 								cols="32"></textarea></td>
 
@@ -251,36 +276,44 @@
 						<td>
 							<p>
 								<select class="form-control" name="room5">
-									<option>A教室</option>
-									<option>B教室</option>
-									<option>C教室</option>
-									<option>D教室</option>
-									<option>E教室</option>
-									<option>F教室</option>
+									<option></option>
+									<option value="A101教室">A101教室</option>
+									<option value="A203教室">A203教室</option>
+									<option value="B102教室">B102教室</option>
+									<option value="B202教室">B202教室</option>
+									<option value="C204教室">C204教室</option>
+									<option value="C303教室">C303教室</option>
+									<option value="D103教室">D103教室</option>
+									<option value="D401教室">D401教室</option>
 								</select>
 							</p> <select class="form-control" name="period5">
-								<option>5限目</option>
-								<option>2限目</option>
-								<option>3限目</option>
-								<option>5限目</option>
-								<option>5限目</option>
-								<option>6限目</option>
-								<option>7限目以降</option>
+								<option></option>
+								<option value="1">1限目</option>
+								<option value="2">2限目</option>
+								<option value="3">3限目</option>
+								<option value="4">4限目</option>
+								<option value="5">5限目</option>
+								<option value="6">6限目</option>
+								<option value="7">7限目以降</option>
 						</select>
 						</td>
 						<td>
 							<p>
 								<select class="form-control" name="purpose5">
-									<option>講義</option>
-									<option>課外活動</option>
-									<option>備品整備</option>
-									<option>その他(備考欄記述)</option>
+									<option></option>
+									<option value="1">講義</option>
+									<option value="2">課外活動</option>
+									<option value="3">備品整備</option>
+									<option value="4">その他(備考欄記述)</option>
 								</select>
 							</p> <input class="form-control" name="number5" type="number">
 						</td>
-						<td><input type="checkbox" name="fixtures5" value="5">プロジェクター<br>
-							<input type="checkbox" name="fixtures5" value="2">スピーカー<br>
-							<input type="checkbox" name="fixtures5" value="3">マイク</td>
+						<td><input type="text" name="fixtures5"><br>
+							<input type="text" name="fixtures5"><br>
+							<input type="text" name="fixtures5"><br>
+							<input type="text" name="fixtures5"><br>
+							<input type="text" name="fixtures5"><br>
+							<input type="text" name="fixtures5"></td>
 						<td><textarea class="form-control" name="fixtures5" rows="5"
 								cols="32"></textarea></td>
 

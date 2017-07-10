@@ -62,8 +62,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		}
 		join1 = join1.substring(0, join1.length() - 1);
 
-		System.out.println(join1);
-
 		String remarks1 = request.getParameter("remarks1");
 
 		// NULLチェック
@@ -103,13 +101,20 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(period1), room1, Integer.parseInt(purpose1), Integer.parseInt(number1), join1,
 					remarks1, loginId1);
 
+			System.out.println(date[1]);
+			System.out.println(date[2]);
+			System.out.println(period1);
+			System.out.println(room1);
+			System.out.println(purpose1);
+			System.out.println(number1);
+			System.out.println(join1);
+			System.out.println(remarks1);
+			System.out.println(loginId1);
+
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
-			// 次画面指定
-			request.getRequestDispatcher("adminRoomInsert.jsp").forward(request, response);
-			return;
 		}
 
 		// 次画面指定
