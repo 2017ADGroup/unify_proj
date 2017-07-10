@@ -8,13 +8,15 @@ public class Rooms {
 	private String facility;
 	private String remarks;
 
-	public Rooms(int id,String image_path,String room, String size, String facility, String remarks){
-		this.setId(id);
-		this.setImage_path(image_path);
-		this.setRoom(room);
-		this.setSize(size);
-		this.setFacility(facility);
-		this.setRemarks(remarks);
+
+	public Rooms(int id, String image_path, String room, String size, String facility, String remarks) {
+		super();
+		this.id = id;
+		this.image_path = image_path;
+		this.room = room;
+		this.size = size;
+		this.facility = facility;
+		this.remarks = remarks;
 	}
 
 	public Rooms(){
