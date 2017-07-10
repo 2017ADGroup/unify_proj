@@ -14,7 +14,16 @@ public class Users {
 
 	}
 
+<<<<<<< HEAD
+
+	public Users(int user_id,String login_id,String password,String property,String name,String kana,int authority,String organization){
+
+	}
+
+	Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
+=======
 	public Users(int user_id,String login_id,String password,int property,String name,String kana,int authority,String organization){
+>>>>>>> 58b6f5e6a9d19adeea8573d7fd401edeee2671af
 		this.user_id = user_id;
 		this.login_id = login_id;
 		this.password = password;
