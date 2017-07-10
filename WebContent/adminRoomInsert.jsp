@@ -48,7 +48,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">教室一括予約</h2>
-	<form id="reserveUpdateForm" action="adminRoomInsert" method="POST"
+	<form id="reserveUpdateForm" action="AdminRoomInsert" method="POST"
 		name="form1" onSubmit="return check()">
 		<fieldset>
 			<table class="table">
@@ -74,21 +74,23 @@
 						<td>
 							<p>
 								<select class="form-control" name="room1">
-									<option>A教室</option>
-									<option>B教室</option>
-									<option>C教室</option>
-									<option>D教室</option>
-									<option>E教室</option>
-									<option>F教室</option>
+									<option></option>
+									<option value="A教室">A教室</option>
+									<option value="B教室">B教室</option>
+									<option value="C教室">C教室</option>
+									<option value="D教室">D教室</option>
+									<option value="E教室">E教室</option>
+									<option value="F教室">F教室</option>
 								</select>
 							</p> <select class="form-control" name="period1">
-								<option>1限目</option>
-								<option>2限目</option>
-								<option>3限目</option>
-								<option>4限目</option>
-								<option>5限目</option>
-								<option>6限目</option>
-								<option>7限目以降</option>
+								<option></option>
+								<option value="1限目">1限目</option>
+								<option value="2限目">2限目</option>
+								<option value="3限目">3限目</option>
+								<option value="4限目">4限目</option>
+								<option value="5限目">5限目</option>
+								<option value="6限目">6限目</option>
+								<option value="7限目以降">7限目以降</option>
 						</select>
 						</td>
 						<td>
@@ -104,7 +106,7 @@
 						<td><input type="checkbox" name="fixtures1" value="1">プロジェクター<br>
 							<input type="checkbox" name="fixtures1" value="2">スピーカー<br>
 							<input type="checkbox" name="fixtures1" value="3">マイク</td>
-						<td><textarea class="form-control" name="fixtures1" rows="5"
+						<td><textarea class="form-control" name="remarks1" rows="5"
 								cols="32"></textarea></td>
 
 					</tr>
@@ -116,12 +118,13 @@
 						<td>
 							<p>
 								<select class="form-control" name="room2">
-									<option>A教室</option>
-									<option>B教室</option>
-									<option>C教室</option>
-									<option>D教室</option>
-									<option>E教室</option>
-									<option>F教室</option>
+									<option></option>
+									<option value="A教室">A教室</option>
+									<option value="B教室">B教室</option>
+									<option value="C教室">C教室</option>
+									<option value="D教室">D教室</option>
+									<option value="E教室">E教室</option>
+									<option value="F教室">F教室</option>
 								</select>
 							</p> <select class="form-control" name="period2">
 								<option>2限目</option>
