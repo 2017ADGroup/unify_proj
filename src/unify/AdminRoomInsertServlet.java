@@ -14,7 +14,7 @@ import service.ReserveService;
 /**
  * Servlet implementation class AdminRoomInsertServlet
  */
-@WebServlet("/AdminRoomInsert")
+@WebServlet("/adminRoomInsert")
 public class AdminRoomInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
