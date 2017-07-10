@@ -18,13 +18,13 @@ public class MailDao {
 		return null;
 	}
 
-<<<<<<< HEAD
+
 	public Mail mailInsert(){
 		return null;
-=======
+	}
 	public void test(){
 
->>>>>>> 74c1c9c5ef7d0c5cdaefcaf55f7b6d7bf1e98396
+
 	}
 
 }
