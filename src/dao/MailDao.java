@@ -56,7 +56,7 @@ public class MailDao {
 		return null;
 	}
 
-	/*public List<Mail> mailFind() {
+	public List<Mail> mailFind(String name) {
 
 		List<Mail> list = new ArrayList<Mail>();
 		String sql = SQL_SELECT_ALL;
@@ -120,7 +120,7 @@ public class MailDao {
 			throw new RuntimeException(e);
 		}
 		return list;
-	}*/
+	}
 
 	public void mailInsert(String to, String from, String time, String subject, String message) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
