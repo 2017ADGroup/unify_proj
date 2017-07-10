@@ -9,10 +9,20 @@ import util.DbUtil;
 
 public class MailService {
 
-	public List<Mail> mailSelect() {
+	public List<Mail> mailFind() {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			return mailDao.mailSelect();
+			return mailDao.mailFind();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public List<Mail> mailFindAll() {
+		try (Connection con = DbUtil.getConnection()) {
+			MailDao mailDao = new MailDao(con);
+			return mailDao.mailFindAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
