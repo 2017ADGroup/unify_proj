@@ -20,7 +20,7 @@ alert("送信しました");
 <body>
 <h2 style="text-align: center;">メール新規作成</h2>
 <br>
-	<form class="form-horizontal" action="mailCreate">
+	<form class="form-horizontal" action="mailCreate.jsp">
 		<fieldset>
               <div class="form-group">
                 <label for="SELECT" class="col-sm-3 control-label">宛先</label>

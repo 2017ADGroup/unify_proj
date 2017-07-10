@@ -53,6 +53,15 @@ public class MailDao {
 			throw new RuntimeException(e);
 		}
 
+<<<<<<< HEAD
+
+	public Mail mailInsert(){
+		return null;
+	}
+	public void test(){
+
+
+=======
 		return list;
 	}
 
@@ -67,6 +76,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+>>>>>>> d4a27f60ea39f08e685b1f6bba2a4be90f25488a
 	}
 
 	public void mailupdate(int id,String to,String from,String time,String subject,String message){

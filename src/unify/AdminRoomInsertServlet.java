@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import entity.Reserve;
+import service.ReserveService;
 
 /**
  * Servlet implementation class AdminRoomInsertServlet
@@ -47,6 +49,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		String period1 = request.getParameter("period1");
 		String purpose1 = request.getParameter("purpose1");
 		String number1 = request.getParameter("number1");
+		String fixtures1 = request.getParameter("fixtures1");
 		String remarks1 = request.getParameter("remarks1");
 
 
@@ -69,25 +72,35 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (number1 == null) {
 			number1 = "";
 		}
+		if (fixtures1 == null) {
+			fixtures1 = "";
+		}
 		if (remarks1 == null) {
 			remarks1 = "";
 		}
 
-		// 入力値がない場合
-		if ("".equals(name) || "".equals(tel) || "".equals(pass)) {
+		// 入力値がある場合
+		if (!"".equals(date1) || !"".equals(loginId1) || !"".equals(room1) || !"".equals(period1) || !"".equals(purpose1) || !"".equals(number1)) {
+
+			String[] date = date1.split("-");
+
+			// 入力情報を取得
+			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]), Integer.parseInt(period1), room1, Integer.parseInt(purpose1), Integer.parseInt(number1), fixtures1, remarks1, loginId1);
+
+			// ユーザーを登録
+			ReserveService reserveService = new ReserveService();
+			reserveService.reserveRegister(reserve);
+
+
+
 			// 次画面指定
-			request.getRequestDispatcher("insert.jsp").forward(request, response);
+			request.getRequestDispatcher("adminRoomInsert.jsp").forward(request, response);
 			return;
 		}
 
-		// 名前、TEL、パスワードをセッションスコープに保持
-		HttpSession session = request.getSession();
-		session.setAttribute("insName", name);
-		session.setAttribute("insTel", tel);
-		session.setAttribute("insPass", pass);
 
 		// 次画面指定
-		request.getRequestDispatcher("insertConfirm.jsp").forward(request, response);
+		request.getRequestDispatcher("adminRoomInsert.jsp").forward(request, response);
 	}
 
 }
