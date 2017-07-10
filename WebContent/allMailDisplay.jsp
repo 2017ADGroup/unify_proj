@@ -83,7 +83,7 @@
 				<tr>
 					<td>浅井(ID:a001)</td>
 					<td>市川(ID:a002)</td>
-					<td><a href="mailDetail.jsp">予約重複の件</ar></td>
+					<td><a href="mailDetail.jsp">予約重複の件</a></td>
 					<td>2017/07/06 12:00</td>
 				</tr>
 				<tr>
