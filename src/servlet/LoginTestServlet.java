@@ -32,7 +32,12 @@ public class LoginTestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Users login_user = Users(1001,"13e2034","2034",2,"市川公輔","いちかわこうすけ",1,"管理課");
+		Users login_user = new Users();
+				login_user.setUser_id(1001);
+				login_user.setLogin_id("13e2034");
+				login_user.setPassword("2034");
+
+				2,"市川公輔","いちかわこうすけ",1,"管理課");
 		HttpSession session = request.getSession();
 		session.setAttribute("login_user", login_user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
