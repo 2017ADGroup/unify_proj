@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Reserve;
+import service.ReserveService;
 
 /**
  * Servlet implementation class AdminRoomInsertServlet
@@ -88,7 +89,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
-			reserveService.register(reserve);
+			reserveService.reserveRegister(reserve);
 
 
 
