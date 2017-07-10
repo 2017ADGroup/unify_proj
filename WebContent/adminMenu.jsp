@@ -26,8 +26,9 @@ alert("ログアウトします");
 // --></script>
 </head>
 <body>
-<c:choose>
-			<c:when test="${login_user.authority == 2}">
+<%-- <c:choose> --%>
+<%-- 			<c:when test="${login_user.authority == 1}"> --%>
+
 		<br>
 	<br>
 	<p>
@@ -35,10 +36,13 @@ alert("ログアウトします");
 	</p>
 	<br>
 	<p>
-		<a href="adminLump.jsp" class="btn btn-warning btn-lg btn-block" style="width: 40%; margin: auto;">管理者情報削除</a>
+		<a href="AdminLumpServlet" class="btn btn-warning btn-lg btn-block" style="width: 40%; margin: auto;">管理者情報削除</a>
 	</p>
-	</c:when>
-	</c:choose>
+<%-- 	</c:when> --%>
+<%-- <c:otherwise> --%>
+<%-- 				<c:redirect url="login.jsp" /> --%>
+<%-- 			</c:otherwise> --%>
+<%-- 	</c:choose> --%>
 	<br>
 	<br>
 	<br>
