@@ -48,7 +48,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">予約内容一括更新・削除</h2>
-	<form class="form-hrizonatal" method="POST" action="adminRoomDelete"
+	<form class="form-hrizonatal" method="POST" action="adminRoomLump"
 		name="form1" onSubmit="return check()">
 		<fieldset>
 			<table class="table">
@@ -69,38 +69,39 @@
 				<tbody>
 					<c:forEach var="reserve" items="${reserveList}">
 						<tr>
-							<td><input type='date' name='date' value='${reserve.date}'
+							<td><input type='date' name='reserveDate' value='${reserve.date}'
 								disabled='disabled'></td>
-							<td><input type="text" name="login_id"
+							<td><input type="text" name="loginId"
 								value='${reserve.login_id}' disabled='disabled'></td>
 							<td>
 								<p>
-									<select name="room" disabled='disabled'>
+									<select name="reserveRoom" disabled='disabled'>
 										<option value="${reserve.room}" selected='selected'>${reserve.room}</option>
 
 									</select>
-								</p> <select name="term" disabled='disabled'>
+								</p> <select name="reserveTerm" disabled='disabled'>
 									<option value="${reserve.term}">${reserve.term}限目</option>
 							</select>
 							</td>
 							<td>
 								<p>
-									<select>
+									<select name="reservePurpose">
 										<option value="${reserve.purpose}">${reserve.purpose}</option>
 									</select>
-								</p> <input name="amount" type="number" value="${reserve.amount}">
+								</p> <input name="reserveAmount" type="number" value="${reserve.amount}">
 							</td>
 							<td><c:set var="facility">${reserve.facility}</c:set> <%
  	String facility = (String) pageContext.getAttribute("facility");
  		String[] facilities = facility.split(",");
  		for (String f : facilities) {
  			pageContext.setAttribute("fy", f);
- %> <input type="text" name="fixtures" value='${fy}'><br>
-								<%
-									}
-								%></td>
-							<td><textarea name="bikou" rows="5" cols="32">${reserve.remarks}</textarea></td>
+ %> <input type="text" name="reserveFixtures" value='${fy}'><br> <%
+ 	}
+ %></td>
+							<td><textarea name="reserveRemarks" rows="5" cols="32">${reserve.remarks}</textarea></td>
 							<td><input name="reserveDelete" type="checkbox"
+								value="${reserve.reserve_id}" />
+								<input name="reserveId" type="hidden"
 								value="${reserve.reserve_id}" /></td>
 						</tr>
 					</c:forEach>
