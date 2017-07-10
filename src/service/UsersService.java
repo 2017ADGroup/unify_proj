@@ -3,6 +3,7 @@ package service;
 import java.sql.Connection;
 
 import dao.UsersDao;
+import entity.Users;
 import util.DbUtil;
 
 public class UsersService {
@@ -16,4 +17,18 @@ public class UsersService {
 		}
 		return null;
 	}
+
+	public static Users authentication(String login_id, String pass) {
+		try (Connection con = DbUtil.getConnection()) {
+			UsersDao UsersDao = new UsersDao(con);
+			Users users = UsersDao.findByIDAndPassword(login_id, pass);
+			return users;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }
+
