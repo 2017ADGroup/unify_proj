@@ -48,7 +48,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">教室一括予約</h2>
-	<form id="reserveUpdateForm" action="AdminRoomInsert" method="POST"
+	<form id="reserveUpdateForm" action="adminRoomInsert" method="POST"
 		name="form1" onSubmit="return check()">
 		<fieldset>
 			<table class="table">

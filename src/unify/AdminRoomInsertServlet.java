@@ -14,7 +14,7 @@ import service.ReserveService;
 /**
  * Servlet implementation class AdminRoomInsertServlet
  */
-@WebServlet("/AdminRoomInsert")
+@WebServlet("/adminRoomInsert")
 public class AdminRoomInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 				join1 = join1 + str + ",";
 			}
 		}
+		if (!join1.equals("")) {
 		join1 = join1.substring(0, join1.length() - 1);
+		}
 
 		String remarks1 = request.getParameter("remarks1");
 
@@ -101,7 +103,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 				join2 = join2 + str + ",";
 			}
 		}
+		if (!join2.equals("")) {
 		join2 = join2.substring(0, join2.length() - 1);
+		}
 
 		String remarks2 = request.getParameter("remarks2");
 
@@ -142,7 +146,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 				join3 = join3 + str + ",";
 			}
 		}
+		if (!join3.equals("")) {
 		join3 = join3.substring(0, join3.length() - 1);
+		}
 
 		String remarks3 = request.getParameter("remarks3");
 
@@ -183,7 +189,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 				join4 = join4 + str + ",";
 			}
 		}
+		if (!join4.equals("")) {
 		join4 = join4.substring(0, join4.length() - 1);
+		}
 
 		String remarks4 = request.getParameter("remarks4");
 
@@ -224,7 +232,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 				join5 = join5 + str + ",";
 			}
 		}
+		if (!join5.equals("")) {
 		join5 = join5.substring(0, join5.length() - 1);
+		}
 
 		String remarks5 = request.getParameter("remarks5");
 

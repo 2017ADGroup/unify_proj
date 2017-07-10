@@ -18,6 +18,7 @@ public class UsersService {
 		return null;
 	}
 
+<<<<<<< HEAD
 	// ID検索
 		public Users find(String id) {
 			try (Connection conn = DbUtil.getConnection()) {
@@ -40,4 +41,19 @@ public class UsersService {
 		}
 		return 0;
 	}
+=======
+	public static Users authentication(String login_id, String pass) {
+		try (Connection con = DbUtil.getConnection()) {
+			UsersDao UsersDao = new UsersDao(con);
+			Users users = UsersDao.findByIDAndPassword(login_id, pass);
+			return users;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+>>>>>>> 96ec3b36b4f0ceecde826f779bebf6ccb23e6433
 }
+

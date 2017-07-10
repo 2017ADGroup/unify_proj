@@ -31,6 +31,11 @@ public class Users {
 		this.organization = organization;
 	}
 
+	public Users(String login_id, String password) {
+		super();
+		this.login_id = login_id;
+		this.password = password;
+	}
 
 	public int getUser_id() {
 		return user_id;

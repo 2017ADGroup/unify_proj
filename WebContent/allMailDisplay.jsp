@@ -80,7 +80,7 @@
 					<tr>
 						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
 						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
-						<td><a href="mailDetail?mail_id=${mail.mail_id}">${mail.subject}</a></td>
+						<td><a href="MailDetail?mail_id=${mail.mail_id}">${mail.subject}</a></td>
 						<td>${mail.daytime}</td>
 						<%
 						count++;
