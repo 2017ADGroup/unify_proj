@@ -32,6 +32,21 @@ public class UsersDao {
 		}
 		return null;
 	}
+	
+	public String nameById(String id){
+		System.out.println(id);
+		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
+			stmt.setString(1,id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				return rs.getString("name");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public int update(Users user) {
 		String sql_update = SQL_UPDATE;

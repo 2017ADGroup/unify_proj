@@ -12,9 +12,11 @@ import entity.Mail;
 public class MailDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM mail";
+	private static final String SQL_SELECT_BY_ID = "SELECT * FROM mail WHERE mail_id = ?";
 	private static final String SQL_INSERT = "INSERT INTO user_info (sender, receiver, deytime,subject,message) VALUES ( ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,recever = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
 	private static final String SQL_DELETE = "DELETE FROM mail WHERE mail_id = ?";
+	private static final Mail Mail = null;
 
 	private Connection connection;
 
@@ -39,7 +41,22 @@ public class MailDao {
 		return list;
 	}
 
-	public List<Mail> mailFind(String id,String ) {
+	public Mail mailFindById(int mail_id) {
+		List<Mail> list = new ArrayList<Mail>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_ID)) {
+			stmt.setInt(1, mail_id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				return	new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return null;
+	}
+
+	/*public List<Mail> mailFind() {
 
 		List<Mail> list = new ArrayList<Mail>();
 		String sql = SQL_SELECT_ALL;
@@ -103,7 +120,7 @@ public class MailDao {
 			throw new RuntimeException(e);
 		}
 		return list;
-	}
+	}*/
 
 	public void mailInsert(String to, String from, String time, String subject, String message) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
