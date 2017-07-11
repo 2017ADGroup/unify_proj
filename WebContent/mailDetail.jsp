@@ -22,7 +22,7 @@
 				<label for="SENDER" class="col-sm-3 control-label">送信者</label>
 				<div class="col-sm-6">
 					<!-- senderName mailオブジェクトとは別にsenderに対応する名前を取得しておく -->
-					<input type="text" name="sender" class="form-control" id="SENDER" value="${fn:escapeXml(senderName)}(ID:${fn:escapeXml(mail.sender)})" readonly>
+					<input type="text" name="sender" class="form-control" id="SENDER" value="${mailViewList.get(status.index).sendername}(ID:${fn:escapeXml(mail.sender)})" readonly>
 				</div>
 			</div>
 						<div class="form-group">
@@ -52,7 +52,6 @@
 		</div>
 
 	</form>
-
 	<br>
 	<br>
 	<br>

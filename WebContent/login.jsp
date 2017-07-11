@@ -17,17 +17,23 @@
 </head>
 <body
 	style="background-image: url(image/book.jpg); background-size: cover;">
+	<header style="background-color: #28d; height: 90px;">
+		<br>
+		<h1>
+			<font color="white">東京大学</font>
+		</h1>
+	</header>
 	<c:if test="${not empty errmsg}">
 		<p class="error">${fn:escapeXml(errmsg)}</p>
 	</c:if>
 	<div class="login">
 		<div class="login-triangle"></div>
 
-		<h2 class="login-header">Login</h2>
+		<h2 class="login-header">UniFy</h2>
 
-		<form class="login-container" action="./Login" method ="POST">
+		<form class="login-container" action="./Login" method="POST">
 			<p>
-				<input type="id" placeholder="ID" name="id"
+				<input type="text" placeholder="ID" name="id"
 					value="${fn:escapeXml(param.id)}">
 			</p>
 			<p>
