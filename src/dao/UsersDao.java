@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import entity.Users;
 
@@ -13,6 +15,7 @@ public class UsersDao {
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
 	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
 	private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE login_id = ?";
+	private static final String SQL_SELECT = "SELECT * FROM users";
 
 	private Connection connection;
 
@@ -66,6 +69,33 @@ public class UsersDao {
 		}
 		return null;
 	}
+
+
+	//全件取得
+	public List<Users> findAll() {
+		List<Users> list = new ArrayList<Users>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Users users = new Users(
+					rs.getInt("user_id"),
+					rs.getString("login_id"),
+					rs.getString("name"),
+					rs.getString("kana")
+
+					);
+				list.add(users);
+			}
+
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+
 
 	// ID検索
 	public String find(String id) {
