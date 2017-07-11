@@ -76,7 +76,7 @@ public class UsersService {
 	}
 
 	//一括削除
-	public void delete(String login_id) {
+	public void delete(int login_id) {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao usersDao = new UsersDao(con);
 			usersDao.delete(login_id);
