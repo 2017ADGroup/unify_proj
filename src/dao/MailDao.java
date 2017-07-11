@@ -358,12 +358,12 @@ public class MailDao {
 			}
 
 			for (int i = 0; i < login_id.length; i++) {
-				if(login_id.length == 1){
+				if (login_id.length == 1) {
 					SQL_SELECT = SQL_SELECT + " (sender=?";
 					SQL_SELECT = SQL_SELECT + " OR receiver=?)";
 					stack.addFirst("sender");
 					stack.addFirst("receiver");
-				}else{
+				} else {
 					if (i == 0) {
 						SQL_SELECT = SQL_SELECT + " (sender=?";
 						SQL_SELECT = SQL_SELECT + " OR receiver=?";
@@ -471,10 +471,10 @@ public class MailDao {
 			}
 
 			for (int i = 0; i < login_id.length; i++) {
-				if(login_id.length == 0){
+				if (login_id.length == 0) {
 					SQL_SELECT = SQL_SELECT + " sender=?";
 					stack.addFirst("sender");
-				}else{
+				} else {
 					if (i == 0) {
 						SQL_SELECT = SQL_SELECT + " (sender=?";
 						stack.addFirst("sender");
@@ -485,71 +485,71 @@ public class MailDao {
 						SQL_SELECT = SQL_SELECT + " OR sender=?)";
 						stack.addFirst("sender");
 					}
-			}
-		}
-
-		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
-		if (!keyword.isEmpty()) {
-			if (stack.peek() != null) {
-				SQL_SELECT = SQL_SELECT + " AND";
-			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
-			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
-			stack.addFirst("message");
-		}
-		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
-		if (!daytime.isEmpty()) {
-			if (stack.peek() != null) {
-				SQL_SELECT = SQL_SELECT + " AND";
-			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
-			stack.addFirst("daytime");
-		}
-
-		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		List<Mail> mailList = new ArrayList<Mail>();
-
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
-			@SuppressWarnings("unused")
-			String curum;
-			for (int c = 1; c <= stack.size(); c++) {
-				if (c <= login_id.length) {
-					if (stack.getLast().equals("sender")) {
-						curum = stack.removeLast();
-						stmt.setString(c, login_id[c - 1]);
-					} else {
-					}
-
-				} else {// 名前検索を超えた部分
-					if (stack.getLast().equals("subject")) {
-						curum = stack.removeLast();
-						stmt.setString(c, "%" + keyword + "%");
-					} else if (stack.getLast().equals("message")) {
-						curum = stack.removeLast();
-						stmt.setString(c, "%" + keyword + "%");
-					} else if (stack.getLast().equals("daytime")) {
-						curum = stack.removeLast();
-						stmt.setString(c, "%" + daytime + "%");
-					} else {
-					}
 				}
-			} // プレースホルダーセット終了
-
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
-						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
-				mailList.add(mail);
 			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
-		}
-		return mailList;
-	}
 
+			// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
+			if (!keyword.isEmpty()) {
+				if (stack.peek() != null) {
+					SQL_SELECT = SQL_SELECT + " AND";
+				}
+				SQL_SELECT = SQL_SELECT + " (subject=?";
+				stack.addFirst("subject");
+				SQL_SELECT = SQL_SELECT + " OR message=?)";
+				stack.addFirst("message");
+			}
+			// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
+			if (!daytime.isEmpty()) {
+				if (stack.peek() != null) {
+					SQL_SELECT = SQL_SELECT + " AND";
+				}
+				SQL_SELECT = SQL_SELECT + " daytime=?";
+				stack.addFirst("daytime");
+			}
+
+			SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+			List<Mail> mailList = new ArrayList<Mail>();
+
+			try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
+				@SuppressWarnings("unused")
+				String curum;
+				for (int c = 1; c <= stack.size(); c++) {
+					if (c <= login_id.length) {
+						if (stack.getLast().equals("sender")) {
+							curum = stack.removeLast();
+							stmt.setString(c, login_id[c - 1]);
+						} else {
+						}
+
+					} else {// 名前検索を超えた部分
+						if (stack.getLast().equals("subject")) {
+							curum = stack.removeLast();
+							stmt.setString(c, "%" + keyword + "%");
+						} else if (stack.getLast().equals("message")) {
+							curum = stack.removeLast();
+							stmt.setString(c, "%" + keyword + "%");
+						} else if (stack.getLast().equals("daytime")) {
+							curum = stack.removeLast();
+							stmt.setString(c, "%" + daytime + "%");
+						} else {
+						}
+					}
+				} // プレースホルダーセット終了
+
+				ResultSet rs = stmt.executeQuery();
+				while (rs.next()) {
+					Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+							rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
+					mailList.add(mail);
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			}
+			return mailList;
+		}
+	}
 
 	// from to双方にチェックがされた名前による検索
 	public List<Mail> SelectWhereNameTo(String[] login_id, String keyword, String daytime) {
@@ -566,10 +566,10 @@ public class MailDao {
 			}
 
 			for (int i = 0; i < login_id.length; i++) {
-				if(login_id.length == 0){
+				if (login_id.length == 0) {
 					SQL_SELECT = SQL_SELECT + " receiver=?";
 					stack.addFirst("receiver");
-				}else{
+				} else {
 					if (i == 0) {
 						SQL_SELECT = SQL_SELECT + "(receiver=?";
 						stack.addFirst("receiver");
