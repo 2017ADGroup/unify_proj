@@ -15,7 +15,7 @@ import service.UsersService;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

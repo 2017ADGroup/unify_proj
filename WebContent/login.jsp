@@ -25,7 +25,7 @@
 
 		<h2 class="login-header">UniFy</h2>
 
-		<form class="login-container" action="./Login" method="POST">
+		<form class="login-container" action="login" method="POST">
 			<p>
 				<input type="text" placeholder="ID" name="id"
 					value="${fn:escapeXml(param.id)}">
