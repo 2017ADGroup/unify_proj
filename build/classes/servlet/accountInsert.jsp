@@ -6,10 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>管理者情報登録</title>
+<title>団体・教員情報登録</title>
+<!-- BootstrapのCSS読み込み -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery読み込み -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- BootstrapのJS読み込み -->
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 <!--
@@ -31,13 +34,13 @@ function check(){
 	if(flag){
 
 		window.alert('チェックされていません'); // チェックされていない場合は警告ダイアログを表示
-		return false; // 更新を中止
+		return false; // 登録を中止
 
 	}
 	else{
 
 		window.alert('登録しました');
-		return true; // 更新を実行
+		return true; // 登録を実行
 
 	}
 
@@ -46,39 +49,36 @@ function check(){
 </script>
 </head>
 <body>
-<form class="form-hrizonatal" method="POST" action="adminInsert" name="form1" onSubmit="return check()">
-<h2 style="text-align: center;">管理者情報登録</h2>
+<h2 style="text-align: center;">団体・教員情報登録</h2>
+
+		<form class="form-hrizonatal" method="POST" action="accountInsert.html" name="form1" onSubmit="return check()">
 		<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
-		<caption>管理者情報登録</caption>
+		<caption>団体・教員情報登録</caption>
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>名前</th>
 					<th>かな</th>
+					<th>属性</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control"value='${users.login_id}'>
+						<input type="text" name="id" class="form-control" value='${users.login_id}'>
 					</td>
 					<td>
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control"value='${users.login_id}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<select name="authority" class="form-control">
+						<option value='${users.property}'>団体</option>
+						<option value='${users.property}' selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -89,7 +89,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -100,7 +106,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -111,7 +123,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="5">団体</option>
+						<option value="2" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -122,7 +140,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -133,7 +157,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -144,7 +174,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -155,7 +191,13 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -166,7 +208,30 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.name}'>
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control" value='${users.name}'>
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+					</td>
+					<td>
+						<select name="authority" class="form-control">
+						<option value="0">団体</option>
+						<option value="1" selected>教員</option>
+						</select>
 					</td>
 				</tr>
 			</tbody>
@@ -179,24 +244,17 @@ function check(){
       			<input type="checkbox" name="check1" value="ok"> この内容でよろしいですか？
     		</label>
   	</div>
-  	</div>
+  	     </div>
   </div>
-<div class="col-sm-offset-5 col-sm-1">
-<input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='updateInput.jsp'; return false;">
-
-</div>
-<div class="col-sm-6">
+				<div class="col-sm-12" style="text-align: center;">
 <input type="submit" class="btn btn-danger"value="登録">
-</div>
-	<br>
-	<br>
-	<br>
+	</div>
+	</form>
+
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
-	<br>
-		<a href="back" class="btn btn-default">Menu</a>
+			<br>
+		<a href="menu.jsp" class="btn btn-default">Menu</a>
 	</div>
-</form>
 </body>
 </html>
