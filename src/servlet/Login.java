@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 
 		// 入力値がnullか空文字であるか
 		if (login_id == null || ("".equals(login_id)) || pass == null || ("".equals(pass))) {
-			request.setAttribute("errmsg", "IDまたはPASSが入力されていません");
+			//request.setAttribute("errmsg", "IDまたはPASSが入力されていません");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 			return;
 		}
@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
 
 			// IDまたはPASSが間違っている場合、ログインへ戻る
 		} else {
-			request.setAttribute("errmsg", "IDまたはPASSが間違っています");
+			//request.setAttribute("errmsg", "IDまたはPASSが間違っています");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}
