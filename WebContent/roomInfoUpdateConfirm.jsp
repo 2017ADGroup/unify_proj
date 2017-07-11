@@ -25,7 +25,8 @@
 	<h2 style="text-align: center;">教室情報更新確認</h2>
 
 	<br>
-	<form class="form-horizontal" action="roomInfoUpdateResult" method="POST">
+	<form class="form-horizontal" action="roomInfoUpdateResult"
+		method="POST">
 		<fieldset class="col-md-5 control-label">
 			<legend>変更前</legend>
 			<div class="form-group">
@@ -114,7 +115,7 @@
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-8">
-					<input type="text" name="name" class="form-control" id="NAME"
+					<input type="text" name="newName" class="form-control" id="NAME"
 						value="${name}" readonly>
 				</div>
 			</div>
@@ -128,7 +129,7 @@
 			<div class="form-group">
 				<label for="SCALE" class="col-sm-2 control-label">規模</label>
 				<div class="col-sm-7">
-					<input type="text" name="scale" class="form-control" id="SCALE"
+					<input type="text" name="newSize" class="form-control" id="SCALE"
 						value="${scale}" readonly>
 				</div>
 				<div class="col-sm-1">
@@ -138,6 +139,7 @@
 			<c:set var="fix">${fix}</c:set>
 			<%
 				String fixture = (String) pageContext.getAttribute("fix");
+				request.setAttribute("newFixs", fixture);
 				String[] fixtures = fixture.split(",");
 				for (int i = 0; i < fixtures.length; i++) {
 					pageContext.setAttribute("ff" + i, fixtures[i]);
@@ -146,39 +148,39 @@
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-2 control-label">備品</label>
 				<div class="col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff0}" readonly>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff1}" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff2}" readonly>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff3}" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff4}" readonly>
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="newFix" class="form-control" id="FIXTURES"
 						value="${ff5}" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="REMARKS" class="col-sm-2 control-label">備考</label>
 				<div class="col-sm-8">
-					<textarea name="remarks" rows="4" class="form-control" id="REMARKS"
-						readonly>${remarks}</textarea>
+					<textarea name="newRemarks" rows="4" class="form-control"
+						id="REMARKS" readonly>${remarks}</textarea>
 				</div>
 			</div>
 		</fieldset>
