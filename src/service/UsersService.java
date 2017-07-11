@@ -1,6 +1,10 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import dao.UsersDao;
 import entity.Users;
@@ -18,8 +22,25 @@ public class UsersService {
 		return null;
 	}
 
+
+	// 全件取得
+		public List<Users> findAll() {
+			List<Users> list = new ArrayList<Users>();
+			try (Connection conn = DbUtil.getConnection()) {
+				UsersDao usersDao = new UsersDao(conn);
+				list = usersDao.findAll();
+
+				return list;
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return Collections.emptyList();
+		}
+
 	// ID検索
-		public Users find(String id) {
+		/*public Users find(String id) {
 			try (Connection conn = DbUtil.getConnection()) {
 				UsersDao usersDao = new UsersDao(conn);
 				return usersDao.find(id);
@@ -28,7 +49,7 @@ public class UsersService {
 			}
 
 			return null;
-		}
+		}*/
 
 	//登録
 	public int insert(Users users){
@@ -41,7 +62,8 @@ public class UsersService {
 		return 0;
 	}
 
-	public static Users authentication(String login_id, String pass) {
+	// ログイン
+	public  Users authentication(String login_id, String pass) {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao UsersDao = new UsersDao(con);
 			Users users = UsersDao.findByIDAndPassword(login_id, pass);

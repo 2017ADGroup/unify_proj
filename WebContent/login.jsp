@@ -23,9 +23,6 @@
 			<font color="white">東京大学</font>
 		</h1>
 	</header>
-	<c:if test="${not empty errmsg}">
-		<p class="error">${fn:escapeXml(errmsg)}</p>
-	</c:if>
 	<div class="login">
 		<div class="login-triangle"></div>
 
