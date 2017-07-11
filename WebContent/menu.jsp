@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,14 +21,12 @@ alert("ログアウトします");
 <title>メニュー</title>
 </head>
 <body>
-<body>
-
 <h2 style="text-align: center;">マイページ</h2>
 <br>
 	<div class="col-sm-3">
 		<!-- ログインしたユーザーの権限によって -->
 		<c:choose>
-			<c:when test="${login_user.authority == 2}">
+			<c:when test="${login_user.property == 2}">
 				<b>教室予約情報</b><br>
 				・<a href="adminRoomInsert">教室一括予約</a><br>
 				・<a href="adminRoom">予約内容一括更新・削除</a><br>
@@ -44,7 +43,7 @@ alert("ログアウトします");
 				・<a href="accountLump">団体・教員情報更新・削除</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 3}">
+			<c:when test="${login_user.property == 3}">
 				・<a href="roomInsert">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
 				<b>ミニメール</b><br>
@@ -56,7 +55,7 @@ alert("ログアウトします");
 				・<a href="studentLumpSelect">生徒情報削除</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 4}">
+			<c:when test="${login_user.property == 4}">
 				<b>教室予約情報</b><br>
 				・<a href="roomInsert">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
@@ -67,7 +66,7 @@ alert("ログアウトします");
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 5}">
+			<c:when test="${login_user.property == 5}">
 				<b>ミニメール</b><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
@@ -104,7 +103,7 @@ alert("ログアウトします");
 		<div class="col-sm-offset-2 col-sm-6">
 
 	<form class="form-inline" action="menu.html" method="get">
-	<div class="form-group">>
+	<div class="form-group">
 <select class="form-control" id="year" name="year">
 <%
     int year = Integer.parseInt(request.getAttribute("year").toString());

@@ -17,15 +17,15 @@
 </head>
 <body
 	style="background-image: url(image/book.jpg); background-size: cover;">
-	<h1
-		style="color: white; padding: .5em .75em; background-color: #28d; border-left: 6px solid #ccc;">東京大学</h1>
-
+<header style="background-color: #28d; height:60px;">
+<h1><font color="white">東京大学</font></h1><br>
+</header>
 	<div class="login">
 		<div class="login-triangle"></div>
 
 		<h2 class="login-header">UniFy</h2>
 
-		<form class="login-container" action="./Login" method="POST">
+		<form class="login-container" action="login" method="POST">
 			<p>
 				<input type="text" placeholder="ID" name="id"
 					value="${fn:escapeXml(param.id)}">

@@ -18,14 +18,14 @@ import service.UsersService;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Login() {
+	public LoginServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,7 +39,6 @@ public class Login extends HttpServlet {
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
-		System.out.println("ログイン処理開始");//デバッグ用
 		String login_id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 
@@ -68,11 +67,10 @@ public class Login extends HttpServlet {
 				// その他のユーザー遷移
 			} else {
 				MenuService menuService = new MenuService();
-				// スケジュールのための日付を取得(date型に変更の可能性有)
+				//スケジュールのための日付を取得(date型に変更の可能性有)
 				Date date = new Date();
 				String scheduleDay = date.toString();
-				request.setAttribute("schedule",
-						menuService.scheduleCreate((String) session.getAttribute("login_id"), scheduleDay));
+				request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
 				prepData(request);
 				request.getRequestDispatcher("menu.jsp").forward(request, response);
 			}
