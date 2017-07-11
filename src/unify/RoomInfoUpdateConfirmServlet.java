@@ -49,12 +49,17 @@ public class RoomInfoUpdateConfirmServlet extends HttpServlet {
 
 		String[] fixtures = request.getParameterValues("fixtures");
 
-		String fix = String.join(",", fixtures);
-		System.out.println(fix);
+		String fix = "";
+		for (String str : fixtures) {
+			if (!str.equals("")) {
+				fix = fix + str + ",";
+			}
+		}
+		fix = fix.substring(0, fix.length() - 1);
 
 		request.setAttribute("name", request.getParameter("name"));
 		request.setAttribute("scale", request.getParameter("scale"));
-		request.setAttribute("fixtures", request.getParameter("fixtures"));
+		request.setAttribute("fix", fix);
 		request.setAttribute("remarks", request.getParameter("remarks"));
 
 		HttpSession session = request.getSession();
