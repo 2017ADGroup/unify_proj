@@ -53,5 +53,14 @@ public class UsersService {
 		return null;
 	}
 
+	//一括削除
+	public void delete(String login_id) {
+		try (Connection con = DbUtil.getConnection()) {
+			UsersDao usersDao = new UsersDao(con);
+			UsersDao.delete(login_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 

@@ -35,13 +35,15 @@ public class AdminLumpServlet extends HttpServlet {
 		// 削除するIDの取得
 				String[] lumpDel = request.getParameterValues("lumpDel");
 
+
 				// 一括削除
 
 				if (lumpDel != null) {
 					for (String login_id : lumpDel) {
 
 						// ユーザーを削除
-						UsersService.delete(login_id);
+						UsersService usersservice = new UsersService();
+						usersservice.delete(login_id);
 
 						request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 					}
