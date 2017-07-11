@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import entity.Users;
 import service.UsersService;
 
+
 @WebServlet("/AdminDelete")
-public class AdminDelete extends HttpServlet {
+public class AdminDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AdminDelete() {
+	public AdminDeleteServlet() {
 		super();
 
 	}
