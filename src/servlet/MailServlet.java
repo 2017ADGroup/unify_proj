@@ -42,8 +42,8 @@ public class MailServlet extends HttpServlet {
 			MailService mailService = new MailService();
 			List<Mail> mailList = mailService.mailFindAll();
 			List<MailView> mailViewList = new ArrayList<MailView>();
+			UsersService UsersService = new UsersService();
 			for (Mail mail : mailList) {
-				UsersService UsersService = new UsersService();
 				String receivername = UsersService.idByName(mail.getReceiver());
 				String sendername = UsersService.idByName(mail.getSender());
 				MailView mailView = new MailView(receivername, sendername);
@@ -59,6 +59,8 @@ public class MailServlet extends HttpServlet {
 		request.getRequestDispatcher("mail.jsp").forward(request, response);
 	}
 
+	//こっから↓いらないかも
+	/////////////////////////////////////////////////////////////////////////////////
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
