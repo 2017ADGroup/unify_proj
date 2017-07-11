@@ -11,7 +11,7 @@ public class UsersDao {
 
 	private static final String SQL_UPDATE = "UPDATE users SET";
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
-	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE users_id = ? AND password = ?";
+	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
 	private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE login_id = ?";
 
 	private Connection connection;
@@ -28,11 +28,13 @@ public class UsersDao {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				return new Users(rs.getString("login_id"), rs.getString("password"));
+				return new Users(rs.getInt("user_id"), rs.getString("login_id"), rs.getString("password"),
+						rs.getInt("property"), rs.getString("name"), rs.getString("kana"), rs.getInt("authority"), rs.getString("organization"));
 			} else {
 				return null;
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
