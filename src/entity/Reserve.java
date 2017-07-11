@@ -2,8 +2,7 @@ package entity;
 
 public class Reserve {
 	private int reserve_id;
-	private int month;
-	private int day;
+	private String reserve_date;
 	private int term;
 	private String room;
 	private int purpose;
@@ -31,11 +30,10 @@ public class Reserve {
 
 
 
-	public Reserve(int reserve_id,int month,int day,int term,
+	public Reserve(int reserve_id,String reserve_date, int term,
 			String room,int purpose,int amount,String facility,String remarks,String reserve_host){
 		this.reserve_id = reserve_id;
-		this.month = month;
-		this.day = day;
+		this.reserve_date = reserve_date;
 		this.term = term;
 		this.room = room;
 		this.purpose = purpose;
@@ -52,18 +50,7 @@ public class Reserve {
 	public void setReserve_id(int reserve_id) {
 		this.reserve_id = reserve_id;
 	}
-	public int getMonth() {
-		return month;
-	}
-	public void setMonth(int month) {
-		this.month = month;
-	}
-	public int getDay() {
-		return day;
-	}
-	public void setDay(int day) {
-		this.day = day;
-	}
+
 	public int getTerm() {
 		return term;
 	}
@@ -105,5 +92,17 @@ public class Reserve {
 	}
 	public void setReserve_host(String reserve_host) {
 		this.reserve_host = reserve_host;
+	}
+
+
+
+	public String getReserve_date() {
+		return reserve_date;
+	}
+
+
+
+	public void setReserve_date(String reserve_date) {
+		this.reserve_date = reserve_date;
 	}
 }

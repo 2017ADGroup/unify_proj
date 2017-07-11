@@ -48,4 +48,14 @@ public class ReserveService {
 
 		return Collections.emptyList();
 	}
+
+	public List<Reserve> findByDateRoom(String date, String room){
+		try (Connection conn = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(conn);
+			return reserveDao.selectDateRoom(date,room);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Collections.emptyList();
+	}
 }
