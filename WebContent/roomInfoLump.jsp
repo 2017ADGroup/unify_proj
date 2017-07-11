@@ -51,7 +51,7 @@
 </head>
 <body>
 	<h2 style="text-align: center;">教室情報更新・削除</h2>
-	<form class="form-hrizonatal" method="POST" action="roomInfoLump.html"
+	<form class="form-hrizonatal" method="POST" action="roomInfoDelete"
 		name="form1" onSubmit="return check()">
 
 		<div class="col-sm-offset-1 col-sm-10">
@@ -86,8 +86,8 @@
 									disabled='disabled'>${fa}</button>
 									<%} %>
 							</td>
-							<td><input type="checkbox" name="lumpDel" value="${rooms.id}"></td>
-							<td><a href='roomInfoUpdate?roomId=${rooms.id}' class="btn btn-danger">更新</a></td>
+							<td><input type="checkbox" name="roomDelete" value="${rooms.room_id}"></td>
+							<td><a href='roomInfoUpdate?roomId=${rooms.room_id}' class="btn btn-danger">更新</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

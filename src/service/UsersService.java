@@ -62,6 +62,7 @@ public class UsersService {
 		return 0;
 	}
 
+	// ログイン
 	public  Users authentication(String login_id, String pass) {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao UsersDao = new UsersDao(con);
