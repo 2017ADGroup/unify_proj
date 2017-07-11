@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class RoomsDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM rooms";
 	private static final String SQL_SELECT_ID = "SELECT * FROM rooms WHERE room_id=?";
+	private static String SQL_SELECT = "SELECT * FROM rooms";
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
 	private static final String SQL_UPDATE_PATH = "UPDATE rooms SET path=? WHERE room_id=?";
@@ -34,7 +36,7 @@ public class RoomsDao {
 
 			while (rs.next()) {
 				Rooms rooms = new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
-						rs.getString("size"), rs.getString("facility"), rs.getString("remarks"));
+						rs.getInt("size"), rs.getString("facility"), rs.getString("remarks"));
 				list.add(rooms);
 			}
 		} catch (SQLException e) {
@@ -50,7 +52,7 @@ public class RoomsDao {
 
 			if (rs.next()) {
 				return new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
-						rs.getString("size"), rs.getString("facility"), rs.getString("remarks"));
+						rs.getInt("size"), rs.getString("facility"), rs.getString("remarks"));
 			} else {
 				return null;
 			}
@@ -103,5 +105,82 @@ public class RoomsDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Rooms> selectRooms(String room, int min, int max, String facility) {
+		// TODO 条件に合ったテーブルの取得を行う
+		ArrayDeque<String> stack = new ArrayDeque<String>();
+		// なんらかの入力がされている場合、WHEREを追加
+		if (!room.isEmpty() || min != -1 || max != -1 || !facility.isEmpty()) {
+			SQL_SELECT = SQL_SELECT + " WHERE";
+		}
+		// 入力されているパラメータに応じてプレースホルダーを追加。同時にキューにその順番がストックされる
+		if (!room.isEmpty()) {
+			if (stack.peek() != null) {
+				SQL_SELECT = SQL_SELECT + " AND";
+			}
+			SQL_SELECT = SQL_SELECT + " room=?";
+			stack.addFirst("room");
+		}
+		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
+		if (min != -1) {
+			if (stack.peek() != null) {
+				SQL_SELECT = SQL_SELECT + " AND";
+			}
+			SQL_SELECT = SQL_SELECT + " size > ?";
+			stack.addFirst("min");
+		}
+		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
+		if (max != -1) {
+			if (stack.peek() != null) {
+				SQL_SELECT = SQL_SELECT + " AND";
+			}
+			SQL_SELECT = SQL_SELECT + " size < ?";
+			stack.addFirst("max");
+		}
+
+		if (!facility.isEmpty()) {
+			if (stack.peek() != null) {
+				SQL_SELECT = SQL_SELECT + " AND";
+			}
+			SQL_SELECT = SQL_SELECT + " facility=?";
+			stack.addFirst("facility");
+		}
+
+		SQL_SELECT = SQL_SELECT + " ORDER BY room_id";
+		List<Rooms> roomList = new ArrayList<Rooms>();
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
+			int d = stack.size();
+			@SuppressWarnings("unused")
+			String curum;
+			for (int c = 1; c <= d; c++) {
+				if (stack.getLast().equals("room")) {
+					curum = stack.removeLast();
+					stmt.setString(c, room);
+				} else if (stack.getLast().equals("min")) {
+					curum = stack.removeLast();
+					stmt.setInt(c, min);
+				} else if (stack.getLast().equals("max")) {
+					curum = stack.removeLast();
+					stmt.setInt(c, max);
+				} else if (stack.getLast().equals("facility")) {
+					curum = stack.removeLast();
+					stmt.setString(c, "%" + facility + "%");
+				}else {
+				}
+			}
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				// パスワードは閲覧不可情報とし、nullを格納しておく
+				Rooms rooms = new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
+						rs.getInt("size"), rs.getString("facility"), rs.getString("remarks"));
+				roomList.add(rooms);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+		}
+		return roomList;
 	}
 }

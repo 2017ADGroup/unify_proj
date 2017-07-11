@@ -63,4 +63,14 @@ public class RoomsService {
 			e.printStackTrace();
 		}
 	}
+
+	public List<Rooms> serchRooms(String room,int min,int max,String facility){
+		try (Connection con = DbUtil.getConnection()) {
+			RoomsDao roomsDao = new RoomsDao(con);
+			return roomsDao.selectRooms(room,min,max,facility);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
