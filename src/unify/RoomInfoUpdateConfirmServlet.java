@@ -13,16 +13,16 @@ import entity.Rooms;
 import service.RoomsService;
 
 /**
- * Servlet implementation class RoomInfoUpdateServlet
+ * Servlet implementation class RoomInfoUpdateConfirmServlet
  */
-@WebServlet("/roomInfoUpdate")
-public class RoomInfoUpdateServlet extends HttpServlet {
+@WebServlet("/roomInfoUpdateConfirm")
+public class RoomInfoUpdateConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RoomInfoUpdateServlet() {
+	public RoomInfoUpdateConfirmServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,20 +34,6 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		String roomId = request.getParameter("roomId");
-
-		RoomsService roomsService = new RoomsService();
-
-		Rooms rooms = roomsService.find(Integer.parseInt(roomId));
-
-		request.setAttribute("rooms", rooms);
-
-		HttpSession session = request.getSession();
-		session.setAttribute("roomsId", roomId);
-
-		request.getRequestDispatcher("roomInfoUpdate.jsp").forward(request, response);
-
 	}
 
 	/**
@@ -57,6 +43,29 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+
+		String[] fixtures = request.getParameterValues("fixtures");
+
+		String fix = String.join(",", fixtures);
+		System.out.println(fix);
+
+		request.setAttribute("name", request.getParameter("name"));
+		request.setAttribute("scale", request.getParameter("scale"));
+		request.setAttribute("fixtures", request.getParameter("fixtures"));
+		request.setAttribute("remarks", request.getParameter("remarks"));
+
+		HttpSession session = request.getSession();
+		String roomsId = (String) session.getAttribute("roomsId");
+
+		RoomsService roomsService = new RoomsService();
+		Rooms rooms = roomsService.find(Integer.parseInt(roomsId));
+
+		request.setAttribute("room", rooms);
+
+		request.getRequestDispatcher("roomInfoUpdateConfirm.jsp").forward(request, response);
 	}
 
 }

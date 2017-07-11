@@ -18,7 +18,7 @@
 <body>
 	<h2 style="text-align: center;">教室情報更新</h2>
 	<br>
-	<form class="form-horizontal" action="roomInfoUpdateConfirm.html">
+	<form class="form-horizontal" action="roomInfoUpdateConfirm" method="POST">
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-3 control-label">名前</label>
@@ -56,31 +56,31 @@
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-3 control-label">備品</label>
 				<div class="col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f0}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f1}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f2}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f3}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f4}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="pass" class="form-control" id="FIXTURES"
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
 						placeholder="備品" value="${f5}">
 				</div>
 			</div>
