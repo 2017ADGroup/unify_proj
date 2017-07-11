@@ -23,20 +23,23 @@ public class AdminDeleteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// 文字化け対策
+				request.setCharacterEncoding("UTF-8");
+
+				UsersService usersservice = new UsersService();
+
+				List<Users> list = usersservice.findAll();
+
+				request.setAttribute("usersList",list);
+
+				request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 文字化け対策
-		request.setCharacterEncoding("UTF-8");
 
-		UsersService usersservice = new UsersService();
-
-		List<Users> list = usersservice.findAll();
-
-		request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 	}
 
 }
