@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import entity.Mail;
 import entity.MailView;
+import entity.Users;
 import service.MailService;
 import service.UsersService;
 
@@ -22,12 +23,12 @@ public class MailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//ログインID(仮)
-		String login_id = "a002";
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 		//session準備
 		HttpSession session = request.getSession();
+		Users login_user = (Users)session.getAttribute("login_user");
+		String login_id = login_user.getLogin_id();
 
 		//ページ読み込み
 		int page;
@@ -40,7 +41,7 @@ public class MailServlet extends HttpServlet {
 		//処理
 		try {
 			MailService mailService = new MailService();
-			List<Mail> mailList = mailService.mailFindAll();
+			List<Mail> mailList = mailService.mailFindByLoginId(login_id);//ログインIDをもとにメールを取得
 			List<MailView> mailViewList = new ArrayList<MailView>();
 			UsersService UsersService = new UsersService();
 			for (Mail mail : mailList) {
