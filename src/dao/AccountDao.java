@@ -18,7 +18,6 @@ public class AccountDao {
 		AccountDao.connection = connection;
 	}
 
-
 	// ID検索
 		public static Users find(String id) {
 
