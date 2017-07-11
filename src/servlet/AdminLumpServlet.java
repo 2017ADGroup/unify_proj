@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,10 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Users;
 import service.UsersService;
 
 
-@WebServlet("/AdminLumpServlet")
+@WebServlet("/adminLump")
 public class AdminLumpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,8 +35,8 @@ public class AdminLumpServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// 削除するIDの取得
-				String[] lumpDel = request.getParameterValues("lumpDel");
-
+				String[] lumpDel = request.getParameterValues("checkbox");
+				UsersService usersservice = new UsersService();
 
 				// 一括削除
 
@@ -42,12 +44,19 @@ public class AdminLumpServlet extends HttpServlet {
 					for (String login_id : lumpDel) {
 
 						// ユーザーを削除
-						UsersService usersservice = new UsersService();
-						usersservice.delete(login_id);
 
-						request.getRequestDispatcher("adminLump.jsp").forward(request, response);
+						usersservice.delete(Integer.parseInt(login_id));
+
+
+
+
 					}
+
 				}
+				List<Users> list = usersservice.findAll();
+
+				request.setAttribute("usersList",list);
+				request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 
 	}
 

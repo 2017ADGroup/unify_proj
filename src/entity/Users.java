@@ -15,6 +15,21 @@ public class Users {
 	}
 
 
+
+
+
+	public Users(int user_id, String login_id, String name, String kana) {
+		super();
+		this.user_id = user_id;
+		this.login_id = login_id;
+		this.name = name;
+		this.kana = kana;
+	}
+
+
+
+
+
 	public Users(int user_id,String login_id,String password,String property,String name,String kana,int authority,String organization){
 
 	}

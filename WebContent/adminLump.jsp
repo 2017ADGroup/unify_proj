@@ -50,7 +50,7 @@ function check(){
 </head>
 <body>
 <h2 style="text-align: center;">管理者情報削除</h2>
-<form class="form-hrizonatal" method="POST" action="adminLump.html" name="form1" onSubmit="return check()">
+<form class="form-hrizonatal" method="POST" action="adminLump" name="form1" onSubmit="return check()">
 
 
 		<div class="col-sm-offset-1 col-sm-10">
@@ -77,7 +77,7 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="checkbox" name="checkbox" value='${users.login_id}'>
+						<input type="checkbox" name="checkbox" value='${users.user_id}'>
 					</td>
 				</tr>
 
