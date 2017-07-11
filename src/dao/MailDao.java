@@ -17,6 +17,7 @@ public class MailDao {
 	private static final String SQL_INSERT = "INSERT INTO user_info (sender, receiver, deytime,subject,message) VALUES ( ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,receiver = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
 	private static final String SQL_DELETE = "DELETE FROM mail WHERE mail_id = ?";
+	private static String SQL_SELECT = "SELECT * FROM mail";
 
 	private Connection connection;
 
@@ -113,4 +114,5 @@ public class MailDao {
 
 		return list;
 	}
+
 }
