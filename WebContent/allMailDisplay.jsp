@@ -75,7 +75,7 @@
 					request.getAttribute("mailList");
 					request.getAttribute("mailViewList");
 				%>
-				<c:forEach var="mail" items="${mailList}" varStatus="status">
+				<c:forEach begin="${(page-1)*50}" end="${(50-page)-1}" var="mail" items="${mailList}" varStatus="status">
 					<tr>
 						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
 						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
@@ -90,12 +90,36 @@
 	<div class="col-sm-12" style="text-align: center;">
 		<br>
 		<form action="AllMailDisplay" method="get">
-
 			<div class="btn-group" role="group">
 				<button type="submit" class="btn btn-default" name="page" value="1">1</button>
-				<button type="submit" class="btn btn-default" name="page" value="2">2</button>
+				<c:if test="${mailList.size()>50}">
+					<button type="submit" class="btn btn-default" name="page" value="2">2</button>
+				</c:if>
+				<c:if test="${mailList.size()>100}">
+					<button type="submit" class="btn btn-default" name="page" value="3">3</button>
+				</c:if>
+				<c:if test="${mailList.size()>150}">
+					<button type="submit" class="btn btn-default" name="page" value="4">4</button>
+				</c:if>
+				<c:if test="${mailList.size()>200}">
+					<button type="submit" class="btn btn-default" name="page" value="5">5</button>
+				</c:if>
+				<c:if test="${mailList.size()>250}">
+					<button type="submit" class="btn btn-default" name="page" value="6">6</button>
+				</c:if>
+				<c:if test="${mailList.size()>300}">
+					<button type="submit" class="btn btn-default" name="page" value="7">7</button>
+				</c:if>
+				<c:if test="${mailList.size()>350}">
+					<button type="submit" class="btn btn-default" name="page" value="8">8</button>
+				</c:if>
+				<c:if test="${mailList.size()>400}">
+					<button type="submit" class="btn btn-default" name="page" value="9">9</button>
+				</c:if>
+				<c:if test="${mailList.size()>450}">
+					<button type="submit" class="btn btn-default" name="page" value="10">10</button>
+				</c:if>
 			</div>
-
 		</form>
 	</div>
 

@@ -65,7 +65,7 @@ function check(){
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="user" items="${usersList}">
+			<c:forEach var="users" items="${usersList}">
 			<tr>
 					<td>
 						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
@@ -77,65 +77,10 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="checkbox">
+						<input type="checkbox" name="checkbox" value='${users.login_id}'>
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
-					</td>
-					<td>
-						<input type="checkbox">
-					</td>
-				</tr>
+
 				</c:forEach>
 			</tbody>
 			</table>
