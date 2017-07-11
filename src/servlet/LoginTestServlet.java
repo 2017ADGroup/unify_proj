@@ -36,8 +36,6 @@ public class LoginTestServlet extends HttpServlet {
 				login_user.setUser_id(1001);
 				login_user.setLogin_id("13e2034");
 				login_user.setPassword("2034");
-
-				2,"市川公輔","いちかわこうすけ",1,"管理課");
 		HttpSession session = request.getSession();
 		session.setAttribute("login_user", login_user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
