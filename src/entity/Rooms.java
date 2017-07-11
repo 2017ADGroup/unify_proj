@@ -4,14 +4,14 @@ public class Rooms {
 	private int room_id;
 	private String image_path;
 	private String room;
-	private String size;
+	private int size;
 	private String facility;
 	private String remarks;
 
 	public Rooms() {
 	}
 
-	public Rooms(int room_id, String image_path, String room, String size, String facility, String remarks) {
+	public Rooms(int room_id, String image_path, String room, int size, String facility, String remarks) {
 		super();
 		this.room_id = room_id;
 		this.image_path = image_path;
@@ -41,7 +41,7 @@ public class Rooms {
 		return room_id;
 	}
 
-	public String getSize() {
+	public int getSize() {
 		return size;
 	}
 
@@ -65,7 +65,7 @@ public class Rooms {
 		this.room_id = room_id;
 	}
 
-	public void setSize(String size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 }
