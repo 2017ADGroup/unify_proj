@@ -18,12 +18,13 @@ public class RoomsDao {
 	}
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM rooms";
+	private static final String SQL_SELECT_ID = "SELECT * FROM rooms WHERE room_id=?";
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
 	private static final String SQL_UPDATE_PATH = "UPDATE rooms SET path=? WHERE room_id=?";
 	private static final String SQL_DELETE = "DELETE FROM rooms WHERE room_id=?";
 
-	public List<Rooms> selectAll(){
+	public List<Rooms> selectAll() {
 
 		List<Rooms> list = new ArrayList<Rooms>();
 
@@ -32,14 +33,8 @@ public class RoomsDao {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Rooms rooms = new Rooms(
-					rs.getInt("room_id"),
-					rs.getString("image_path"),
-					rs.getString("room"),
-					rs.getString("size"),
-					rs.getString("facility"),
-					rs.getString("remarks")
-					);
+				Rooms rooms = new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
+						rs.getString("size"), rs.getString("facility"), rs.getString("remarks"));
 				list.add(rooms);
 			}
 		} catch (SQLException e) {
@@ -48,7 +43,24 @@ public class RoomsDao {
 		return list;
 	}
 
-	public void roomsInsertWithoutPath(String room,Integer size,String facility,String remarks){
+	public Rooms select(int id) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ID)) {
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
+						rs.getString("size"), rs.getString("facility"), rs.getString("remarks"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public void roomsInsertWithoutPath(String room, Integer size, String facility, String remarks) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT_WITHOUT_PATH)) {
 			stmt.setString(1, room);
 			stmt.setInt(2, size);
@@ -56,16 +68,16 @@ public class RoomsDao {
 			stmt.setString(4, remarks);
 			@SuppressWarnings("unused")
 			int succcess = stmt.executeUpdate();
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public int selectNewRoomsId(){
+	public int selectNewRoomsId() {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_MAX_ID)) {
 			ResultSet rs = stmt.executeQuery();
-			return rs.getInt("max");//現在行が初期位置のmaxの値を取ってくる……はず
-		}catch(SQLException e){
+			return rs.getInt("max");// 現在行が初期位置のmaxの値を取ってくる……はず
+		} catch (SQLException e) {
 			return 0;
 		}
 
@@ -82,7 +94,7 @@ public class RoomsDao {
 		}
 	}
 
-	public void delete(int reDel){
+	public void delete(int reDel) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
 
 			stmt.setInt(1, reDel);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 				<label for="NAME" class="col-sm-3 control-label">名前</label>
 				<div class="col-sm-6">
 					<input type="text" name="name" class="form-control" id="NAME"
-						placeholder="名前" value="A教室">
+						placeholder="名前" value="${rooms.room}">
 				</div>
 			</div>
 			<div class="form-group">
@@ -41,38 +42,46 @@
 				<label for="SCALE" class="col-sm-3 control-label">規模</label>
 				<div class="col-sm-6">
 					<input type="number" name="scale" class="form-control" id="SCALE"
-						placeholder="人数" value="100">
+						placeholder="人数" value="${rooms.size}">
 				</div>
 			</div>
+			<c:set var="facility">${rooms.facility}</c:set>
+			<%
+				String facility = (String) pageContext.getAttribute("facility");
+				String[] facilities = facility.split(",");
+				for (int i = 0; i < facilities.length; i++) {
+					pageContext.setAttribute("f" + i, facilities[i]);
+				}
+			%>
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-3 control-label">備品</label>
 				<div class="col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品" value="スピーカー">
+						placeholder="備品" value="${f0}">
 				</div>
 				<div class="col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品" value="プロジェクター">
+						placeholder="備品" value="${f1}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品">
+						placeholder="備品" value="${f2}">
 				</div>
 				<div class="col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品">
+						placeholder="備品" value="${f3}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品">
+						placeholder="備品" value="${f4}">
 				</div>
 				<div class="col-sm-3">
 					<input type="text" name="pass" class="form-control" id="FIXTURES"
-						placeholder="備品">
+						placeholder="備品" value="${f5}">
 				</div>
 			</div>
 
@@ -80,7 +89,7 @@
 				<label for="REMARKS" class="col-sm-3 control-label">備考</label>
 				<div class="col-sm-6">
 					<textarea name="remarks" rows="4" class="form-control" id="REMARKS"
-						placeholder="その他何かあれば書いてください"></textarea>
+						placeholder="その他何かあれば書いてください">${rooms.remarks}</textarea>
 				</div>
 			</div>
 		</fieldset>

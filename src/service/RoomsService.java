@@ -33,6 +33,17 @@ public class RoomsService {
 		}
 	}
 
+	public Rooms find(int id) {
+		try (Connection conn = DbUtil.getConnection()) {
+			RoomsDao roomsDao = new RoomsDao(conn);
+			return roomsDao.select(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 	public List<Rooms> findAll() {
 		try (Connection conn = DbUtil.getConnection()) {
 			RoomsDao roomsDao = new RoomsDao(conn);

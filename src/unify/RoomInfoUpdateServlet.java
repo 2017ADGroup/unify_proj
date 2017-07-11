@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Rooms;
+import service.RoomsService;
+
 /**
  * Servlet implementation class RoomInfoUpdateServlet
  */
@@ -29,7 +32,15 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		request.getParameter("");
+		String roomId = request.getParameter("roomId");
+
+		RoomsService roomsService = new RoomsService();
+
+		Rooms rooms = roomsService.find(Integer.parseInt(roomId));
+
+		request.setAttribute("rooms", rooms);
+
+		request.getRequestDispatcher("roomInfoUpdate.jsp").forward(request, response);
 
 	}
 
@@ -38,7 +49,6 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
