@@ -12,16 +12,21 @@ import util.DbUtil;
 public class MenuService {
 	public String scheduleCreate(String login_id,String reserve_date){
 		String schedule = "";
-		List<Reserve> reserveList = null;
+		List<Reserve> reserveList = new ArrayList<Reserve>();
 		try (Connection con = DbUtil.getConnection()) {
 			ReserveDao reserveDao = new ReserveDao(con);
 			reserveList = reserveDao.selectReserveLoginIdDay(login_id, reserve_date);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		List<String> flag = new ArrayList<String>();//重複フラグ用配列
-		for(int i = 0;i < reserveList.size() ;i++){
+		int listSize = 0;
+		if(reserveList == null){
+		}else{
+			listSize = reserveList.size();
+		}
+
+		for(int i = 0;i < listSize ;i++){
 
 			if(Arrays.asList(flag).contains(reserveList.get(i).getRoom())){//教室の重複を防ぐための処理)
 			}else{
