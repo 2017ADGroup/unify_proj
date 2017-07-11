@@ -22,29 +22,34 @@ public class MailServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//ログインID(仮)
 		String login_id = "a002";
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
+		//session準備
 		HttpSession session = request.getSession();
+
+		//ページ読み込み
 		int page;
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
-			System.out.println(page);
 		} catch (Exception e) {
 			page = 1;
 		}
+
+		//処理
 		try {
 			MailService mailService = new MailService();
-			List<Mail> mailList = mailService.mailFindByLoginId(login_id);
+			List<Mail> mailList = mailService.mailFindAll();
 			List<MailView> mailViewList = new ArrayList<MailView>();
 			for (Mail mail : mailList) {
 				UsersService UsersService = new UsersService();
-
 				String receivername = UsersService.idByName(mail.getReceiver());
 				String sendername = UsersService.idByName(mail.getSender());
 				MailView mailView = new MailView(receivername, sendername);
 				mailViewList.add(mailView);
 			}
+			//ページとか色々
 			request.setAttribute("page", page);
 			session.setAttribute("mailViewList", mailViewList);
 			session.setAttribute("mailList", mailList);

@@ -48,7 +48,7 @@
 			<br>
 			<div class="col-sm-offset-3 col-sm-9">
 		<input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='mail.jsp'; return false;">
+				onclick="location.href='Mail'; return false;">
 		</div>
 
 	</form>
