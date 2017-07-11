@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,8 +21,6 @@ alert("ログアウトします");
 <title>メニュー</title>
 </head>
 <body>
-<body>
-
 <h2 style="text-align: center;">マイページ</h2>
 <br>
 	<div class="col-sm-3">
@@ -104,7 +103,7 @@ alert("ログアウトします");
 		<div class="col-sm-offset-2 col-sm-6">
 
 	<form class="form-inline" action="menu.html" method="get">
-	<div class="form-group">>
+	<div class="form-group">
 <select class="form-control" id="year" name="year">
 <%
     int year = Integer.parseInt(request.getAttribute("year").toString());
