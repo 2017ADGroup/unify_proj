@@ -19,7 +19,7 @@ public class UsersService {
 	}
 
 	// ID検索
-		public Users find(String id) {
+		/*public Users find(String id) {
 			try (Connection conn = DbUtil.getConnection()) {
 				UsersDao usersDao = new UsersDao(conn);
 				return usersDao.find(id);
@@ -28,7 +28,7 @@ public class UsersService {
 			}
 
 			return null;
-		}
+		}*/
 
 	//登録
 	public int insert(Users users){
