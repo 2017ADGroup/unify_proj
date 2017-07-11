@@ -13,6 +13,9 @@ import entity.Users;
 import service.UsersService;
 
 
+
+
+
 @WebServlet("/AdminDelete")
 public class AdminDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,9 +36,9 @@ public class AdminDeleteServlet extends HttpServlet {
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
-		UsersService userservice = new UsersService();
+		UsersService usersservice = new UsersService();
 
-		List<Users> list = userservice.findAll();
+		List<Users> list = usersservice.findAll();
 
 		request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 	}
