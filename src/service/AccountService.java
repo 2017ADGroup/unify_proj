@@ -25,9 +25,9 @@ public class AccountService {
 				return accountDao.find(id);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
 
 			return null;
 		}
 
+		}
 }
