@@ -46,16 +46,17 @@ public class Login extends HttpServlet {
 			return;
 		}
 
-		//
+		//Usersテーブルからユーザー情報を取得し照合
 		Users users = UsersService.authentication(login_id, pass);
 		boolean isSuccess = users != null;
 
+		HttpSession session = request.getSession(true);
+
 		if (isSuccess) {
-			HttpSession session = request.getSession(true);
 			session.setAttribute("login_user", users);
 
 				//スーパーユーザー遷移
-				if(){
+				if(users.property() == 1){
 					request.getRequestDispatcher("adminMenu.jsp").forward(request, response);
 
 				//その他のユーザー遷移
