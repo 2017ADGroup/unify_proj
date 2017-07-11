@@ -67,6 +67,24 @@ public class UsersDao {
 		return null;
 	}
 
+	// ID検索
+			public String find(String id) {
+
+				try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
+
+					stmt.setInt(1, Integer.parseInt(id));
+					ResultSet rs = stmt.executeQuery();
+
+					if (rs.next()) {
+						return rs.getString("name");
+					}
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
+				}
+
+				return null;
+			}
+
 	public int update(Users user) {
 		String sql_update = SQL_UPDATE;
 

@@ -29,10 +29,10 @@ public class MailService {
 		return null;
 	}
 
-	public Mail mailFindById(int mail_id) {
+	public Mail mailFindByMailId(int mail_id) {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			return mailDao.mailFindById(mail_id);
+			return mailDao.mailFindByMailId(mail_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,7 +60,17 @@ public class MailService {
 	public Mail mailDelete(int id) {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			mailDao.maildelete(id);;
+			mailDao.maildelete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Mail> mailFindByLoginId(String login_id) {
+		try (Connection con = DbUtil.getConnection()) {
+			MailDao mailDao = new MailDao(con);
+			return mailDao.mailFindByLoginId(login_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

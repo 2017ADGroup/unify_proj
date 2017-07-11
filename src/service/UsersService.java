@@ -18,7 +18,6 @@ public class UsersService {
 		return null;
 	}
 
-<<<<<<< HEAD
 	// ID検索
 		public Users find(String id) {
 			try (Connection conn = DbUtil.getConnection()) {
@@ -41,7 +40,7 @@ public class UsersService {
 		}
 		return 0;
 	}
-=======
+
 	public static Users authentication(String login_id, String pass) {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao UsersDao = new UsersDao(con);
@@ -54,6 +53,14 @@ public class UsersService {
 		return null;
 	}
 
->>>>>>> 96ec3b36b4f0ceecde826f779bebf6ccb23e6433
+	//一括削除
+	public void delete(String login_id) {
+		try (Connection con = DbUtil.getConnection()) {
+			UsersDao usersDao = new UsersDao(con);
+			UsersDao.delete(login_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
