@@ -33,7 +33,7 @@ public class AdminLumpServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// 削除するIDの取得
-				String[] lumpDel = request.getParameterValues("lumpDel");
+				String[] lumpDel = request.getParameterValues("checkbox");
 
 
 				// 一括削除
@@ -43,7 +43,7 @@ public class AdminLumpServlet extends HttpServlet {
 
 						// ユーザーを削除
 						UsersService usersservice = new UsersService();
-						usersservice.delete(login_id);
+						usersservice.delete(Integer.parseInt(login_id));
 
 						request.getRequestDispatcher("adminLump.jsp").forward(request, response);
 					}

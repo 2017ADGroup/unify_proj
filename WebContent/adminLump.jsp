@@ -77,7 +77,7 @@ function check(){
 						<input type="text" name="name" class="form-control" value='${users.kana}' readonly='readonly'>
 					</td>
 					<td>
-						<input type="checkbox" name="checkbox" value='${users.login_id}'>
+						<input type="checkbox" name="checkbox" value='${users.user_id}'>
 					</td>
 				</tr>
 

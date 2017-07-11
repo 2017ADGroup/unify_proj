@@ -199,11 +199,11 @@ public class UsersDao {
 			}
 		}
 
-		public void delete(String login_id) {
+		public void delete(int login_id) {
 
 			try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE_LOGINID)) {
 
-				stmt.setString(1, login_id);
+				stmt.setInt(1, login_id);
 
 				stmt.executeUpdate();
 
