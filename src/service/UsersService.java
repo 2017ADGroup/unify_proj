@@ -75,6 +75,17 @@ public class UsersService {
 		return null;
 	}
 
+	// 更新
+	public int update(Users user) {
+		try (Connection conn = DbUtil.getConnection()) {
+			UsersDao usersDao = new UsersDao(conn);
+			return usersDao.update(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	//一括削除
 	public void delete(int login_id) {
 		try (Connection con = DbUtil.getConnection()) {

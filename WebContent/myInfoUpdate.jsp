@@ -56,19 +56,19 @@ function check(){
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name" value="${fn:escapeXml(user.name)}">
+					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name" value="${fn:escapeXml(users.name)}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">かな</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana" value="${fn:escapeXml(user.kana)}">
+					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana" value="${fn:escapeXml(users.kana)}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="PASS" class="col-sm-2 control-label" >Password</label>
 				<div class="col-sm-5">
-						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass" value="${fn:escapeXml(user.password)}">
+						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass" value="${fn:escapeXml(users.password)}">
 				</div>
 			</div>
 			  <div class="form-group">

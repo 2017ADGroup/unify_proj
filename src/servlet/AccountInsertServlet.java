@@ -31,7 +31,7 @@ public class AccountInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-			request.getRequestDispatcher("studentInsert.jsp").forward(request, response);
+			request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
 	}
 
 	/**
@@ -45,11 +45,12 @@ public class AccountInsertServlet extends HttpServlet {
 		String[] id = request.getParameterValues("login_id");
 		String[] name = request.getParameterValues("name");
 		String[] kana = request.getParameterValues("kana");
-
+		String[] property = request.getParameterValues("property");
 
 		AccountService accountService = new AccountService();
 		Users users = new Users();
 
+		System.out.println("ここまで");
 
 		// 一括登録
 				int inNum = 0;
@@ -58,26 +59,23 @@ public class AccountInsertServlet extends HttpServlet {
 					if (!name[i].equals("")) {
 						users = accountService.find(id[i]);
 
-						if (!(name[i].equals(users.getName()) && kana[i].equals(users.getKana()))) {
+						if (!(name[i].equals(users.getName()) && kana[i].equals(users.getKana()) && property[i].equals(users.getProperty()))) {
 
 							// 入力情報を取得
-							users = new Users(Integer.parseInt(id[i]), name[i], kana[i], i, null, null, i, null);
+							users = new Users(Integer.parseInt(id[i]), name[i], kana[i], property[i], null, null, i, null);
 							// ユーザーを更新
 							accountService.account(users);
 							inNum++;
 
-							System.out.println("id");
-							System.out.println("name");
-							System.out.println("kana");
 						}
 					}
 				}
 				request.setAttribute("upNum", inNum);
 
 		// 入力値がない場合
-		if ("".equals(id) || "".equals(name) || "".equals(kana)) {
+		if ("".equals(id) || "".equals(name) || "".equals(kana) || "".equals(property)) {
 			// 次画面指定
-			request.getRequestDispatcher("studentInsert.jsp").forward(request, response);
+			request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
 			return;
 		}
 

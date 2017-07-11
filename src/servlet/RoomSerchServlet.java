@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Rooms;
+import service.ReserveService;
 import service.RoomsService;
 
 /**
@@ -31,6 +33,7 @@ public class RoomSerchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
 		int min = -1;
 		int max = -1;
 		//最大値最小値空文字チェック
@@ -55,7 +58,16 @@ public class RoomSerchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.setCharacterEncoding("UTF-8");
+		request.getParameter("roomSelect");
+		String month = request.getParameter("reserve_month");
+		String date = request.getParameter("reserve_date");
+		Calendar thisDate = Calendar.getInstance();
+		String year = String.valueOf(thisDate.get(thisDate.YEAR));
+		String reserve_date = year + "-" + month + "-" + "date";
+		ReserveService reserveService = new ReserveService();
+
+
 	}
 
 }
