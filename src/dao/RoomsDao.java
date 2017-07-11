@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.Rooms;
 
 public class RoomsDao {
 
@@ -13,9 +17,35 @@ public class RoomsDao {
 		this.connection = connection;
 	}
 
+	private static final String SQL_SELECT_ALL = "SELECT * FROM rooms";
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
 	private static final String SQL_UPDATE_PATH = "UPDATE rooms SET path=? WHERE room_id=?";
+
+	public List<Rooms> selectAll(){
+
+		List<Rooms> list = new ArrayList<Rooms>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Rooms rooms = new Rooms(
+					rs.getInt("id"),
+					rs.getString("image_path"),
+					rs.getString("room"),
+					rs.getString("size"),
+					rs.getString("facility"),
+					rs.getString("remarks")
+					);
+				list.add(rooms);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public void roomsInsertWithoutPath(String room,Integer size,String facility,String remarks){
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT_WITHOUT_PATH)) {
