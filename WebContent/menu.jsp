@@ -27,7 +27,7 @@ alert("ログアウトします");
 	<div class="col-sm-3">
 		<!-- ログインしたユーザーの権限によって -->
 		<c:choose>
-			<c:when test="${login_user.authority == 2}">
+			<c:when test="${login_user.property == 2}">
 				<b>教室予約情報</b><br>
 				・<a href="adminRoomInsert">教室一括予約</a><br>
 				・<a href="adminRoom">予約内容一括更新・削除</a><br>
@@ -44,7 +44,7 @@ alert("ログアウトします");
 				・<a href="accountLump">団体・教員情報更新・削除</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 3}">
+			<c:when test="${login_user.property == 3}">
 				・<a href="roomInsert">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
 				<b>ミニメール</b><br>
@@ -56,7 +56,7 @@ alert("ログアウトします");
 				・<a href="studentLumpSelect">生徒情報削除</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 4}">
+			<c:when test="${login_user.property == 4}">
 				<b>教室予約情報</b><br>
 				・<a href="roomInsert">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
@@ -67,7 +67,7 @@ alert("ログアウトします");
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>
 				<br>
 			</c:when>
-			<c:when test="${login_user.authority == 5}">
+			<c:when test="${login_user.property == 5}">
 				<b>ミニメール</b><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
