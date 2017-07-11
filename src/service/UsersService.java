@@ -57,7 +57,7 @@ public class UsersService {
 	public void delete(String login_id) {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao usersDao = new UsersDao(con);
-			UsersDao.delete(login_id);
+			usersDao.delete(login_id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
