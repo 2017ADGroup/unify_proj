@@ -17,12 +17,9 @@
 </head>
 <body
 	style="background-image: url(image/book.jpg); background-size: cover;">
-	<header style="background-color: #28d; height: 90px;">
-		<br>
-		<h1>
-			<font color="white">東京大学</font>
-		</h1>
-	</header>
+		<h1
+			style="padding: .5em .75em; background-color: #f6f6f6; border-left: 6px solid #ccc;">東京大学</h1>
+
 	<div class="login">
 		<div class="login-triangle"></div>
 
