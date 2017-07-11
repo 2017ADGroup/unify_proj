@@ -1,16 +1,19 @@
 package service;
 
 import java.sql.Connection;
+import java.util.Collections;
+import java.util.List;
 
 import dao.RoomsDao;
+import entity.Rooms;
 import util.DbUtil;
 
 public class RoomsService {
-	public int roomInfoInsertWithoutPath(String room,Integer size,String facility,String remarks){
+	public int roomInfoInsertWithoutPath(String room, Integer size, String facility, String remarks) {
 
 		try (Connection con = DbUtil.getConnection()) {
 			RoomsDao roomsDao = new RoomsDao(con);
-			roomsDao.roomsInsertWithoutPath(room,size,facility,remarks);
+			roomsDao.roomsInsertWithoutPath(room, size, facility, remarks);
 			int room_id = roomsDao.selectNewRoomsId();
 			return room_id;
 		} catch (Exception e) {
@@ -20,7 +23,7 @@ public class RoomsService {
 
 	}
 
-	public int updateNewRoomsPath(int room_id,String name){
+	public int updateNewRoomsPath(int room_id, String name) {
 		try (Connection con = DbUtil.getConnection()) {
 			RoomsDao roomsDao = new RoomsDao(con);
 			return roomsDao.updateNewRoomsPath(room_id, name);
@@ -30,5 +33,23 @@ public class RoomsService {
 		}
 	}
 
+	public List<Rooms> findAll() {
+		try (Connection conn = DbUtil.getConnection()) {
+			RoomsDao roomsDao = new RoomsDao(conn);
+			return roomsDao.selectAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		return Collections.emptyList();
+	}
+
+	public void erase(int reDel) {
+		try (Connection con = DbUtil.getConnection()) {
+			RoomsDao roomsDao = new RoomsDao(con);
+			roomsDao.delete(reDel);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

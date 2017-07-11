@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entity.Users;
 import service.UsersService;
@@ -32,23 +33,42 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");
 		String login_id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 
+		// 入力値がnullか空文字であるか
 		if (login_id == null || ("".equals(login_id)) || pass == null || ("".equals(pass))) {
-			request.setAttribute("errmsg", "IDまたはPASSが入力されていません");
+			//request.setAttribute("errmsg", "IDまたはPASSが入力されていません");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 			return;
 		}
 
-		Users users = UsersService.authentication(login_id, pass);
+		// Usersテーブルからユーザー情報を取得し照合
+		UsersService usersService = new UsersService();
+		Users users = usersService.authentication(login_id, pass);
 		boolean isSuccess = users != null;
 
+		HttpSession session = request.getSession(true);
 
+		// login_idとpassが照合した場合
 		if (isSuccess) {
-			request.getRequestDispatcher("menu.jsp").forward(request, response);
+			session.setAttribute("login_user", users);
+
+			// スーパーユーザー遷移
+			if (users.getProperty() == 1) {
+				request.getRequestDispatcher("adminMenu.jsp").forward(request, response);
+
+				// その他のユーザー遷移
+			} else {
+				request.getRequestDispatcher("menu.jsp").forward(request, response);
+			}
+
+			// IDまたはPASSが間違っている場合、ログインへ戻る
 		} else {
-			request.setAttribute("errmsg", "IDまたはPASSが間違っています");
+			//request.setAttribute("errmsg", "IDまたはPASSが間違っています");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

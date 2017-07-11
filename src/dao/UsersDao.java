@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import entity.Users;
 
@@ -11,7 +13,9 @@ public class UsersDao {
 
 	private static final String SQL_UPDATE = "UPDATE users SET";
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
-	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE users_id = ? AND password = ?";
+	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
+	private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE login_id = ?";
+	private static final String SQL_SELECT = "SELECT * FROM users";
 
 	private Connection connection;
 
@@ -19,7 +23,7 @@ public class UsersDao {
 		this.connection = connection;
 	}
 
-	//ログイン
+	// ログイン
 	public Users findByIDAndPassword(String login_id, String password) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ID_AND_PASS)) {
 			stmt.setString(1, login_id);
@@ -27,43 +31,87 @@ public class UsersDao {
 			ResultSet rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				return new Users(rs.getString("login_id"), rs.getString("password"));
+				return new Users(rs.getInt("user_id"), rs.getString("login_id"), rs.getString("password"),
+						rs.getInt("property"), rs.getString("name"), rs.getString("kana"), rs.getInt("authority"), rs.getString("organization"));
 			} else {
 				return null;
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}
 
-
-	public String idByName(String id){
+	public String idByName(String id) {
 		System.out.println(id);
-		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
-			stmt.setString(1,id);
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
+			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				return rs.getString("name");
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public String nameById(String id){
+	public String nameById(String id) {
 		System.out.println(id);
-		try (PreparedStatement stmt =  connection.prepareStatement(SQL_ID_BY_NAME)) {
-			stmt.setString(1,id);
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
+			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				return rs.getString("name");
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+
+	//全件取得
+	public List<Users> findAll() {
+		List<Users> list = new ArrayList<Users>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Users users = new Users(
+					rs.getInt("user_id"),
+					rs.getString("login_id"),
+					rs.getString("name"),
+					rs.getString("kana")
+
+					);
+				list.add(users);
+			}
+
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return list;
+	}
+
+
+	// ID検索
+	public String find(String id) {
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
+
+			stmt.setInt(1, Integer.parseInt(id));
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getString("name");
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
 		return null;
 	}
 
@@ -104,7 +152,7 @@ public class UsersDao {
 
 		sql_update += " WHERE login_id = ?";
 
-		try (PreparedStatement stmt =  connection.prepareStatement(sql_update)) {
+		try (PreparedStatement stmt = connection.prepareStatement(sql_update)) {
 			switch (ptn) {
 			case 1:
 				stmt.setString(1, name);
@@ -151,5 +199,18 @@ public class UsersDao {
 		}
 	}
 
+	public void delete(String login_id) {
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE_LOGINID)) {
+
+			stmt.setString(1, login_id);
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 
 }

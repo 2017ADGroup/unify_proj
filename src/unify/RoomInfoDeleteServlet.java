@@ -1,28 +1,28 @@
-package servlet;
+package unify;
 
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entity.Users;
+import entity.Rooms;
+import service.RoomsService;
 
 /**
- * Servlet implementation class LoginTestServlet
+ * Servlet implementation class RoomInfoDeleteServlet
  */
-@WebServlet("/LoginTest")
-public class LoginTestServlet extends HttpServlet {
+@WebServlet("/roomInfoDelete")
+public class RoomInfoDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginTestServlet() {
+    public RoomInfoDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +32,7 @@ public class LoginTestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Users login_user = new Users();
-				login_user.setUser_id(1001);
-				login_user.setLogin_id("13e2034");
-				login_user.setPassword("2034");
-		HttpSession session = request.getSession();
-		session.setAttribute("login_user", login_user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
-        //  フォワードによるページ遷移
-        dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -48,7 +40,27 @@ public class LoginTestServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		// 削除するIDの取得
+		String[] roomDelete = request.getParameterValues("roomDelete");
+
+		RoomsService roomsService = new RoomsService();
+
+		// 一括削除
+		if (roomDelete != null) {
+			for (String roomDel : roomDelete) {
+
+				// roomを削除
+				roomsService.erase(Integer.parseInt(roomDel));
+
+			}
+		}
+		// 全検索
+		List<Rooms> list = roomsService.findAll();
+		// 検索結果をセッションに保持
+		request.setAttribute("roomsList", list);
+
+		request.getRequestDispatcher("roomInfoLump.jsp").forward(request, response);
 	}
 
 }
