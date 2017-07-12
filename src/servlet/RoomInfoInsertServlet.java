@@ -14,7 +14,7 @@ import entity.Rooms;
 import service.RoomsService;
 
 /**
- * Servlet implementation class roomInfoInsert
+ * Servlet implementation class RoomInfoInsertServlet
  */
 @WebServlet("/roomInfoInsert")
 @MultipartConfig(location = "/tmp", maxFileSize = 1048576)
