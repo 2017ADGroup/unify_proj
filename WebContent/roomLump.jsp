@@ -104,7 +104,7 @@
 						<td><textarea name="bikou" rows="5" cols="32"
 								disabled="disabled">${reserve.remarks}</textarea></td>
 						<td><input name="reserveDelete" type="checkbox" value="${reserve.reserve_id}" /></td>
-						<td><a href='roomUpdate?reserveId="${reserve.reserve_id}"' class="btn btn-danger">更新</a></td>
+						<td><a href='roomUpdate?reserveId=${reserve.reserve_id}' class="btn btn-danger">更新</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
