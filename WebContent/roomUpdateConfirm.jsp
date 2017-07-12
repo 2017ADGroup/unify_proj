@@ -62,7 +62,7 @@ function check(){
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type='date' name='date' value='${fn:escapeXml(year)}-${fn:escapeXml(reserve.month)}-${fn:escapeXml(reserve.day)}' disabled='disabled'></td>
+					<td><input type='date' name='date' value='${fn:escapeXml(reserve.date)}' disabled='disabled'></td>
 					<td>
 						<select disabled='disabled'>
 						<option selected='selected'>${fn:escapeXml(reserve.room)}</option>

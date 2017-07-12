@@ -35,7 +35,7 @@ public class RoomUpdateServlet extends HttpServlet {
 
 		ReserveService reserveService = new ReserveService();
 
-		Reserve reserve = reserveService.findByReserve(reserveId);
+		Reserve reserve = reserveService.findByReserve(Integer.parseInt(reserveId));
 
 		request.setAttribute("reserve", reserve);
 
