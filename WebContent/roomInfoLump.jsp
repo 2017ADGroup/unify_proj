@@ -121,7 +121,7 @@
 		</div>
 
 		<div class="col-sm-offset-1 col-sm-11">
-			<br> <br> <a href="menu.html" class="btn btn-default">Menu</a>
+			<br> <br> <a href="back" class="btn btn-default">Menu</a>
 		</div>
 
 	</form>

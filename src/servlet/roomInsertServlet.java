@@ -88,7 +88,7 @@ public class roomInsertServlet extends HttpServlet {
 			}
 		}
 
-		request.getRequestDispatcher("back").forward(request, response);
+		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
 		/*RequestDispatcher dispatch = request.getRequestDispatcher("menu.jsp");//Menuを経由する
 		dispatch.forward(request, response);*/
 	}

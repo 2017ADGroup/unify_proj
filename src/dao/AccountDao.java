@@ -100,9 +100,15 @@ public class AccountDao {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
+
+	public void Update(Users users) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+=======
 	*/
 	public void accountInsert(Users users){
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
+>>>>>>> 0c77fae2e766e719aad0caa27b250ef34f888aac
 			stmt.setString(1, users.getLogin_id());
 			stmt.setString(2, users.getPassword());
 			stmt.setInt(3, users.getProperty());
@@ -110,8 +116,10 @@ public class AccountDao {
 			stmt.setString(5, users.getKana());
 			stmt.setInt(6,  users.getAuthority());
 			stmt.setString(7, users.getOrganization());
+			stmt.setInt(8, users.getUser_id());
 
 			stmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
