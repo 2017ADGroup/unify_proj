@@ -52,7 +52,7 @@ public class RoomSerchServlet extends HttpServlet {
 		RoomsService roomsService = new RoomsService();
 		List<Rooms> roomList = roomsService.serchRooms(
 		request.getParameter("room"),min,max,request.getParameter("fixtures"));
-		request.setAttribute("roomList", roomList);
+		session.setAttribute("roomList", roomList);
 
 		Calendar thisDate = Calendar.getInstance();
 		String month = String.valueOf(thisDate.get(Calendar.MONTH));
