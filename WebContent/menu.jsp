@@ -51,8 +51,8 @@ alert("ログアウトします");
 				・<a href="mailCreate">メール新規作成</a><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
-				・<a href="studentInsert.jsp">生徒情報登録</a><br>
+				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="studentInsert">生徒情報登録</a><br>
 				・<a href="studentLumpSelect">生徒情報削除</a><br>
 				<br>
 			</c:when>
@@ -71,7 +71,7 @@ alert("ログアウトします");
 				<b>ミニメール</b><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate">アカウント情報更新</a><br>
 				<br>
 			</c:when>
 			<c:otherwise>
