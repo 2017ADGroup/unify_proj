@@ -105,7 +105,7 @@ public class MailDao {
 			stmt.setString(2, login_id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail m = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail m = new Mail(rs.getInt("mail_id"),  rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				list.add(m);
 			}
@@ -181,14 +181,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -256,14 +256,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -331,14 +331,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -444,14 +444,14 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -538,7 +538,7 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -546,7 +546,7 @@ public class MailDao {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -604,6 +604,7 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);//デバッグ用
 		List<Mail> mailList = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
@@ -637,14 +638,14 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}

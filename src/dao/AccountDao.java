@@ -15,6 +15,7 @@ public class AccountDao {
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
 	private static final String SQL_USERS_SELECT = "SELECT * FROM users";
 	private static final String SQL_MAXID = "SELECT MAX(login_id) FROM users";
+	private static final String SQL_UPDATE = "UPDATE users SET login_id=?,password=?, property=?, name=?, kana=?,authority=?,organization=? WHERE user_id=?";
 
 	private Connection connection;
 
@@ -85,24 +86,26 @@ public class AccountDao {
 				}
 				return null;
 			}
-/*
-	public void accountInsert(String login_id,String password,int property,String name,String kana,int authority,String organization){
+
+	public void accountInsert(Users users){
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
-			stmt.setString(1, login_id);
-			stmt.setInt(2, property);
-			stmt.setString(3, name);
-			stmt.setString(4, kana);
-			stmt.setInt(5,  authority);
-			stmt.setString(6, organization);
+			stmt.setString(1, users.getLogin_id());
+			stmt.setString(2, users.getPassword());
+			stmt.setInt(3, users.getProperty());
+			stmt.setString(4, users.getName());
+			stmt.setString(5, users.getKana());
+			stmt.setInt(6,  users.getAuthority());
+			stmt.setString(7, users.getOrganization());
 
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	*/
-	public void accountInsert(Users users){
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
+
+	public void Update(Users users) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+
 			stmt.setString(1, users.getLogin_id());
 			stmt.setString(2, users.getPassword());
 			stmt.setInt(3, users.getProperty());

@@ -12,17 +12,6 @@ import util.DbUtil;
 
 public class AccountService {
 
-	/*
-	public void account(Users account) {
-		try (Connection conn = DbUtil.getConnection()) {
-			AccountDao accountDao = new AccountDao(conn);
-			accountDao.accountInsert(account);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-*/
-
 	// 全件取得
 		public static List<Users> findAll() {
 			List<Users> list = new ArrayList<Users>();
@@ -52,7 +41,7 @@ public class AccountService {
 			}
 
 		}
-
+		//更新したID取得
 		public int regId() {
 			try (Connection conn = DbUtil.getConnection()) {
 				AccountDao accountDao = new AccountDao(conn);
@@ -62,12 +51,21 @@ public class AccountService {
 			}
 			return 0;
 		}
-
+		//一括登録
 		public void insert(Users users) {
 			// TODO 自動生成されたメソッド・スタブ
 			try (Connection con = DbUtil.getConnection()) {
 				AccountDao accountDao = new AccountDao(con);
 				accountDao.accountInsert(users);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//更新
+		public void update(Users users) {
+			try (Connection conn = DbUtil.getConnection()) {
+				AccountDao accountDao = new AccountDao(conn);
+				accountDao.Update(users);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
