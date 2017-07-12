@@ -42,7 +42,7 @@ public class UsersDao {
 				throw new RuntimeException(e);
 			}
 		}
-<<<<<<< HEAD
+
 		//名前からidを割り出す
 		public List<String> idsByName(String name) {
 			System.out.println(name);
@@ -59,8 +59,7 @@ public class UsersDao {
 			}
 			return null;
 		}
-=======
->>>>>>> 473548699379c2bb4546a9a1df4518b6ce78be55
+
 
 		public String idByName(String id) {
 			System.out.println(id);
