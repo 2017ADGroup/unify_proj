@@ -45,7 +45,7 @@
 </script>
 </head>
 <body>
-	<form class="form-hrizonatal" method="POST" action="roomLump.html"
+	<form class="form-hrizonatal" method="POST" action="roomUpdateConfirm"
 		name="form1" onSubmit="return check()">
 		<fieldset>
 			<legend>変更前</legend>
@@ -62,7 +62,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type='date' name='date'
+						<td><input type='date'
 							value='${fn:escapeXml(reserve.reserve_date)}' disabled='disabled'></td>
 						<td><select disabled='disabled'>
 								<option selected='selected'>${fn:escapeXml(reserve.room)}</option>
@@ -99,18 +99,17 @@
 								</c:choose>
 						</select> <input type="number" value="${reserve.amount}"
 							disabled='disabled'></td>
-						<td><c:set var="facility">${reserve.facility}</c:set>
+						<td><c:set var="facility">${reserve.facility}</c:set> <%
+ 	String facility = (String) pageContext.getAttribute("facility");
+ 	String[] facilities = facility.split(",");
+ 	for (String fa : facilities) {
+ 		pageContext.setAttribute("fa", fa);
+ %>
+							<button type="button" class="btn btn-default" disabled='disabled'>${fa}</button>
 							<%
-							String facility = (String) pageContext.getAttribute("facility");
-							String[] facilities = facility.split(",");
-							for (String fa: facilities) {
-								pageContext.setAttribute("fa", fa);
-							%>
-								<button type="button" class="btn btn-default"
-									disabled='disabled'>${fa}</button>
-									<%} %></td>
-						<td><textarea name="bikou" rows="4" cols="36"
-								readonly='readonly'>${reserve.remarks}</textarea></td>
+								}
+							%></td>
+						<td><textarea rows="4" cols="36" readonly='readonly'>${reserve.remarks}</textarea></td>
 					</tr>
 				</tbody>
 			</table>
@@ -134,23 +133,30 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type='date' name='date'
-							value='${fn:escapeXml(reserve.reserve_date)}'
-							disabled='disabled'></td>
-						<td><select disabled='disabled'>
-								<option selected='selected'>${fn:escapeXml(reserve.room)}</option>
+						<td><input type='date' name='afDate'
+							value='${fn:escapeXml(reserve.reserve_date)}' disabled='disabled'></td>
+						<td><select name="afRoom" disabled='disabled'>
+								<option value="${fn:escapeXml(reserve.room)}" selected='selected'>${fn:escapeXml(reserve.room)}</option>
 						</select></td>
-						<td><select disabled='disabled'>
-								<option selected='selected'>${fn:escapeXml(reserve.term)}限目</option>
+						<td><select name="afTerm" disabled='disabled'>
+								<option value="${fn:escapeXml(reserve.term)}" selected='selected'>${fn:escapeXml(reserve.term)}限目</option>
 						</select></td>
-						<td><select class="select" name="purpose">
+						<td><select class="select" name="afPurpose">
+								<option></option>
 								<option value="1">講義</option>
 								<option value="2">課外活動</option>
 								<option value="3">備品整備</option>
 								<option value="4">その他(備考欄記述)</option>
-						</select> <input name="amount" type="number" /></td>
-						<td>a</td>
-						<td><textarea name="bikou" rows="4" cols="36"></textarea></td>
+						</select> <input name="afAmount" type="number" /></td>
+						<td><c:set var="fixList">${fixList}</c:set> <%
+ 	String fix = (String) pageContext.getAttribute("fixList");
+ 	String[] fixies = fix.split(",");
+ 	for (String fi : fixies) {
+ 		pageContext.setAttribute("fi", fi);
+ %> <input type="checkbox" name="afFix" value="${fi}">${fi} <%
+ 	}
+ %></td>
+						<td><textarea name="afRemarks" rows="4" cols="36"></textarea></td>
 					</tr>
 				</tbody>
 			</table>

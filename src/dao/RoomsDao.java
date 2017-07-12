@@ -20,6 +20,7 @@ public class RoomsDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM rooms";
 	private static final String SQL_SELECT_ID = "SELECT * FROM rooms WHERE room_id=?";
+	private static final String SQL_SELECT_FIX = "SELECT * FROM rooms WHERE room=?";
 	private static String SQL_SELECT = "SELECT * FROM rooms";
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
@@ -54,6 +55,23 @@ public class RoomsDao {
 			if (rs.next()) {
 				return new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
 						rs.getInt("size"), rs.getString("facility"), rs.getString("remarks"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public String selectFix(String room) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_FIX)) {
+			stmt.setString(1, room);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getString("facility");
 			} else {
 				return null;
 			}
@@ -182,7 +200,7 @@ public class RoomsDao {
 				} else if (stack.getLast().equals("facility")) {
 					curum = stack.removeLast();
 					stmt.setString(c, "%" + facility + "%");
-				}else {
+				} else {
 				}
 			}
 			ResultSet rs = stmt.executeQuery();
