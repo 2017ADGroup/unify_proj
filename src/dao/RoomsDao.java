@@ -25,6 +25,7 @@ public class RoomsDao {
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
 	private static final String SQL_UPDATE_PATH = "UPDATE rooms SET path=? WHERE room_id=?";
+	private static final String SQL_INSERT = "INSERT INTO rooms(image_path, room, size, facility, remarks) values(?,?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE rooms SET room=?, size=?, facility=?, remarks=? WHERE room_id=?";
 	private static final String SQL_DELETE = "DELETE FROM rooms WHERE room_id=?";
 
@@ -112,6 +113,21 @@ public class RoomsDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;
+		}
+	}
+
+	public void insert(Rooms rooms) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
+
+			stmt.setString(1, rooms.getImage_path());
+			stmt.setString(2, rooms.getRoom());
+			stmt.setInt(3, rooms.getSize());
+			stmt.setString(4, rooms.getFacility());
+			stmt.setString(5, rooms.getRemarks());
+
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 
