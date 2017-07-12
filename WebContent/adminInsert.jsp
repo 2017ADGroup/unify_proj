@@ -61,112 +61,112 @@ function check(){
 			<tbody>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control"value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control"value='${users.login_id}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 			</tbody>

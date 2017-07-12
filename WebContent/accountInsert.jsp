@@ -51,7 +51,7 @@ function check(){
 <body>
 <h2 style="text-align: center;">団体・教員情報登録</h2>
 
-		<form class="form-hrizonatal" method="POST" action="accountInsert.html" name="form1" onSubmit="return check()">
+		<form class="form-hrizonatal" method="POST" action="accountInsert" name="form1" onSubmit="return check()">
 		<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
 		<caption>団体・教員情報登録</caption>
@@ -66,171 +66,171 @@ function check(){
 			<tbody>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value='${users.property}'>団体</option>
-						<option value='${users.property}' selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="5">団体</option>
-						<option value="2" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value='${users.login_id}'>
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value='${users.name}'>
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value='${users.kana}'>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 					<td>
-						<select name="authority" class="form-control">
-						<option value="0">団体</option>
-						<option value="1" selected>教員</option>
+						<select name="property" class="form-control">
+						<option value='3'>団体</option>
+						<option value='4'>教員</option>
 						</select>
 					</td>
 				</tr>
