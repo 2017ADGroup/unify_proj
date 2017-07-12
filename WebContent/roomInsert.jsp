@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +102,12 @@ img {
 				<table class="table">
 					<caption>教室一覧</caption>
 					<c:forEach var="rooms" items="${roomList}" varStatus="status">
-						<!-- 浅井さん担当部分。教室を横に並べて表示する部分 -->
+						<tr>
+							<td>${rooms.room}</td>
+							<td><img src="temp0/"></td>
+							<td>規模:${rooms.size}人<br>備品:<br>${rooms.facility}</td>
+							<td><button type="submit" name="roomSelect" value="${rooms.room}">この教室を選択する</button></td>
+						</tr>
 					</c:forEach>
 				</table>
 		</div>
@@ -111,7 +117,14 @@ img {
 				<select class="form-control" id="PURPOSE" name="reserve_month">
 					<option value="${thisMonth}">${thisMonth}</option>
 					<!-- 今月の日時を取得してその月の1日から翌月末までを指定する -->
-					<option value="${thisMonth + 1}">${thisMonth + 1}</option>
+					<c:choose>
+						<c:when test="${thisMonth != 12}">
+							<option value="${thisMonth + 1}">${thisMonth + 1}</option>
+						</c:when>
+						<c:when test="${thisMonth == 12}">
+							<option value="1">1</option>
+						</c:when>
+					</c:choose>
 				</select>
 			</div>
 			<div class="col-sm-1">
@@ -172,7 +185,7 @@ img {
 				<th>7限以降</th>
 			</tr>
 			<tr>
-				${fn:escapeXml(schedule)}
+				${schedule}
 			</tr>
 		</table>
 	</div>
