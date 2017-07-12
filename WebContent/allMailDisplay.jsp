@@ -18,7 +18,7 @@
 	<h2 style="text-align: center;">全メール閲覧</h2>
 	<br>
 
-	<form class="form-inline" action="allMailDisplay" method="POST">
+	<form class="form-inline">
 		<div class="col-sm-offset-1 col-sm-11">
 			<div class="form-group">
 				<label for="NAME">名前</label> <input type="text" name="name"
@@ -71,8 +71,11 @@
 				</tr>
 			</thead>
 			<tbody>
-
-				<c:forEach var="mail" items="${mailList}" varStatus="status">
+				<%
+					request.getAttribute("mailList");
+					request.getAttribute("mailViewList");
+				%>
+				<c:forEach begin="${(page-1)*50}" end="${(50-page)-1}" var="mail" items="${mailList}" varStatus="status">
 					<tr>
 						<td>${mailViewList.get(status.index).sendername}(ID:${mail.sender})</td>
 						<td>${mailViewList.get(status.index).receivername}(ID:${mail.receiver})</td>
@@ -86,7 +89,7 @@
 
 	<div class="col-sm-12" style="text-align: center;">
 		<br>
-		<form action="allMailDisplay" method="get">
+		<form action="AllMailDisplay" method="get">
 			<div class="btn-group" role="group">
 				<button type="submit" class="btn btn-default" name="page" value="1">1</button>
 				<c:if test="${mailList.size()>50}">

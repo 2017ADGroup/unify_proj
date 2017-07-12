@@ -44,6 +44,29 @@ public class RoomInfoInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String room = request.getParameter("room");
+<<<<<<< HEAD
+		String size = request.getParameter("size");
+		String[] facility = request.getParameterValues("facility");
+		String remarks = request.getParameter("remarks");
+
+		String join1 = "";
+		for (String str : facility) {
+			if (!str.equals("")) {
+				join1 = join1 + str + ",";
+			}
+		}
+		if (!join1.equals("")) {
+			join1 = join1.substring(0, join1.length() - 1);
+		}
+
+		Rooms rooms = new Rooms(0, name, room, Integer.parseInt(size), join1, remarks);
+
+		RoomsService roomsService = new RoomsService();
+		roomsService.register(rooms);
+
+		request.getRequestDispatcher("roomInfoLump").forward(request, response);
+
+=======
 		//ここから画像アップロード部分
 /*        Part part = request.getPart("file");
         String name = this.getFileName(part);//恐らくここでファイル名の変換を行う必要があると思われる
@@ -69,6 +92,7 @@ public class RoomInfoInsertServlet extends HttpServlet {
         request.setAttribute("remarks",remarks);
 
         request.getRequestDispatcher("roomInfoInsertConfirm.jsp").forward(request, response);
+>>>>>>> e029f356df8ed10723526ec2688e845e4e8eeedb
 	}
 
 

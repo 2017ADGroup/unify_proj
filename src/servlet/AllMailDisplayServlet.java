@@ -26,13 +26,12 @@ public class AllMailDisplayServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		// ページ読み込み
-/*		int page;
-		//初回の場合は1が入る
+		int page;
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		} catch (Exception e) {
 			page = 1;
-		}*/
+		}
 		try {
 			MailService mailService = new MailService();
 			List<Mail> mailList = mailService.mailFindAll();
@@ -45,7 +44,7 @@ public class AllMailDisplayServlet extends HttpServlet {
 				mailViewList.add(mailView);
 			}
 			// ページとか色々
-			//request.setAttribute("page", page);
+			request.setAttribute("page", page);
 			session.setAttribute("mailViewList", mailViewList);
 			session.setAttribute("mailList", mailList);
 		} catch (Exception e) {
@@ -58,23 +57,18 @@ public class AllMailDisplayServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("検索処理開始");
 		HttpSession session = request.getSession();
 		try {
 			// 情報取得
 			String name = request.getParameter("name");
 			String id = request.getParameter("id");
 			String keyword = request.getParameter("keyword");
-			String time = request.getParameter("time");//ここで恐らく面倒な処理が必要になる
+			String time = request.getParameter("time");
 			String[] checkbox = request.getParameterValues("checkbox");
-/*			int page;
-			try {
-				page = Integer.parseInt(request.getParameter("page"));
-			} catch (Exception e) {
-				page = 1;
-			}*/
+			int page = Integer.parseInt(request.getParameter("page"));
 
 			MailService mailService = new MailService();
+<<<<<<< HEAD
 			List<Mail> mailList = new ArrayList<Mail>();
 			//チェックの有無、idの入力、非入力で5つに分岐する
 			if(checkbox.length == 0){//チェック無し
@@ -101,15 +95,18 @@ public class AllMailDisplayServlet extends HttpServlet {
 				}
 			}
 
+=======
+			List<Mail> mailList = mailService.mailFindAll();
+>>>>>>> 90e1335f1afa028b1dfbe7e8913b3d5b919f87ac
 			List<MailView> mailViewList = new ArrayList<MailView>();
 			for (Mail mail : mailList) {
 				UsersService UsersService = new UsersService();
+
 				String receivername = UsersService.idByName(mail.getReceiver());
 				String sendername = UsersService.idByName(mail.getSender());
 				MailView mailView = new MailView(receivername, sendername);
 				mailViewList.add(mailView);
 			}
-			//request.setAttribute("page", page);
 			session.setAttribute("mailViewList", mailViewList);
 			session.setAttribute("mailList", mailList);
 		} catch (Exception e) {

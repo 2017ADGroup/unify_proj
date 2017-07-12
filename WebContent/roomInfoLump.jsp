@@ -71,23 +71,25 @@
 					<c:forEach var="rooms" items="${roomsList}">
 						<tr>
 							<td>${rooms.room}</td>
-							<td><img src="image/bRoom.jpg" class="img-rounded"
-								style="width: 210px; height: 140px;"></td>
-							<td><input name="ninnzuu" type="number" value="${rooms.size}"
-								disabled='disabled' /></td>
-							<td><c:set var="facility">${rooms.facility}</c:set>
-							<%
-							String facility = (String) pageContext.getAttribute("facility");
-							String[] facilities = facility.split(",");
-							for (String fa: facilities) {
-								pageContext.setAttribute("fa", fa);
-							%>
+							<td><img
+								src="C:\pleiades\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\unify\image/${rooms.image_path}"
+								class="img-rounded" style="width: 210px; height: 140px;"></td>
+							<td><input name="ninnzuu" type="number"
+								value="${rooms.size}" disabled='disabled' /></td>
+							<td><c:set var="facility">${rooms.facility}</c:set> <%
+ 	String facility = (String) pageContext.getAttribute("facility");
+ 		String[] facilities = facility.split(",");
+ 		for (String fa : facilities) {
+ 			pageContext.setAttribute("fa", fa);
+ %>
 								<button type="button" class="btn btn-default"
-									disabled='disabled'>${fa}</button>
-									<%} %>
-							</td>
-							<td><input type="checkbox" name="roomDelete" value="${rooms.room_id}"></td>
-							<td><a href='roomInfoUpdate?roomId=${rooms.room_id}' class="btn btn-danger">更新</a></td>
+									disabled='disabled'>${fa}</button> <%
+ 	}
+ %></td>
+							<td><input type="checkbox" name="roomDelete"
+								value="${rooms.room_id}"></td>
+							<td><a href='roomInfoUpdate?roomId=${rooms.room_id}'
+								class="btn btn-danger">更新</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -121,7 +123,7 @@
 		</div>
 
 		<div class="col-sm-offset-1 col-sm-11">
-			<br> <br> <a href="menu.html" class="btn btn-default">Menu</a>
+			<br> <br> <a href="back" class="btn btn-default">Menu</a>
 		</div>
 
 	</form>

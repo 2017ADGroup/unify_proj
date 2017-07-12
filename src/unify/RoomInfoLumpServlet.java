@@ -34,5 +34,20 @@ public class RoomInfoLumpServlet extends HttpServlet {
 
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+
+		RoomsService roomsService = new RoomsService();
+		// 全検索
+		List<Rooms> list = roomsService.findAll();
+		// 検索結果をセッションに保持
+		request.setAttribute("roomsList", list);
+		// 次画面指定
+		request.getRequestDispatcher("roomInfoLump.jsp").forward(request, response);
+
+	}
+
 }
 

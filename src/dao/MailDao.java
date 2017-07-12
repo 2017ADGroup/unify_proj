@@ -182,14 +182,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
@@ -258,14 +258,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
@@ -334,14 +334,14 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
@@ -445,14 +445,14 @@ public class MailDao {
 			} // プレースホルダーセット終了
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
@@ -540,7 +540,7 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -548,7 +548,7 @@ public class MailDao {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
@@ -639,14 +639,14 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT * FROM mail";
+			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
 		}
 		return mailList;
 	}
