@@ -44,7 +44,6 @@ public class RoomInfoInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String room = request.getParameter("room");
-		System.out.println(room);
 		//ここから画像アップロード部分
 /*        Part part = request.getPart("file");
         String name = this.getFileName(part);//恐らくここでファイル名の変換を行う必要があると思われる

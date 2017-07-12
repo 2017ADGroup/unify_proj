@@ -51,6 +51,7 @@ public class MenuService {
 				flag.add(reserveList.get(i).getRoom());//重複フラグ用配列の構築
 			}
 		}
+		System.out.println(schedule);//デバッグ用
 		return schedule;
 	}
 }

@@ -88,8 +88,8 @@ alert("ログアウトします");
 	<div class="form-group">
 <select class="form-control" id="year" name="year">
 <%
-    int year = Integer.parseInt(request.getAttribute("year").toString());
-    int month = Integer.parseInt(request.getAttribute("month").toString());
+    int year = Integer.parseInt(session.getAttribute("year").toString());
+    int month = Integer.parseInt(session.getAttribute("month").toString());
     for(int i = year; i <= year+10; i++){
 %>
 <option value="<%=i %>"
