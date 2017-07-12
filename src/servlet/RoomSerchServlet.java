@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entity.Reserve;
 import entity.Rooms;
@@ -49,9 +50,10 @@ public class RoomSerchServlet extends HttpServlet {
 		//複数検索
 		RoomsService roomsService = new RoomsService();
 		List<Rooms> roomList = roomsService.serchRooms(
-				request.getParameter("room"),min,max,request.getParameter("facility"));
+		request.getParameter("room"),min,max,request.getParameter("fixtures"));
 		request.setAttribute("roomList", roomList);
 		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -61,16 +63,18 @@ public class RoomSerchServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		request.getParameter("roomSelect");
+		HttpSession session = request.getSession();
 		String room = request.getParameter("roomSelect");
 		String month = request.getParameter("reserve_month");
 		String date = request.getParameter("reserve_date");
 		Calendar thisDate = Calendar.getInstance();
-		String year = String.valueOf(thisDate.get(thisDate.YEAR));
-		String reserve_date = year + "-" + month + "-" + "date";
+		String year = String.valueOf(thisDate.get(Calendar.YEAR));
+		String reserve_date = year + "-" + month + "-" + date;
 		ReserveService reserveService = new ReserveService();
 		String schedule = "";
 		Reserve reserve = null;
 		String purpose = null;
+		//時間割生成。一段目
 		for(int i = 0;i < 7 ;i++){
 			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
 			if(reserve == null){
@@ -87,15 +91,27 @@ public class RoomSerchServlet extends HttpServlet {
 						purpose = "備品整備";
 						break;
 					case 4:
-						purpose = "";
+						purpose = "その他";
 						break;
 				}
-
-				schedule = schedule + "<td>" + reserve.getReserve_host() + "<br>" + reserve.getPurpose() + "</td>";
+				schedule = schedule + "<td>" + reserve.getReserve_host() + "<br>" + purpose + "</td>";
+			}
+			reserve = null;
+		}
+		schedule = schedule + "<tr></tr>";
+		//二段目、チェックボックス部分修正
+		for(int i = 0;i < 7 ;i++){
+			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
+			if(reserve == null){
+				schedule = schedule + "<td><input type='checkbox' name ='reserve_term' value='" + i + "'></td>";
+			}else{
+				schedule = schedule + "<td>" + "</td>";
 			}
 		}
-
-
+		session.setAttribute("room", room);//選択した教室名を保存
+		session.setAttribute("reserve_date", reserve_date);//選択されている日付を保存
+		request.setAttribute("schedule", schedule);
+		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
 	}
 
 }

@@ -49,6 +49,17 @@ public class ReserveService {
 		return Collections.emptyList();
 	}
 
+	public List<Reserve> findById(String id) {
+		try (Connection conn = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(conn);
+			return reserveDao.selectById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Collections.emptyList();
+	}
+
 	public Reserve findByDateRoomTerm(String date, String room, int term){
 		try (Connection conn = DbUtil.getConnection()) {
 			ReserveDao reserveDao = new ReserveDao(conn);
