@@ -12,7 +12,7 @@ import entity.Reserve;
 public class ReserveDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM reserve";
-	private static final String SQL_INSERT = "INSERT INTO reserve (reserve_date, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO reserve (reserve_date, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE reserve SET purpose=?, amount=?, facility=?, remarks=? WHERE reserve_id=?";
 	private static final String SQL_DELETE = "DELETE FROM reserve WHERE reserve_id=?";
 	private static final String SQL_SELECT_LOGINID_DAYTIME = "SELECT * FROM reserve WHERE reserve_host=? AND reserve_date=?";
