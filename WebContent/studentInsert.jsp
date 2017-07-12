@@ -50,7 +50,7 @@ function check(){
 </head>
 <body>
 <h2 style="text-align: center;">生徒情報登録</h2>
-<form class="form-hrizonatal" method="POST" action="studentInsert.html" name="form1" onSubmit="return check()">
+<form class="form-hrizonatal" method="POST" action="studentInsert" name="form1" onSubmit="return check()">
 
 	<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
@@ -66,112 +66,112 @@ function check(){
 			<tbody>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(users.id)}">
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" value="${fn:escapeXml(users.name)}">
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(users.kana)}">
-					</td>
-				</tr>
-								<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
-					</td>
-				</tr>
-								<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
-					</td>
-					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="id" class="form-control" value="${fn:escapeXml(user.id)}">
+						<input type="text" name="id" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control"  value="${fn:escapeXml(user.name)}">
+						<input type="text" name="name" class="form-control">
 					</td>
 					<td>
-						<input type="text" name="name" class="form-control" pattern="[ー\u3041-\u3096]*" value="${fn:escapeXml(user.kana)}">
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" name="id" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="name" class="form-control">
+					</td>
+					<td>
+						<input type="text" name="kana" class="form-control" pattern="[ー\u3041-\u3096]*">
 					</td>
 				</tr>
 			</tbody>
@@ -192,7 +192,7 @@ function check(){
 	<br>
 	<br>
 	<div>
-		<a href="menu.html" class="btn btn-default">Menu</a>
+		<a href="menu.jspl" class="btn btn-default">Menu</a>
 	</div>
 </body>
 </html>
