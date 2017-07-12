@@ -35,7 +35,7 @@ alert("ログアウトします");
 				・<a href="mail">メールボックス</a><br>
 				・<a href="allMailDisplay">全メール閲覧</a><br>
 				<b>教室情報管理</b><br>
-				・<a href="roomInfoInsert">教室情報登録</a><br>
+				・<a href="roomInfoInsert.jsp">教室情報登録</a><br>
 				・<a href="roomInfoLump">教室情報更新・削除</a><br>
 				<b>アカウント管理</b><br>
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>

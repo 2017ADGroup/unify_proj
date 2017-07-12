@@ -41,24 +41,17 @@ public class RoomInfoInsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		String room = request.getParameter("room");
-		//必須項目の判定
-		if(room.isEmpty()){
-			request.setAttribute("msg", "必須項目を入力してください");
-			response.sendRedirect("roomInfoInsert.jsp");
-		}
-
+		System.out.println(room);
 		//ここから画像アップロード部分
-        Part part = request.getPart("file");
+/*        Part part = request.getPart("file");
         String name = this.getFileName(part);//恐らくここでファイル名の変換を行う必要があると思われる
-        part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);
+        part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);*/
 
         //規模
-        Integer size = null;
-        if(request.getParameter("size").isEmpty()){//空文字判定
-        }else{
-        	size = Integer.parseInt(request.getParameter("size"));
-        }
+        int size = Integer.parseInt(request.getParameter("size"));
 
         //設備
         String[] facilities = request.getParameterValues("facility");
@@ -71,10 +64,12 @@ public class RoomInfoInsertServlet extends HttpServlet {
 
         //確認画面に受け渡し
         request.setAttribute("room",room);
-        request.setAttribute("path", name);
+        //request.setAttribute("path", name);
         request.setAttribute("size",size);
         request.setAttribute("facilities",facilities);
         request.setAttribute("remarks",remarks);
+
+        request.getRequestDispatcher("roomInfoInsertConfirm.jsp").forward(request, response);
 	}
 
 
