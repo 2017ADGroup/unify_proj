@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Reserve;
 import service.ReserveService;
+import service.RoomsService;
 
 /**
  * Servlet implementation class roomUpdateServlet
@@ -33,13 +34,22 @@ public class RoomUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+
 		String reserveId = request.getParameter("reserveId");
 
 		ReserveService reserveService = new ReserveService();
 
 		Reserve reserve = reserveService.findByReserve(Integer.parseInt(reserveId));
 
+		RoomsService roomsService = new RoomsService();
+
+		String fixList = roomsService.findFix(reserve.getRoom());
+
 		request.setAttribute("reserve", reserve);
+		request.setAttribute("fixList", fixList);
+		request.setAttribute("reId", reserveId);
 
 		request.getRequestDispatcher("roomUpdateConfirm.jsp").forward(request, response);
 	}

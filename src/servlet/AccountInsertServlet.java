@@ -14,7 +14,7 @@ import service.AccountService;
 /**
  * Servlet implementation class AccountInsertServlet
  */
-@WebServlet("/AccountInsert")
+@WebServlet("/accountInsert")
 public class AccountInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -16,7 +16,7 @@ import entity.MailView;
 import service.MailService;
 import service.UsersService;
 
-@WebServlet("/AllMailDisplay")
+@WebServlet("/allMailDisplay")
 public class AllMailDisplayServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

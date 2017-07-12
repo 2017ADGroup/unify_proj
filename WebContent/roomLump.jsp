@@ -48,8 +48,8 @@
 </head>
 <body>
 	<h2 style="text-align: center;">予約内容更新・削除</h2>
-	<form action="roomDelete" class="form-hrizonatal" method="POST" name="form1"
-		onSubmit="return check()">
+	<form action="roomDelete" class="form-hrizonatal" method="POST"
+		name="form1" onSubmit="return check()">
 		<table class="table">
 			<caption>予約内容更新・削除</caption>
 			<thead>
@@ -86,25 +86,52 @@
 						<td>
 							<p>
 								<select disabled='disabled'>
-									<option selected='selected'>${reserve.purpose}</option>
+									<c:choose>
+										<c:when test="${reserve.purpose == 1}">
+											<option value="1" selected>講義</option>
+											<option value="2">課外活動</option>
+											<option value="3">備品整備</option>
+											<option value="4">その他(備考欄記述)</option>
+										</c:when>
+										<c:when test="${reserve.purpose == 2}">
+											<option value="1">講義</option>
+											<option value="2" selected>課外活動</option>
+											<option value="3">備品整備</option>
+											<option value="4">その他(備考欄記述)</option>
+										</c:when>
+										<c:when test="${reserve.purpose == 3}">
+											<option value="1">講義</option>
+											<option value="2">課外活動</option>
+											<option value="3" selected>備品整備</option>
+											<option value="4">その他(備考欄記述)</option>
+										</c:when>
+										<c:otherwise>
+											<option value="1">講義</option>
+											<option value="2">課外活動</option>
+											<option value="3">備品整備</option>
+											<option value="4" selected>その他(備考欄記述)</option>
+										</c:otherwise>
+									</c:choose>
 								</select>
-							</p> <input name="ninnzuu" type="number" value="50"
+							</p> <input name="ninnzuu" type="number" value="${reserve.amount}"
 							disabled="disabled">
 						</td>
-						<td><c:set var="facility">${reserve.facility}</c:set>
+						<td><c:set var="facility">${reserve.facility}</c:set> <%
+ 	String facility = (String) pageContext.getAttribute("facility");
+ 		String[] facilities = facility.split(",");
+ 		for (String fa : facilities) {
+ 			pageContext.setAttribute("fa", fa);
+ %>
+							<button type="button" class="btn btn-default" disabled='disabled'>${fa}</button>
 							<%
-							String facility = (String) pageContext.getAttribute("facility");
-							String[] facilities = facility.split(",");
-							for (String fa: facilities) {
-								pageContext.setAttribute("fa", fa);
-							%>
-								<button type="button" class="btn btn-default"
-									disabled='disabled'>${fa}</button>
-									<%} %></td>
+								}
+							%></td>
 						<td><textarea name="bikou" rows="5" cols="32"
 								disabled="disabled">${reserve.remarks}</textarea></td>
-						<td><input name="reserveDelete" type="checkbox" value="${reserve.reserve_id}" /></td>
-						<td><a href='roomUpdate?reserveId=${reserve.reserve_id}' class="btn btn-danger">更新</a></td>
+						<td><input name="reserveDelete" type="checkbox"
+							value="${reserve.reserve_id}" /></td>
+						<td><a href='roomUpdate?reserveId=${reserve.reserve_id}'
+							class="btn btn-danger">更新</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

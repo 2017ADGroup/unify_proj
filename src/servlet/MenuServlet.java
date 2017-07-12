@@ -16,7 +16,7 @@ import service.MenuService;
 /**
  * Servlet implementation class menuServlet
  */
-@WebServlet("/MenuServlet")
+@WebServlet("/menu")
 public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,10 +35,11 @@ public class MenuServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		MenuService menuService = new MenuService();
-		//スケジュールのための日付を取得(date型に変更の可能性有)
-		String scheduleDay = (String) request.getParameter("days");
-		request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
 		prepData(request);
+		//カレンダー生成過程で生まれた日付を利用してスケジュールを生成
+		String scheduleDay = (int)session.getAttribute("year") + "-" + (int) session.getAttribute("month") + "-" + (int)session.getAttribute("date");
+		request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
+
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 	        //  フォワードによるページ遷移
 	        dispatcher.forward(request, response);
@@ -54,24 +55,30 @@ public class MenuServlet extends HttpServlet {
 
 	private void prepData(HttpServletRequest request){
         // 変数初期化
+		HttpSession session = request.getSession();
         int startday;
         int lastday;
         //  カレンダーの取得
         Calendar cal = Calendar.getInstance();
         //  年が設定されていれば、その値を取得。そうでなければ、今年の年号を入れる
         if(request.getParameter("year")==null){
-            request.setAttribute("year", cal.get(Calendar.YEAR));   //  現在の年
+            session.setAttribute("year", cal.get(Calendar.YEAR));   //  現在の年
 
         }else{
-            request.setAttribute("year", request.getParameter("year")); //  現在の年
+            session.setAttribute("year", request.getParameter("year")); //  現在の年
         }
         if(request.getParameter("month")==null){
-            request.setAttribute("month", cal.get(Calendar.MONTH)+1);   //  現在の月
+            session.setAttribute("month", cal.get(Calendar.MONTH)+1);   //  現在の月
         }else{
-            request.setAttribute("month", request.getParameter("month"));   //  与えらられた月
+            session.setAttribute("month", request.getParameter("month"));   //  与えらられた月
         }
-        int year = Integer.parseInt(request.getAttribute("year").toString());
-        int month = Integer.parseInt(request.getAttribute("month").toString());
+        if(request.getParameter("days")==null){
+            session.setAttribute("date", cal.get(Calendar.DATE)+1);   //  現在の日
+        }else{
+            session.setAttribute("date", Integer.parseInt(request.getParameter("days")));   //  与えらられた日
+        }
+        int year = Integer.parseInt(session.getAttribute("year").toString());
+        int month = Integer.parseInt(session.getAttribute("month").toString());
         // 月初めの曜日(日-> 1)
         cal.set(year, month - 1, 1);
         startday = cal.get(Calendar.DAY_OF_WEEK);
@@ -97,7 +104,7 @@ public class MenuServlet extends HttpServlet {
                 sb.append(
                 		"<td><a href=\"Calender.jsp\" onclick=\"document." + "day" +date
                 		+ ".submit(); return false;\">"+ date + "</a>"
-                		+ "<form name=\"day" + date + "\" action=\"Test\" method=\"get\">"
+                		+ "<form name=\"day" + date + "\" action=\"menu\" method=\"get\">"
                 		+ "<input type=hidden name=\"days\" value=\"" + date + "\" >"
                 		+ "</form></td>");
                 date++;

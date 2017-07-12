@@ -28,14 +28,14 @@ alert("ログアウトします");
 		<c:choose>
 			<c:when test="${login_user.property == 2}">
 				<b>教室予約情報</b><br>
-				・<a href="adminRoomInsert">教室一括予約</a><br>
+				・<a href="adminRoomInsert.jsp">教室一括予約</a><br>
 				・<a href="adminRoom">予約内容一括更新・削除</a><br>
 				<b>ミニメール</b><br>
 				・<a href="mailCreate">メール新規作成</a><br>
 				・<a href="mail">メールボックス</a><br>
 				・<a href="allMailDisplay">全メール閲覧</a><br>
 				<b>教室情報管理</b><br>
-				・<a href="roomInfoInsert">教室情報登録</a><br>
+				・<a href="roomInfoInsert.jsp">教室情報登録</a><br>
 				・<a href="roomInfoLump">教室情報更新・削除</a><br>
 				<b>アカウント管理</b><br>
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>
@@ -84,12 +84,12 @@ alert("ログアウトします");
 	</div>
 		<div class="col-sm-offset-2 col-sm-6">
 
-	<form class="form-inline" action="menu.html" method="get">
+	<form class="form-inline" action="menu" method="get">
 	<div class="form-group">
 <select class="form-control" id="year" name="year">
 <%
-    int year = Integer.parseInt(request.getAttribute("year").toString());
-    int month = Integer.parseInt(request.getAttribute("month").toString());
+    int year = Integer.parseInt(session.getAttribute("year").toString());
+    int month = Integer.parseInt(session.getAttribute("month").toString());
     for(int i = year; i <= year+10; i++){
 %>
 <option value="<%=i %>"

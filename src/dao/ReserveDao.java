@@ -178,12 +178,14 @@ public class ReserveDao {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ROOM_TERM_DAYTIME)) {
 			stmt.setString(1, room);
 			stmt.setString(2, date);
+			stmt.setInt(3, term);
+
 			ResultSet rs = stmt.executeQuery();
 			List<Reserve> reserveList = new ArrayList<Reserve>();
 			while (rs.next()) {
 				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
 						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
-						rs.getString("Remarks()"), rs.getString("reserve_host"));
+						rs.getString("Remarks"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 				return reserveList.get(0);
 			}

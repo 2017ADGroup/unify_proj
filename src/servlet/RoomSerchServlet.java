@@ -35,6 +35,7 @@ public class RoomSerchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		int min = -1;
@@ -45,17 +46,17 @@ public class RoomSerchServlet extends HttpServlet {
 		}
 
 		if(!request.getParameter("sizeMax").isEmpty()){
-			min = Integer.parseInt(request.getParameter("sizeMax"));
+			max = Integer.parseInt(request.getParameter("sizeMax"));
 		}
 
 		//複数検索
 		RoomsService roomsService = new RoomsService();
 		List<Rooms> roomList = roomsService.serchRooms(
-		request.getParameter("room"),min,max,request.getParameter("fixtures"));
+				request.getParameter("room"),min,max,request.getParameter("fixtures"));
 		session.setAttribute("roomList", roomList);
 
 		Calendar thisDate = Calendar.getInstance();
-		String month = String.valueOf(thisDate.get(Calendar.MONTH));
+		Integer month = Integer.valueOf(thisDate.get(Calendar.MONTH)) + 1;
 		session.setAttribute("thisMonth",month);
 		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
 
@@ -66,7 +67,7 @@ public class RoomSerchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		request.getParameter("roomSelect");
 		HttpSession session = request.getSession();
 		String room = request.getParameter("roomSelect");
@@ -76,7 +77,7 @@ public class RoomSerchServlet extends HttpServlet {
 		String year = String.valueOf(thisDate.get(Calendar.YEAR));
 		String reserve_date = year + "-" + month + "-" + date;
 		ReserveService reserveService = new ReserveService();
-		String schedule = "";
+		String schedule = "<td></td>";
 		Reserve reserve = null;
 		String purpose = null;
 		//時間割生成。一段目
@@ -103,16 +104,21 @@ public class RoomSerchServlet extends HttpServlet {
 			}
 			reserve = null;
 		}
-		schedule = schedule + "<tr></tr>";
+		schedule = schedule + "<tr></tr><td></td>";
 		//二段目、チェックボックス部分修正
-		for(int i = 0;i < 7 ;i++){
+		for(int i = 1;i < 8 ;i++){
 			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
 			if(reserve == null){
-				schedule = schedule + "<td><input type='checkbox' name ='reserve_term' value='" + i + "'></td>";
+				schedule = schedule + "<td><input type='checkbox' name='reserve_term' value='" + i + "'></td>";
 			}else{
 				schedule = schedule + "<td>" + "</td>";
 			}
 		}
+
+		RoomsService roomsService = new RoomsService();
+		Rooms reserve_room = roomsService.serchRooms(room, -1, -1,"").get(0);
+		String[] facility = reserve_room.getFacility().split(",");
+		request.setAttribute("facility", facility);
 		session.setAttribute("room", room);//選択した教室名を保存
 		session.setAttribute("reserve_date", reserve_date);//選択されている日付を保存
 		request.setAttribute("schedule", schedule);

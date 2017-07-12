@@ -15,16 +15,16 @@ import entity.Users;
 import service.ReserveService;
 
 /**
- * Servlet implementation class RoomDeleteServlet
+ * Servlet implementation class RoomUpdateConfirmServlet
  */
-@WebServlet("/roomDelete")
-public class RoomDeleteServlet extends HttpServlet {
+@WebServlet("/roomUpdateConfirm")
+public class RoomUpdateConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RoomDeleteServlet() {
+	public RoomUpdateConfirmServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,29 +46,35 @@ public class RoomDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// 削除するIDの取得
-		String[] reserveDelete = request.getParameterValues("reserveDelete");
 
-		ReserveService roomsService = new ReserveService();
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
 
-		// 一括削除
-		if (reserveDelete != null) {
-			for (String reserveDel : reserveDelete) {
+		String[] afFix = request.getParameterValues("afFix");
 
-				// roomを削除
-				roomsService.reserveErase(Integer.parseInt(reserveDel));
-
+		String fix = "";
+		for (String str : afFix) {
+			if (!str.equals("")) {
+				fix = fix + str + ",";
 			}
 		}
+		fix = fix.substring(0, fix.length() - 1);
+
+		Reserve reserve = new Reserve(Integer.parseInt(request.getParameter("reId")),
+				Integer.parseInt(request.getParameter("afPurpose")), Integer.parseInt(request.getParameter("afAmount")),
+				fix, request.getParameter("afRemarks"));
+
+		ReserveService reserveService = new ReserveService();
+
+		reserveService.reserveRenew(reserve);
 
 		HttpSession session = request.getSession();
 		Users user = (Users) session.getAttribute("login_user");
 
-		ReserveService reserveService = new ReserveService();
 		List<Reserve> list = reserveService.findById(user.getLogin_id());
 
 		// テスト用
-//		List<Reserve> list = reserveService.findById("99a3445");
+		// List<Reserve> list = reserveService.findById("99a3445");
 
 		request.setAttribute("reserveList", list);
 

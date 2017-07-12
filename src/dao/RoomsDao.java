@@ -20,6 +20,7 @@ public class RoomsDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM rooms";
 	private static final String SQL_SELECT_ID = "SELECT * FROM rooms WHERE room_id=?";
+	private static final String SQL_SELECT_FIX = "SELECT * FROM rooms WHERE room=?";
 	private static String SQL_SELECT = "SELECT * FROM rooms";
 	private static final String SQL_INSERT_WITHOUT_PATH = "INSERT INTO rooms(room,size,facility,remarks) values(?,?,?,?)";
 	private static final String SQL_SELECT_MAX_ID = "SELECT MAX(room_id) FROM rooms";
@@ -54,6 +55,23 @@ public class RoomsDao {
 			if (rs.next()) {
 				return new Rooms(rs.getInt("room_id"), rs.getString("image_path"), rs.getString("room"),
 						rs.getInt("size"), rs.getString("facility"), rs.getString("remarks"));
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
+
+	public String selectFix(String room) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_FIX)) {
+			stmt.setString(1, room);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getString("facility");
 			} else {
 				return null;
 			}
@@ -135,7 +153,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " room=?";
+			SQL_SELECT = SQL_SELECT + " room LIKE ?";
 			stack.addFirst("room");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -143,7 +161,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " size > ?";
+			SQL_SELECT = SQL_SELECT + " size >= ?";
 			stack.addFirst("min");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -151,7 +169,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " size < ?";
+			SQL_SELECT = SQL_SELECT + " size <= ?";
 			stack.addFirst("max");
 		}
 
@@ -159,7 +177,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " facility=?";
+			SQL_SELECT = SQL_SELECT + " facility LIKE ?";
 			stack.addFirst("facility");
 		}
 
@@ -182,7 +200,7 @@ public class RoomsDao {
 				} else if (stack.getLast().equals("facility")) {
 					curum = stack.removeLast();
 					stmt.setString(c, "%" + facility + "%");
-				}else {
+				} else {
 				}
 			}
 			ResultSet rs = stmt.executeQuery();
@@ -193,6 +211,7 @@ public class RoomsDao {
 				roomList.add(rooms);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
 			SQL_SELECT = "SELECT * FROM rooms";

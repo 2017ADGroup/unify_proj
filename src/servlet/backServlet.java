@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.Calendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,73 +13,49 @@ import javax.servlet.http.HttpSession;
 
 import entity.Users;
 import service.MenuService;
-import service.UsersService;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class backServlet
  */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/back")
+public class backServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public backServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public Login() {
-		super();
-		// TODO Auto-generated constructor stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Users login_user = (Users) session.getAttribute("login_user");
+		session.invalidate();
+		HttpSession session2 = request.getSession();
+		session2.setAttribute("login_user", login_user);
+		MenuService menuService = new MenuService();
+		prepData(request);
+		//カレンダー生成過程で生まれた日付を利用してスケジュールを生成
+		String scheduleDay = (int)session2.getAttribute("year") + "-" + (int) session2.getAttribute("month") + "-" + (int)session2.getAttribute("date");
+		request.setAttribute("schedule", menuService.scheduleCreate((String)session2.getAttribute("login_id"), scheduleDay));
+
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+	        //  フォワードによるページ遷移
+	        dispatcher.forward(request, response);
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("UTF-8");
-		String login_id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-
-		// 入力値がnullか空文字であるか
-		if (login_id == null || ("".equals(login_id)) || pass == null || ("".equals(pass))) {
-			// request.setAttribute("errmsg", "IDまたはPASSが入力されていません");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-			return;
-		}
-
-		// Usersテーブルからユーザー情報を取得し照合
-		UsersService usersService = new UsersService();
-		Users users = usersService.authentication(login_id, pass);
-		boolean isSuccess = users != null;
-
-		HttpSession session = request.getSession(true);
-
-		// login_idとpassが照合した場合
-		if (isSuccess) {
-			session.setAttribute("login_user", users);
-
-			// スーパーユーザー遷移
-			if (users.getProperty() == 1) {
-				request.getRequestDispatcher("adminMenu.jsp").forward(request, response);
-
-				// その他のユーザー遷移
-			} else {
-				MenuService menuService = new MenuService();
-				prepData(request);
-				//カレンダー生成過程で生まれた日付を利用してスケジュールを生成
-				String scheduleDay = (int)session.getAttribute("year") + "-" + (int) session.getAttribute("month") + "-" + (int) session.getAttribute("date");
-				System.out.println(scheduleDay);
-				request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
-				request.getRequestDispatcher("menu.jsp").forward(request, response);
-			}
-
-			// IDまたはPASSが間違っている場合、ログインへ戻る
-		} else {
-			// request.setAttribute("errmsg", "IDまたはPASSが間違っています");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 	private void prepData(HttpServletRequest request){

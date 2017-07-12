@@ -44,6 +44,17 @@ public class RoomsService {
 		return null;
 	}
 
+	public String findFix(String room) {
+		try (Connection conn = DbUtil.getConnection()) {
+			RoomsDao roomsDao = new RoomsDao(conn);
+			return roomsDao.selectFix(room);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 	public List<Rooms> findAll() {
 		try (Connection conn = DbUtil.getConnection()) {
 			RoomsDao roomsDao = new RoomsDao(conn);
