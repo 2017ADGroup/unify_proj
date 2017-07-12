@@ -84,7 +84,7 @@ alert("ログアウトします");
 	</div>
 		<div class="col-sm-offset-2 col-sm-6">
 
-	<form class="form-inline" action="menu.html" method="get">
+	<form class="form-inline" action="menu" method="get">
 	<div class="form-group">
 <select class="form-control" id="year" name="year">
 <%
