@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import entity.Rooms;
+import service.RoomsService;
+
 /**
  * Servlet implementation class roomInfoInsert
  */
@@ -18,24 +21,6 @@ import javax.servlet.http.Part;
 public class RoomInfoInsertServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public RoomInfoInsertServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -94,11 +79,40 @@ public class RoomInfoInsertServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
+
 		Part part = request.getPart("file");
+		System.out.println(part);
 		String name = this.getFileName(part);
-		part.write(getServletContext().getRealPath("/image") + "/" + name);
-		System.out.println(name);
+		if (!name.equals("")) {
+			part.write(getServletContext().getRealPath("/image") + "/" + name);
+		} else {
+			name = "noimage.png";
+		}
+
+		String room = request.getParameter("room");
+		String size = request.getParameter("size");
+		String[] facility = request.getParameterValues("facility");
+		String remarks = request.getParameter("remarks");
+
+		String join1 = "";
+		for (String str : facility) {
+			if (!str.equals("")) {
+				join1 = join1 + str + ",";
+			}
+		}
+		if (!join1.equals("")) {
+			join1 = join1.substring(0, join1.length() - 1);
+		}
+
+		Rooms rooms = new Rooms(0, name, room, Integer.parseInt(size), join1, remarks);
+
+		RoomsService roomsService = new RoomsService();
+		roomsService.register(rooms);
+
 		response.sendRedirect("roomInfoInsert.jsp");
+
 	}
 
 	private String getFileName(Part part) {
