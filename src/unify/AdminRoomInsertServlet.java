@@ -261,6 +261,8 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			remarks5 = "";
 		}
 
+		ReserveService reserveService = new ReserveService();
+
 		// 入力値がある場合1
 		if (!"".equals(date1) || !"".equals(loginId1) || !"".equals(room1) || !"".equals(period1)
 				|| !"".equals(purpose1) || !"".equals(number1)) {
@@ -270,7 +272,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(number1), join1, remarks1, loginId1);
 
 			// ユーザーを登録
-			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
 		}
@@ -284,7 +285,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(number2), join2, remarks2, loginId2);
 
 			// ユーザーを登録
-			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
 		}
@@ -298,7 +298,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(number3), join3, remarks3, loginId3);
 
 			// ユーザーを登録
-			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
 		}
@@ -312,7 +311,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(number4), join4, remarks4, loginId4);
 
 			// ユーザーを登録
-			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
 		}
@@ -326,7 +324,6 @@ public class AdminRoomInsertServlet extends HttpServlet {
 					Integer.parseInt(number5), join5, remarks5, loginId5);
 
 			// ユーザーを登録
-			ReserveService reserveService = new ReserveService();
 			reserveService.reserveRegister(reserve);
 
 		}
