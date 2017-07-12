@@ -49,13 +49,35 @@ public class ReserveService {
 		return Collections.emptyList();
 	}
 
-	public List<Reserve> findByDateRoom(String date, String room){
+	public List<Reserve> findById(String id) {
 		try (Connection conn = DbUtil.getConnection()) {
 			ReserveDao reserveDao = new ReserveDao(conn);
-			return reserveDao.selectDateRoom(date,room);
+			return reserveDao.selectById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return Collections.emptyList();
+	}
+
+	public Reserve findByReserve(int id) {
+		try (Connection conn = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(conn);
+			return reserveDao.selectByReserve(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public Reserve findByDateRoomTerm(String date, String room, int term){
+		try (Connection conn = DbUtil.getConnection()) {
+			ReserveDao reserveDao = new ReserveDao(conn);
+			return reserveDao.selectDateRoomTerm(date,room,term);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -70,7 +70,7 @@
 					<c:forEach var="reserve" items="${reserveList}">
 						<tr>
 							<td><input type='date' name='reserveDate'
-								value='2017-${reserve.month}-${reserve.day}' disabled='disabled'></td>
+								value='${reserve.reserve_date}' disabled='disabled'></td>
 							<td><input type="text" name="loginId"
 								value='${reserve.reserve_host}' disabled='disabled'></td>
 							<td>
@@ -86,11 +86,32 @@
 							<td>
 								<p>
 									<select name="reservePurpose">
-										<option value="${reserve.purpose}">${reserve.purpose}</option>
-										<option value="1">講義</option>
-										<option value="2">課外活動</option>
-										<option value="3">備品整備</option>
-										<option value="4">その他(備考欄記述)</option>
+										<c:choose>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1" selected>講義</option>
+												<option value="2">課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1">講義</option>
+												<option value="2" selected>課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1">講義</option>
+												<option value="2">課外活動</option>
+												<option value="3" selected>備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:otherwise>
+												<option value="1">講義</option>
+												<option value="2">課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4" selected>その他(備考欄記述)</option>
+											</c:otherwise>
+										</c:choose>
 									</select>
 								</p> <input name="reserveAmount" type="number"
 								value="${reserve.amount}">
@@ -99,16 +120,20 @@
  	String facility = (String) pageContext.getAttribute("facility");
  		String[] facilities = facility.split(",");
 
- 		for (int i=0; i<facilities.length; i++) {
- 			pageContext.setAttribute("f"+ i, facilities[i]);
+ 		int fx = facilities.length;
+ 		for (int i = 0; i < fx; i++) {
+ 			pageContext.setAttribute("f" + i, facilities[i]);
+ 		}
+ 		for (int j = fx; j < 6; j++) {
+ 			pageContext.setAttribute("f" + j, "");
  		}
  %> <input type="text" name="reserveFixtures6" value='${f0}'><br>
- <input type="text" name="reserveFixtures1" value='${f1}'><br>
+								<input type="text" name="reserveFixtures1" value='${f1}'><br>
 								<input type="text" name="reserveFixtures2" value='${f2}'><br>
 								<input type="text" name="reserveFixtures3" value='${f3}'><br>
 								<input type="text" name="reserveFixtures4" value='${f4}'><br>
 								<input type="text" name="reserveFixtures5" value='${f5}'><br>
-								</td>
+							</td>
 							<td><textarea name="reserveRemarks" rows="5" cols="32">${reserve.remarks}</textarea></td>
 							<td><input name="reserveDelete" type="checkbox"
 								value="${reserve.reserve_id}" /> <input name="reserveId"

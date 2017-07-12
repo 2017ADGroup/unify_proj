@@ -20,13 +20,13 @@ alert("送信しました");
 <body>
 <h2 style="text-align: center;">メール新規作成</h2>
 <br>
-	<form class="form-horizontal" action="mailCreate.jsp">
+	<form class="form-horizontal" action="mailCreateConfirm" method ="post">
 		<fieldset>
               <div class="form-group">
                 <label for="SELECT" class="col-sm-3 control-label">宛先</label>
                 <div class="col-sm-6">
                 	<select class="form-control" id="SELECT" name="receiver">
-						<c:forEach var="users" items="${userList}">
+						<c:forEach var="users" items="${usersList}">
 						<!-- 全ユーザーを取得し、kanaで並び替えたものをuserListとして使用 -->
 						<option value="${fn:escapeXml(users.login_id)}">${fn:escapeXml(users.name)}(ID:${fn:escapeXml(users.login_id)})</option>
 						</c:forEach>
@@ -43,7 +43,7 @@ alert("送信しました");
 				<label for="TEXT" class="col-sm-3 control-label">本文</label>
 				<div class="col-sm-6">
 						<textarea rows="10" class="form-control" id="TEXT"
-						placeholder="本文" name="message"></textarea>
+						placeholder="本文" name="message" ></textarea>
 				</div>
 			</div>
 			</fieldset>

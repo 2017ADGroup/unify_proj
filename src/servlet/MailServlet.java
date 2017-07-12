@@ -1,3 +1,4 @@
+
 package servlet;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ import entity.Users;
 import service.MailService;
 import service.UsersService;
 
-@WebServlet("/Mail")
+@WebServlet("/mail")
 public class MailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

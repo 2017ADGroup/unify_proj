@@ -39,10 +39,10 @@ public class MailService {
 		return null;
 	}
 
-	public void mailInsert(String to,String from,String time,String subject,String message) {
+	public void mailInsert(String to,String login_user,String time,String subject,String message) {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			mailDao.mailInsert(to, from, time, subject, message);
+			mailDao.mailInsert(to, login_user, time, subject, message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
