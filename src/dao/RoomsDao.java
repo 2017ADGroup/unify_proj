@@ -195,7 +195,7 @@ public class RoomsDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM rooms";
 		}
 		return roomList;
 	}
