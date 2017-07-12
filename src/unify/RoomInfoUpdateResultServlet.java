@@ -50,9 +50,7 @@ public class RoomInfoUpdateResultServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String roomsId = (String) session.getAttribute("roomsId");
-		String newFixs = (String) request.getAttribute("newFixs");
-
-		System.out.println(newFixs);
+		String newFixs = (String) session.getAttribute("newFixs");
 
 		Rooms rooms = new Rooms(Integer.parseInt(roomsId), "imagePath", request.getParameter("newName"), Integer.parseInt(request.getParameter("newSize")), newFixs, request.getParameter("newRemarks"));
 

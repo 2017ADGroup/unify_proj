@@ -14,7 +14,7 @@
 <body>
 
 				<b>教室予約情報</b><br>
-				・<a href="adminRoomInsert">教室一括予約</a><br>
+				・<a href="adminRoomInsert.jsp">教室一括予約</a><br>
 				・<a href="adminRoom">予約内容一括更新・削除</a><br>
 				<b>ミニメール</b><br>
 				・<a href="mailCreate">メール新規作成</a><br>

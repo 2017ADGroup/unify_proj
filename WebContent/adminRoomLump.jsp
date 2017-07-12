@@ -70,7 +70,7 @@
 					<c:forEach var="reserve" items="${reserveList}">
 						<tr>
 							<td><input type='date' name='reserveDate'
-								value='2017-${reserve.month}-${reserve.day}' disabled='disabled'></td>
+								value='${reserve.reserve_date}' disabled='disabled'></td>
 							<td><input type="text" name="loginId"
 								value='${reserve.reserve_host}' disabled='disabled'></td>
 							<td>
