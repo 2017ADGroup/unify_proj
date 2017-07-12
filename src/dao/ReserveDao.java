@@ -12,12 +12,12 @@ import entity.Reserve;
 public class ReserveDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM reserve";
-	private static final String SQL_INSERT = "INSERT INTO reserve (reserve_date, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_INSERT = "INSERT INTO reserve (reserve_date, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE reserve SET purpose=?, amount=?, facility=?, remarks=? WHERE reserve_id=?";
 	private static final String SQL_DELETE = "DELETE FROM reserve WHERE reserve_id=?";
 	private static final String SQL_SELECT_LOGINID_DAYTIME = "SELECT * FROM reserve WHERE reserve_host=? AND reserve_date=?";
 	private static final String SQL_SELECT_LOGINID_DAYTIME_TERM = "SELECT * FROM reserve WHERE reserve_host=? AND reserve_date=? AND term=?";
-	private static final String SQL_SELECT_ROOM_DAYTIME = "SELECT * FROM reserve WHERE room=? AND reserve_date=?";
+	private static final String SQL_SELECT_ROOM_TERM_DAYTIME = "SELECT * FROM reserve WHERE room=? AND reserve_date=? AND term=?";
 
 	private Connection connection;
 
@@ -155,9 +155,9 @@ public class ReserveDao {
 		return null;
 	}
 
-	public List<Reserve> selectDateRoom(String date,String room){
+	public Reserve selectDateRoomTerm(String date,String room,int term){
 
-	try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ROOM_DAYTIME)) {
+	try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ROOM_TERM_DAYTIME)) {
 		stmt.setString(1, room);
 		stmt.setString(2, date);
 		ResultSet rs = stmt.executeQuery();
@@ -175,7 +175,7 @@ public class ReserveDao {
 				rs.getString("reserve_host")
 				);
 			reserveList.add(reserve);
-			return reserveList;
+			return reserveList.get(0);
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();

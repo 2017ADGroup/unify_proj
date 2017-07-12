@@ -49,13 +49,13 @@ public class ReserveService {
 		return Collections.emptyList();
 	}
 
-	public List<Reserve> findByDateRoom(String date, String room){
+	public Reserve findByDateRoomTerm(String date, String room, int term){
 		try (Connection conn = DbUtil.getConnection()) {
 			ReserveDao reserveDao = new ReserveDao(conn);
-			return reserveDao.selectDateRoom(date,room);
+			return reserveDao.selectDateRoomTerm(date,room,term);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return Collections.emptyList();
+		return null;
 	}
 }

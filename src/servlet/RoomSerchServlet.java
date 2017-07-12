@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Reserve;
 import entity.Rooms;
 import service.ReserveService;
 import service.RoomsService;
@@ -60,12 +61,39 @@ public class RoomSerchServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		request.getParameter("roomSelect");
+		String room = request.getParameter("roomSelect");
 		String month = request.getParameter("reserve_month");
 		String date = request.getParameter("reserve_date");
 		Calendar thisDate = Calendar.getInstance();
 		String year = String.valueOf(thisDate.get(thisDate.YEAR));
 		String reserve_date = year + "-" + month + "-" + "date";
 		ReserveService reserveService = new ReserveService();
+		String schedule = "";
+		Reserve reserve = null;
+		String purpose = null;
+		for(int i = 0;i < 7 ;i++){
+			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
+			if(reserve == null){
+				schedule = schedule + "<td>" + "</td>";
+			}else{
+				switch(reserve.getPurpose()){
+					case 1:
+						purpose = "講義";
+						break;
+					case 2:
+						purpose = "課外活動";
+						break;
+					case 3:
+						purpose = "備品整備";
+						break;
+					case 4:
+						purpose = "";
+						break;
+				}
+
+				schedule = schedule + "<td>" + reserve.getReserve_host() + "<br>" + reserve.getPurpose() + "</td>";
+			}
+		}
 
 
 	}
