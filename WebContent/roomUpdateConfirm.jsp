@@ -74,7 +74,7 @@ function check(){
 						</select></td>
 					<td>
 						<select class="select" disabled='disabled'>
-						<option selected='selected'>${fn:escapeXml(purposeString)}限目</option><!-- reserve.purposeはint型なのでStringに直す必要がある -->
+						<option selected='selected'>${fn:escapeXml(purpose)}</option><!-- reserve.purposeはint型なのでStringに直す必要がある -->
 						</select>
 						<input type="number" value="${reserve.amount}" disabled='disabled'>
 					</td>
