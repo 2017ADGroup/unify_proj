@@ -13,6 +13,7 @@ public class UsersDao {
 
 		private static final String SQL_UPDATE = "UPDATE users SET";
 		private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
+		private static final String SQL_IDS_BY_NAME = "SELECT * FROM users WHERE name = ?";
 		private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
 		private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE user_id = ?";
 		private static final String SQL_SELECT = "SELECT * FROM users ORDER BY kana";
@@ -41,6 +42,25 @@ public class UsersDao {
 				throw new RuntimeException(e);
 			}
 		}
+<<<<<<< HEAD
+		//名前からidを割り出す
+		public List<String> idsByName(String name) {
+			System.out.println(name);
+			try (PreparedStatement stmt = connection.prepareStatement(SQL_IDS_BY_NAME)) {
+				stmt.setString(1, name);
+				ResultSet rs = stmt.executeQuery();
+				List<String> names = new ArrayList<String>();
+				while (rs.next()) {
+					names.add(rs.getString("login_id"));
+				}
+				return names;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+=======
+>>>>>>> 473548699379c2bb4546a9a1df4518b6ce78be55
 
 		public String idByName(String id) {
 			System.out.println(id);
