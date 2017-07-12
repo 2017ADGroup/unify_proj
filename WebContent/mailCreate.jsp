@@ -26,7 +26,7 @@ alert("送信しました");
                 <label for="SELECT" class="col-sm-3 control-label">宛先</label>
                 <div class="col-sm-6">
                 	<select class="form-control" id="SELECT" name="receiver">
-						<c:forEach var="users" items="${userList}">
+						<c:forEach var="users" items="${usersList}">
 						<!-- 全ユーザーを取得し、kanaで並び替えたものをuserListとして使用 -->
 						<option value="${fn:escapeXml(users.login_id)}">${fn:escapeXml(users.name)}(ID:${fn:escapeXml(users.login_id)})</option>
 						</c:forEach>
