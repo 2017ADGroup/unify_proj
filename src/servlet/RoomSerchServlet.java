@@ -106,7 +106,7 @@ public class RoomSerchServlet extends HttpServlet {
 		}
 		schedule = schedule + "<tr></tr><td></td>";
 		//二段目、チェックボックス部分修正
-		for(int i = 0;i < 7 ;i++){
+		for(int i = 1;i < 8 ;i++){
 			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
 			if(reserve == null){
 				schedule = schedule + "<td><input type='checkbox' name='reserve_term' value='" + i + "'></td>";
