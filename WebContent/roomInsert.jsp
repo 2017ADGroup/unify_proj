@@ -107,7 +107,7 @@ img {
 					<c:forEach var="rooms" items="${roomList}" varStatus="status">
 						<tr>
 							<td>${rooms.room}</td>
-							<td><img src="temp0/"></td>
+							<td><img src="image/aRoom.jpg"></td>
 							<td>規模:${rooms.size}人<br>備品:<br>${rooms.facility}</td>
 							<td><button type="submit" name="roomSelect"
 									value="${rooms.room}">この教室を選択する</button></td>
