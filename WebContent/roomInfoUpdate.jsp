@@ -106,7 +106,7 @@
 	<br>
 	<br>
 	<div class="col-sm-offset-1 col-sm-11">
-		<a href="menu.html" class="btn btn-default">Menu</a>
+		<a href="back" class="btn btn-default">Menu</a>
 	</div>
 </body>
 </html>
