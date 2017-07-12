@@ -157,8 +157,8 @@ img {
 			</div>
 		</div>
 	</form>
+<c:if test="${room != null}" >
 	<div class="col-sm-offset-1 col-sm-10">
-
 		<table class="table">
 			<caption>予約状況</caption>
 			<tr>
@@ -181,7 +181,7 @@ img {
 		<div class="form-group">
 			<label for="PUTRPOSE" class="col-sm-4 control-label">使用目的</label>
 			<div class="col-sm-5">
-				<select class="form-control" id="PURPOSE">
+				<select class="form-control" id="PURPOSE" name="purpose">
 					<option value="1">講義</option>
 					<option value="2">課外活動</option>
 					<option value="3">備品整備</option>
@@ -192,7 +192,7 @@ img {
 		<div class="form-group">
 			<label for="NUMBER" class=" col-sm-4 control-label">使用人数</label>
 			<div class="col-sm-5">
-				<input type="text" name="name" class="form-control" id="NUMBER"
+				<input type="text" name="amount" class="form-control" id="NUMBER"
 					placeholder="使用人数">
 			</div>
 		</div>
@@ -202,7 +202,7 @@ img {
 				<div class="checkbox">
 				<c:forEach var="facilities" items="${facility}"><!-- 直前のServletで予め配列として渡しておく -->
 					<label>
-						<input type="checkbox" id="FIXTURES" value="${fn:escapeXml(facilities)}">${fn:escapeXml(facilities)}
+						<input name="facilities" type="checkbox" id="FIXTURES" value="${fn:escapeXml(facilities)}">${fn:escapeXml(facilities)}
 					</label>
 				</c:forEach>
 				</div>
@@ -229,6 +229,7 @@ img {
 			<input type="submit" class="btn btn-primary" value="予約">
 		</div>
 	</form>
+</c:if>
 	<div class="col-sm-offset-1 col-sm-11">
 		<br> <br> <br> <a href="back"
 			class="btn btn-default">Menu</a>
