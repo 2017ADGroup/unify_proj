@@ -188,7 +188,7 @@
 
 		<div class="col-sm-offset-5 col-sm-1">
 			<input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='roomInfoUpdate.html'; return false;">
+				onclick="location.href='roomInfoUpdate'; return false;">
 		</div>
 		<div class="col-sm-6">
 			<input type="submit" class="btn btn-danger" value="更新"
