@@ -45,7 +45,7 @@ alert("ログアウトします");
 			</c:when>
 			<c:when test="${login_user.property == 3}">
 				<b>教室予約情報</b><br>
-				・<a href="roomInsert">教室予約</a><br>
+				・<a href="roomInsert.jsp">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
 				<b>ミニメール</b><br>
 				・<a href="mailCreate">メール新規作成</a><br>
@@ -58,7 +58,7 @@ alert("ログアウトします");
 			</c:when>
 			<c:when test="${login_user.property == 4}">
 				<b>教室予約情報</b><br>
-				・<a href="roomInsert">教室予約</a><br>
+				・<a href="roomInsert.jsp">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
 				<b>ミニメール</b><br>
 				・<a href="mailCreate">メール新規作成</a><br>

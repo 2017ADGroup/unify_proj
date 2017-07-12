@@ -172,7 +172,7 @@ public class RoomsDao {
 			for (int c = 1; c <= d; c++) {
 				if (stack.getLast().equals("room")) {
 					curum = stack.removeLast();
-					stmt.setString(c, room);
+					stmt.setString(c, "%" + room + "%");
 				} else if (stack.getLast().equals("min")) {
 					curum = stack.removeLast();
 					stmt.setInt(c, min);
@@ -195,7 +195,7 @@ public class RoomsDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM rooms";
 		}
 		return roomList;
 	}

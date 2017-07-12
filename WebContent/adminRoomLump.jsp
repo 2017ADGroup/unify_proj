@@ -86,11 +86,32 @@
 							<td>
 								<p>
 									<select name="reservePurpose">
-										<option value="${reserve.purpose}">${reserve.purpose}</option>
-										<option value="1">講義</option>
-										<option value="2">課外活動</option>
-										<option value="3">備品整備</option>
-										<option value="4">その他(備考欄記述)</option>
+										<c:choose>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1" selected>講義</option>
+												<option value="2">課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1">講義</option>
+												<option value="2" selected>課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:when test="${reserve.purpose == 1}">
+												<option value="1">講義</option>
+												<option value="2">課外活動</option>
+												<option value="3" selected>備品整備</option>
+												<option value="4">その他(備考欄記述)</option>
+											</c:when>
+											<c:otherwise>
+												<option value="1">講義</option>
+												<option value="2">課外活動</option>
+												<option value="3">備品整備</option>
+												<option value="4" selected>その他(備考欄記述)</option>
+											</c:otherwise>
+										</c:choose>
 									</select>
 								</p> <input name="reserveAmount" type="number"
 								value="${reserve.amount}">
