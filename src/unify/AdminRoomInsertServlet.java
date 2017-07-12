@@ -61,7 +61,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			}
 		}
 		if (!join1.equals("")) {
-		join1 = join1.substring(0, join1.length() - 1);
+			join1 = join1.substring(0, join1.length() - 1);
 		}
 
 		String remarks1 = request.getParameter("remarks1");
@@ -104,7 +104,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			}
 		}
 		if (!join2.equals("")) {
-		join2 = join2.substring(0, join2.length() - 1);
+			join2 = join2.substring(0, join2.length() - 1);
 		}
 
 		String remarks2 = request.getParameter("remarks2");
@@ -147,7 +147,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			}
 		}
 		if (!join3.equals("")) {
-		join3 = join3.substring(0, join3.length() - 1);
+			join3 = join3.substring(0, join3.length() - 1);
 		}
 
 		String remarks3 = request.getParameter("remarks3");
@@ -190,7 +190,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			}
 		}
 		if (!join4.equals("")) {
-		join4 = join4.substring(0, join4.length() - 1);
+			join4 = join4.substring(0, join4.length() - 1);
 		}
 
 		String remarks4 = request.getParameter("remarks4");
@@ -233,7 +233,7 @@ public class AdminRoomInsertServlet extends HttpServlet {
 			}
 		}
 		if (!join5.equals("")) {
-		join5 = join5.substring(0, join5.length() - 1);
+			join5 = join5.substring(0, join5.length() - 1);
 		}
 
 		String remarks5 = request.getParameter("remarks5");
@@ -265,23 +265,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (!"".equals(date1) || !"".equals(loginId1) || !"".equals(room1) || !"".equals(period1)
 				|| !"".equals(purpose1) || !"".equals(number1)) {
 
-			String[] date = date1.split("-");
-
 			// 入力情報を取得
-			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]),
-					Integer.parseInt(period1), room1, Integer.parseInt(purpose1), Integer.parseInt(number1), join1,
-					remarks1, loginId1);
-
-			// デバッグ
-			System.out.println(date[1]);
-			System.out.println(date[2]);
-			System.out.println(period1);
-			System.out.println(room1);
-			System.out.println(purpose1);
-			System.out.println(number1);
-			System.out.println(join1);
-			System.out.println(remarks1);
-			System.out.println(loginId1);
+			Reserve reserve = new Reserve(0, date1, Integer.parseInt(period1), room1, Integer.parseInt(purpose1),
+					Integer.parseInt(number1), join1, remarks1, loginId1);
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
@@ -293,23 +279,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (!"".equals(date2) || !"".equals(loginId2) || !"".equals(room2) || !"".equals(period2)
 				|| !"".equals(purpose2) || !"".equals(number2)) {
 
-			String[] date = date2.split("-");
-
 			// 入力情報を取得
-			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]),
-					Integer.parseInt(period2), room2, Integer.parseInt(purpose2), Integer.parseInt(number2), join2,
-					remarks2, loginId2);
-
-			// デバッグ
-			System.out.println(date[1]);
-			System.out.println(date[2]);
-			System.out.println(period2);
-			System.out.println(room2);
-			System.out.println(purpose2);
-			System.out.println(number2);
-			System.out.println(join2);
-			System.out.println(remarks2);
-			System.out.println(loginId2);
+			Reserve reserve = new Reserve(0, date2, Integer.parseInt(period2), room2, Integer.parseInt(purpose2),
+					Integer.parseInt(number2), join2, remarks2, loginId2);
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
@@ -321,23 +293,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (!"".equals(date3) || !"".equals(loginId3) || !"".equals(room3) || !"".equals(period3)
 				|| !"".equals(purpose3) || !"".equals(number3)) {
 
-			String[] date = date3.split("-");
-
 			// 入力情報を取得
-			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]),
-					Integer.parseInt(period3), room3, Integer.parseInt(purpose3), Integer.parseInt(number3), join3,
-					remarks3, loginId3);
-
-			// デバッグ
-			System.out.println(date[1]);
-			System.out.println(date[2]);
-			System.out.println(period3);
-			System.out.println(room3);
-			System.out.println(purpose3);
-			System.out.println(number3);
-			System.out.println(join3);
-			System.out.println(remarks3);
-			System.out.println(loginId3);
+			Reserve reserve = new Reserve(0, date3, Integer.parseInt(period3), room3, Integer.parseInt(purpose3),
+					Integer.parseInt(number3), join3, remarks3, loginId3);
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
@@ -349,23 +307,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (!"".equals(date4) || !"".equals(loginId4) || !"".equals(room4) || !"".equals(period4)
 				|| !"".equals(purpose4) || !"".equals(number4)) {
 
-			String[] date = date4.split("-");
-
 			// 入力情報を取得
-			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]),
-					Integer.parseInt(period4), room4, Integer.parseInt(purpose4), Integer.parseInt(number4), join4,
-					remarks4, loginId4);
-
-			// デバッグ
-			System.out.println(date[1]);
-			System.out.println(date[2]);
-			System.out.println(period4);
-			System.out.println(room4);
-			System.out.println(purpose4);
-			System.out.println(number4);
-			System.out.println(join4);
-			System.out.println(remarks4);
-			System.out.println(loginId4);
+			Reserve reserve = new Reserve(0, date4, Integer.parseInt(period4), room4, Integer.parseInt(purpose4),
+					Integer.parseInt(number4), join4, remarks4, loginId4);
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
@@ -377,23 +321,9 @@ public class AdminRoomInsertServlet extends HttpServlet {
 		if (!"".equals(date5) || !"".equals(loginId5) || !"".equals(room5) || !"".equals(period5)
 				|| !"".equals(purpose5) || !"".equals(number5)) {
 
-			String[] date = date5.split("-");
-
 			// 入力情報を取得
-			Reserve reserve = new Reserve(0, Integer.parseInt(date[1]), Integer.parseInt(date[2]),
-					Integer.parseInt(period5), room5, Integer.parseInt(purpose5), Integer.parseInt(number5), join5,
-					remarks5, loginId5);
-
-			// デバッグ
-			System.out.println(date[1]);
-			System.out.println(date[2]);
-			System.out.println(period5);
-			System.out.println(room5);
-			System.out.println(purpose5);
-			System.out.println(number5);
-			System.out.println(join5);
-			System.out.println(remarks5);
-			System.out.println(loginId5);
+			Reserve reserve = new Reserve(0, date5, Integer.parseInt(period5), room5, Integer.parseInt(purpose5),
+					Integer.parseInt(number5), join5, remarks5, loginId5);
 
 			// ユーザーを登録
 			ReserveService reserveService = new ReserveService();
