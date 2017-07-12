@@ -62,13 +62,14 @@ public class AccountService {
 			}
 		}
 		//更新
-		public void update(Users users) {
+		public int update(Users users) {
 			try (Connection conn = DbUtil.getConnection()) {
 				AccountDao accountDao = new AccountDao(conn);
 				accountDao.Update(users);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return 0;
 		}
 
 }

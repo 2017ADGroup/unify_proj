@@ -51,7 +51,7 @@ function check(){
 <h2 style="text-align: center;">アカウント情報更新</h2>
 	<br>
 	<div class="col-sm-offset-3 col-sm-9">
-	<form class="form-horizontal"method="POST" action="menu.jsp" name="form1" onSubmit="return check()">
+	<form class="form-horizontal"method="POST" action="myInfoUpdate" name="form1" onSubmit="return check()">
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
@@ -82,7 +82,7 @@ function check(){
      </div>
 		</fieldset>
 		<div class="col-sm-offset-2 col-sm-10">
-			<input type="submit" class="btn btn-danger" value="更新">
+		<input type="submit" class="btn btn-danger" value="更新">
 		</div>
 		</form>
 	</div>
