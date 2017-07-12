@@ -56,7 +56,7 @@ public class RoomInfoInsertServlet extends HttpServlet {
 		RoomsService roomsService = new RoomsService();
 		roomsService.register(rooms);
 
-		request.getRequestDispatcher("roomInfoInsert.jsp").forward(request, response);
+		request.getRequestDispatcher("roomInfoLump").forward(request, response);
 
 	}
 

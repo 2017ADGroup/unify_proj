@@ -96,7 +96,10 @@
 				</div>
 				<div class="form-group">
 					<label for="IMAGE" class="col-sm-2 control-label">画像</label>
-					<div class="col-sm-6">
+					<div class="col-sm-3">
+					<div class="preview"></div>
+					</div>
+					<div class="col-sm-3">
 						<input type="file" name="file" id="IMAGE" />
 					</div>
 				</div>
