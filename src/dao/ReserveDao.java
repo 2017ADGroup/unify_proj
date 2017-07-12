@@ -26,7 +26,7 @@ public class ReserveDao {
 		this.connection = connection;
 	}
 
-	public List<Reserve> selectAll(){
+	public List<Reserve> selectAll() {
 
 		List<Reserve> reserveList = new ArrayList<Reserve>();
 
@@ -35,17 +35,9 @@ public class ReserveDao {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Reserve reserve = new Reserve(
-					rs.getInt("reserve_id"),
-					rs.getString("reserve_date"),
-					rs.getInt("term"),
-					rs.getString("room"),
-					rs.getInt("purpose"),
-					rs.getInt("amount"),
-					rs.getString("facility"),
-					rs.getString("remarks"),
-					rs.getString("reserve_host")
-					);
+				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
+						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
+						rs.getString("remarks"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 			}
 		} catch (SQLException e) {
@@ -54,26 +46,20 @@ public class ReserveDao {
 		return reserveList;
 	}
 
-	public List<Reserve> selectById(String id){
+	public List<Reserve> selectById(String id) {
 
 		List<Reserve> reserveList = new ArrayList<Reserve>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_ID)) {
 
+			stmt.setString(1, id);
+
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				Reserve reserve = new Reserve(
-					rs.getInt("reserve_id"),
-					rs.getString("reserve_date"),
-					rs.getInt("term"),
-					rs.getString("room"),
-					rs.getInt("purpose"),
-					rs.getInt("amount"),
-					rs.getString("facility"),
-					rs.getString("remarks"),
-					rs.getString("reserve_host")
-					);
+				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
+						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
+						rs.getString("remarks"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 			}
 		} catch (SQLException e) {
@@ -82,7 +68,7 @@ public class ReserveDao {
 		return reserveList;
 	}
 
-	public void reserveInsert(Reserve reserve){
+	public void reserveInsert(Reserve reserve) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
 
 			stmt.setString(1, reserve.getReserve_date());
@@ -100,7 +86,7 @@ public class ReserveDao {
 		}
 	}
 
-	public void reserveUpdate(Reserve reserve){
+	public void reserveUpdate(Reserve reserve) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
 
 			stmt.setInt(1, reserve.getPurpose());
@@ -115,7 +101,7 @@ public class ReserveDao {
 		}
 	}
 
-	public void reserveDelete(int reDel){
+	public void reserveDelete(int reDel) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_DELETE)) {
 
 			stmt.setInt(1, reDel);
@@ -126,25 +112,17 @@ public class ReserveDao {
 		}
 	}
 
-	//MenuServletにて使用
-	public List<Reserve> selectReserveLoginIdDay(String login_id,String reserve_date){
+	// MenuServletにて使用
+	public List<Reserve> selectReserveLoginIdDay(String login_id, String reserve_date) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_LOGINID_DAYTIME)) {
 			stmt.setString(1, login_id);
 			stmt.setString(2, reserve_date);
 			ResultSet rs = stmt.executeQuery();
 			List<Reserve> reserveList = new ArrayList<Reserve>();
 			while (rs.next()) {
-				Reserve reserve = new Reserve(
-					rs.getInt("reserve_id"),
-					rs.getString("reserve_date"),
-					rs.getInt("term"),
-					rs.getString("room"),
-					rs.getInt("purpose"),
-					rs.getInt("amount"),
-					rs.getString("facility"),
-					rs.getString("Remarks()"),
-					rs.getString("reserve_host")
-					);
+				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
+						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
+						rs.getString("Remarks()"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 				return reserveList;
 			}
@@ -154,8 +132,8 @@ public class ReserveDao {
 		return null;
 	}
 
-	//MenuServletにて使用
-	public List<Reserve> selectReserveLoginIdRoomDayTerm(String login_id,String reserve_date,int term){
+	// MenuServletにて使用
+	public List<Reserve> selectReserveLoginIdRoomDayTerm(String login_id, String reserve_date, int term) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_LOGINID_DAYTIME_TERM)) {
 			stmt.setString(1, login_id);
 			stmt.setString(2, reserve_date);
@@ -164,17 +142,9 @@ public class ReserveDao {
 			ResultSet rs = stmt.executeQuery();
 			List<Reserve> reserveList = new ArrayList<Reserve>();
 			while (rs.next()) {
-				Reserve reserve = new Reserve(
-						rs.getInt("reserve_id"),
-						rs.getString("reserve_date"),
-						rs.getInt("term"),
-						rs.getString("room"),
-						rs.getInt("purpose"),
-						rs.getInt("amount"),
-						rs.getString("facility"),
-						rs.getString("Remarks()"),
-						rs.getString("reserve_host")
-						);
+				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
+						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
+						rs.getString("Remarks()"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 				return reserveList;
 			}
@@ -184,31 +154,23 @@ public class ReserveDao {
 		return null;
 	}
 
-	public Reserve selectDateRoomTerm(String date,String room,int term){
+	public Reserve selectDateRoomTerm(String date, String room, int term) {
 
-	try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ROOM_TERM_DAYTIME)) {
-		stmt.setString(1, room);
-		stmt.setString(2, date);
-		ResultSet rs = stmt.executeQuery();
-		List<Reserve> reserveList = new ArrayList<Reserve>();
-		while (rs.next()) {
-			Reserve reserve = new Reserve(
-				rs.getInt("reserve_id"),
-				rs.getString("reserve_date"),
-				rs.getInt("term"),
-				rs.getString("room"),
-				rs.getInt("purpose"),
-				rs.getInt("amount"),
-				rs.getString("facility"),
-				rs.getString("Remarks()"),
-				rs.getString("reserve_host")
-				);
-			reserveList.add(reserve);
-			return reserveList.get(0);
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ROOM_TERM_DAYTIME)) {
+			stmt.setString(1, room);
+			stmt.setString(2, date);
+			ResultSet rs = stmt.executeQuery();
+			List<Reserve> reserveList = new ArrayList<Reserve>();
+			while (rs.next()) {
+				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
+						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
+						rs.getString("Remarks()"), rs.getString("reserve_host"));
+				reserveList.add(reserve);
+				return reserveList.get(0);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	return null;
+		return null;
 	}
 }
