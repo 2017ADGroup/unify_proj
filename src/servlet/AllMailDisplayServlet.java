@@ -78,16 +78,9 @@ public class AllMailDisplayServlet extends HttpServlet {
 			List<Mail> mailList = new ArrayList<Mail>();
 			//チェックの有無、idの入力、非入力で5つに分岐する
 			if(checkbox.length == 0){//チェック無し
-				System.out.println("チェック無し");//デバッグ用
-				if(id.isEmpty()){//名前検索
-					mailList = mailService.mailFindAll();//
-				}else{//IDでの検索
-					mailList = mailService.mailFindAll();//
-				}
-
-			}if(checkbox.length == 1){//片方チェックアリ
+					mailList = mailService.mailFindByNameTo("",keyword,time);//名前検索
+			}else if(checkbox.length == 1){//片方チェックアリ
 				if(checkbox[0].equals("to")){
-					System.out.println("to");//デバッグ用
 					if(id.isEmpty()){//名前検索
 						mailList = mailService.mailFindByNameTo(name,keyword,time);//名前検索
 					}else{//IDでの検索
@@ -101,7 +94,6 @@ public class AllMailDisplayServlet extends HttpServlet {
 					}
 				}
 			}else{//双方ともチェックアリ
-				System.out.println("ToFrom");//デバッグ用
 				if(id.isEmpty()){//名前検索
 					mailList = mailService.mailFindByName(name,keyword,time);//名前検索
 				}else{//IDでの検索
@@ -109,7 +101,6 @@ public class AllMailDisplayServlet extends HttpServlet {
 				}
 			}
 
-			System.out.println(mailList.size());//デバッグ用
 			List<MailView> mailViewList = new ArrayList<MailView>();
 			for (Mail mail : mailList) {
 				UsersService UsersService = new UsersService();
