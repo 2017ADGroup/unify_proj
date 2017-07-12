@@ -44,6 +44,7 @@ alert("ログアウトします");
 				<br>
 			</c:when>
 			<c:when test="${login_user.property == 3}">
+				<b>教室予約情報</b><br>
 				・<a href="roomInsert">教室予約</a><br>
 				・<a href="roomLump">予約内容更新・削除</a><br>
 				<b>ミニメール</b><br>
@@ -78,25 +79,6 @@ alert("ログアウトします");
 			</c:otherwise>
 		</c:choose>
 			<form action="logout" method="post">
-		<input type="submit" class="btn btn-default" value="ログアウト" onclick="myEnter()">
-		</form>
-
-		<b>教室予約情報</b><br>
-		・<a href="adminRoomInsert.html">教室一括予約</a><br>
-		・<a href="adminRoomLump.html">予約内容一括更新・削除</a><br>
-		<b>ミニメール</b><br>
-		・<a href="mailCreate.html">メール新規作成</a><br>
-		・<a href="mail.html">メールボックス</a><br>
-		・<a href="allMailDisplay.html">全メール閲覧</a><br>
-		<b>教室情報管理</b><br>
-		・<a href="roomInfoInsert.html">教室情報登録</a><br>
-		・<a href="roomInfoLump.html">教室情報更新・削除</a><br>
-		<b>アカウント管理</b><br>
-		・<a href="myInfoUpdate.html">アカウント情報更新</a><br>
-		・<a href="accountInsert.html">団体・教員情報登録</a><br>
-		・<a href="accountLump.html">団体・教員情報更新・削除</a><br>
-		<br>
-		<form action="CalenderAccess" method="post">
 		<input type="submit" class="btn btn-default" value="ログアウト" onclick="myEnter()">
 		</form>
 	</div>
