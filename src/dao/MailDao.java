@@ -15,8 +15,8 @@ public class MailDao {
 	private static final String SQL_SELECT_ALL = "SELECT * FROM mail";
 	private static final String SQL_SELECT_BY_MAILID = "SELECT * FROM mail WHERE mail_id = ?";
 	private static final String SQL_SELECT_BY_LOGINID = "SELECT * FROM mail WHERE receiver = ? OR sender = ?";
-	private static final String SQL_INSERT = "INSERT INTO user_info (sender, receiver, deytime,subject,message) VALUES ( ?, ?, ?, ?, ?)";
-	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,receiver = ?,deytime = ?,subject = ?,message = ? WHERE mail_id = ?";
+	private static final String SQL_INSERT = "INSERT INTO mail (receiver, sender, daytime, subject, message) VALUES ( ?, ?, ?, ?, ?)";
+	private static final String SQL_UPDATE = "UPDATE mail SET sender = ?,receiver = ?,daytime = ?,subject = ?,message = ? WHERE mail_id = ?";
 	private static final String SQL_DELETE = "DELETE FROM mail WHERE mail_id = ?";
 	private static String SQL_SELECT = "SELECT * FROM mail";
 
@@ -62,10 +62,10 @@ public class MailDao {
 		return null;
 	}
 
-	public void mailInsert(String to, String from, String time, String subject, String message) {
+	public void mailInsert(String to, String login_user, String time, String subject, String message) {
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
 			stmt.setString(1, to);
-			stmt.setString(2, from);
+			stmt.setString(2, login_user);
 			stmt.setString(3, time);
 			stmt.setString(4, subject);
 			stmt.setString(5, message);

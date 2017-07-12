@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entity.Users;
 import service.MailService;
 import service.UsersService;
 
@@ -19,67 +22,62 @@ import service.UsersService;
 public class MailCreateConfirmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public MailCreateConfirmServlet() {
+		super();
 
+	}
 
-    public MailCreateConfirmServlet() {
-        super();
-
-    }
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
-
 		String id = request.getParameter("receiver");
 
+		UsersService usersservice = new UsersService();
+		usersservice.idByName(id);
 
-			UsersService usersservice = new UsersService();
-			 usersservice.idByName(id);
-
-			 request.setAttribute("users.name",id);
+		request.setAttribute("users.name", id);
 
 		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-		/*String repass = request.getParameter("rePass");*/
+		/* String repass = request.getParameter("rePass"); */
+
+		String to = (String) request.getParameter("receiver");
+		Users login_user = (Users)session.getAttribute("login_user");
+		String subject = (String) request.getParameter("subject");
+		String message = (String) request.getParameter("message");
+		System.out.println(to);
+		System.out.println(subject);
+		System.out.println(message);
+		// 値を取得
+
+		Date d = new Date();
+		SimpleDateFormat d1 = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		String q1 = d1.format(d);
 
 
-		String to = (String)session.getAttribute("to");
-		String from = (String)session.getAttribute("from");
-		String time = (String)session.getAttribute("time");
-		String subject = (String)session.getAttribute("subject");
-		String message = (String)session.getAttribute("message");
-		//値を取得
+		MailService mailservice = new MailService();
 
-		/*if (repass == null){
-			repass = "";
-		}
+		mailservice.mailInsert(to, login_user.getLogin_id(), q1, subject, message);
 
-		// 入力値のチェック
-		if (!pass.equals(repass)) {
-			// メッセージ設定
-			request.setAttribute("msg", "前画面で入力されたパスワードと一致しませんでした");
+		session.setAttribute("receiver", to);
+		session.setAttribute("sender", login_user.getLogin_id());
+		session.setAttribute("time", q1);
+		session.setAttribute("subject", subject);
+		session.setAttribute("message", message);
+		System.out.println("subject");
+		System.out.println("message");
 
-			// 次画面指定
-			request.getRequestDispatcher("insertConfirm.jsp").forward(request, response);
-			return;
-		}else{*/
-			MailService mailservice = new MailService();
-
-
-			mailservice.mailInsert(to, from, time, subject, message);
-
-
-
-			request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
+		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
 	}
-
 
 }
