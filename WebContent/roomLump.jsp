@@ -48,8 +48,8 @@
 </head>
 <body>
 	<h2 style="text-align: center;">予約内容更新・削除</h2>
-	<form action="roomDelete" class="form-hrizonatal" method="POST"
-		name="form1" onSubmit="return check()">
+	<form action="roomDelete" class="form-hrizonatal" method="POST" name="form1"
+		onSubmit="return check()">
 		<table class="table">
 			<caption>予約内容更新・削除</caption>
 			<thead>
@@ -91,22 +91,20 @@
 							</p> <input name="ninnzuu" type="number" value="50"
 							disabled="disabled">
 						</td>
-						<td><c:set var="facility">${reserve.facility}</c:set> <%
- 	String facility = (String) pageContext.getAttribute("facility");
- 		String[] facilities = facility.split(",");
- 		for (String fa : facilities) {
- 			pageContext.setAttribute("fa", fa);
- %>
-							<button type="button" class="btn btn-default" disabled='disabled'>${fa}</button>
+						<td><c:set var="facility">${reserve.facility}</c:set>
 							<%
-								}
-							%></td>
+							String facility = (String) pageContext.getAttribute("facility");
+							String[] facilities = facility.split(",");
+							for (String fa: facilities) {
+								pageContext.setAttribute("fa", fa);
+							%>
+								<button type="button" class="btn btn-default"
+									disabled='disabled'>${fa}</button>
+									<%} %></td>
 						<td><textarea name="bikou" rows="5" cols="32"
 								disabled="disabled">${reserve.remarks}</textarea></td>
-						<td><input name="reserveDelete" type="checkbox"
-							value="${reserve.reserve_id}" /></td>
-						<td><a href='roomUpdate?reserveId="${reserve.reserve_id}"'
-							class="btn btn-danger">更新</a></td>
+						<td><input name="reserveDelete" type="checkbox" value="${reserve.reserve_id}" /></td>
+						<td><a href='roomUpdate?reserveId="${reserve.reserve_id}"' class="btn btn-danger">更新</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
