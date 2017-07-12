@@ -139,7 +139,7 @@
 			<c:set var="fix">${fix}</c:set>
 			<%
 				String fixture = (String) pageContext.getAttribute("fix");
-				request.setAttribute("newFixs", fixture);
+				session.setAttribute("newFixs", fixture);
 				String[] fixtures = fixture.split(",");
 				for (int i = 0; i < fixtures.length; i++) {
 					pageContext.setAttribute("ff" + i, fixtures[i]);
