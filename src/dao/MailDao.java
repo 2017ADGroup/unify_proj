@@ -63,7 +63,7 @@ public class MailDao {
 	}
 
 	public void mailInsert(String to, String from, String time, String subject, String message) {
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
 			stmt.setString(1, to);
 			stmt.setString(2, from);
 			stmt.setString(3, time);
@@ -76,7 +76,7 @@ public class MailDao {
 	}
 
 	public void mailupdate(int id, String to, String from, String time, String subject, String message) {
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
 			stmt.setString(1, to);
 			stmt.setString(2, from);
 			stmt.setString(3, time);

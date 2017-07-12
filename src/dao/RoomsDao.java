@@ -135,7 +135,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " room=?";
+			SQL_SELECT = SQL_SELECT + " room LIKE ?";
 			stack.addFirst("room");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -143,7 +143,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " size > ?";
+			SQL_SELECT = SQL_SELECT + " size >= ?";
 			stack.addFirst("min");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -151,7 +151,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " size < ?";
+			SQL_SELECT = SQL_SELECT + " size <= ?";
 			stack.addFirst("max");
 		}
 
@@ -159,7 +159,7 @@ public class RoomsDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " facility=?";
+			SQL_SELECT = SQL_SELECT + " facility LIKE ?";
 			stack.addFirst("facility");
 		}
 
@@ -193,6 +193,7 @@ public class RoomsDao {
 				roomList.add(rooms);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
 			SQL_SELECT = "SELECT * FROM rooms";
