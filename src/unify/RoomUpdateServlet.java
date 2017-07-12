@@ -39,7 +39,10 @@ public class RoomUpdateServlet extends HttpServlet {
 
 		Reserve reserve = reserveService.findByReserve(Integer.parseInt(reserveId));
 
+		String fixList = reserveService.findFix(reserve.getRoom());
+
 		request.setAttribute("reserve", reserve);
+		request.setAttribute("fixList", fixList);
 
 		request.getRequestDispatcher("roomUpdateConfirm.jsp").forward(request, response);
 	}
