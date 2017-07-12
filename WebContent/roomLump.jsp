@@ -113,7 +113,7 @@
 										</c:otherwise>
 									</c:choose>
 								</select>
-							</p> <input name="ninnzuu" type="number" value="50"
+							</p> <input name="ninnzuu" type="number" value="${reserve.amount}"
 							disabled="disabled">
 						</td>
 						<td><c:set var="facility">${reserve.facility}</c:set> <%
