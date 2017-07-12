@@ -16,7 +16,7 @@ import service.MenuService;
 /**
  * Servlet implementation class menuServlet
  */
-@WebServlet("/MenuServlet")
+@WebServlet("/menu")
 public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
