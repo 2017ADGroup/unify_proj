@@ -187,12 +187,18 @@ function check(){
 			<input type="submit" class="btn btn-danger" value="登録">
 		</div>
 		</div>
-	</form>
+
 	<br>
 	<br>
 	<br>
+
+	<div class="col-sm-offset-1 col-sm-11">
+		<a href="back" class="btn btn-default">Menu</a>
+</div>
 	<div>
 		<a href="menu.jspl" class="btn btn-default">Menu</a>
+
 	</div>
+	</form>
 </body>
 </html>
