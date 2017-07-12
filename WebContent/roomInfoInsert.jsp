@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>教室情報登録</title>
 <!-- BootstrapのCSS読み込み -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -12,13 +12,49 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- BootstrapのJS読み込み -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+	$(function() {
+		//画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+		$('form')
+				.on(
+						'change',
+						'input[type="file"]',
+						function(e) {
+							var file = e.target.files[0], reader = new FileReader(), $preview = $(".preview");
+							t = this;
+
+							// 画像ファイル以外の場合は何もしない
+							if (file.type.indexOf("image") < 0) {
+								return false;
+							}
+
+							// ファイル読み込みが完了した際のイベント登録
+							reader.onload = (function(file) {
+								return function(e) {
+									//既存のプレビューを削除
+									$preview.empty();
+									// .prevewの領域の中にロードした画像を表示するimageタグを追加
+									$preview.append($('<img>').attr({
+										src : e.target.result,
+										width : "270px",
+										class : "preview",
+										title : file.name
+									}));
+								};
+							})(file);
+
+							reader.readAsDataURL(file);
+						});
+	});
+</script>
 </head>
 <body>
 	<h2 style="text-align: center;">教室情報登録</h2>
 	<br>
 
 	<div class="col-sm-offset-2 col-sm-10">
-		<form class="form-horizontal" action="roomInfoInsert" method="POST">
+		<form class="form-horizontal" action="roomInfoInsert" method="POST"
+			enctype="multipart/form-data">
 			<fieldset>
 				<div class="form-group">
 					<label for="NAME" class="col-sm-2 control-label">名前</label>
@@ -29,7 +65,10 @@
 				</div>
 				<div class="form-group">
 					<label for="IMAGE" class="col-sm-2 control-label">画像</label>
-					<div class="col-sm-6">
+					<div class="col-sm-3">
+						<div class="preview"></div>
+					</div>
+					<div class="col-sm-3">
 						<input type="file" name="file" id="IMAGE" />
 					</div>
 				</div>
