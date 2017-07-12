@@ -206,8 +206,8 @@ img {
 		<div class="form-group">
 			<label for="NUMBER" class=" col-sm-4 control-label">使用人数</label>
 			<div class="col-sm-5">
-				<input type="text" name="amount" class="form-control" id="NUMBER"
-					placeholder="使用人数">
+				<input type="number" name="amount" class="form-control" id="NUMBER"
+					placeholder="使用人数" required='required'>
 			</div>
 		</div>
 		<div class="form-group">
