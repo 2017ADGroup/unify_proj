@@ -87,7 +87,9 @@ public class AdminRoomLumpServlet extends HttpServlet {
 			if (!reserveFixtures6[i].equals("")) {
 				join = join + reserveFixtures6[i] + ",";
 			}
+			if (!join.equals("")) {
 			join = join.substring(0, join.length() - 1);
+			}
 
 			// 入力情報を取得
 			reserve = new Reserve(Integer.parseInt(reserveId[i]), Integer.parseInt(reservePurpose[i]),
