@@ -41,6 +41,22 @@ public class UsersDao {
 				throw new RuntimeException(e);
 			}
 		}
+		//名前からidを割り出す
+		public List<String> idsByName(String id) {
+			System.out.println(id);
+			try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
+				stmt.setString(1, id);
+				ResultSet rs = stmt.executeQuery();
+				List<String> names = new ArrayList<String>();
+				while (rs.next()) {
+					names.add(rs.getString("login_id"));
+				}
+				return names;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
 
 		public String idByName(String id) {
 			System.out.println(id);
