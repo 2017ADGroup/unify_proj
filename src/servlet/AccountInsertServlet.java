@@ -33,17 +33,6 @@ public class AccountInsertServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		/*
-		 * // 文字化け対策 request.setCharacterEncoding("UTF-8");
-		 *
-		 * List<Users> list = AccountService.findAll();
-		 *
-		 * request.setAttribute("usersList",list);
-		 *
-		 * request.getRequestDispatcher("accountInsert.jsp").forward(request,
-		 * response);
-		 */
-
 	}
 
 	/**
@@ -79,4 +68,5 @@ public class AccountInsertServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
 	}
+
 }

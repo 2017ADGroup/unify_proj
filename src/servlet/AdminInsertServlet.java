@@ -56,7 +56,7 @@ public class AdminInsertServlet extends HttpServlet {
 			if (!id[i].equals("") && !name[i].equals("") && !kana[i].equals("")) {
 
 				// 入力情報を取得
-				Users users = new Users(0, id[i], id[i], 3, name[i], kana[i], 1, "");
+				Users users = new Users(0, id[i], id[i], 2, name[i], kana[i], 1, "");
 				// ユーザーを更新
 				accountService.insert(users);
 			}
