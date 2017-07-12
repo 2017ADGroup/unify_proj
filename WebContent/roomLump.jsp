@@ -139,8 +139,8 @@
 		<div class="col-sm-12" style="text-align: center;">
 
 			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="roomLump.html?page=1">1</a> <a
-					class="btn btn-default" href="roomLump.html?page=2">2</a>
+				<a class="btn btn-default" href="roomLump.jsp?page=1">1</a> <a
+					class="btn btn-default" href="roomLump.jsp?page=2">2</a>
 			</div>
 
 			<br>

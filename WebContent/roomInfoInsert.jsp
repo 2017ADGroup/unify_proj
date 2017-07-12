@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>教室情報登録</title>
 <!-- BootstrapのCSS読み込み -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -12,6 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- BootstrapのJS読み込み -->
 <script src="js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript">
 <!--
 	function check() {
@@ -78,14 +79,20 @@
 						});
 	});
 </script>
+=======
+>>>>>>> fd297e30a99bcda62533fd0cb5f5ec6a71b36cae
 </head>
 <body>
 	<h2 style="text-align: center;">教室情報登録</h2>
 	<br>
 
 	<div class="col-sm-offset-2 col-sm-10">
+<<<<<<< HEAD
 		<form class="form-horizontal" action="roomInfoInsert" method="POST"
 			enctype="multipart/form-data" name="form1" onSubmit="return check()">
+=======
+		<form class="form-horizontal" action="roomInfoInsert" method="POST">
+>>>>>>> fd297e30a99bcda62533fd0cb5f5ec6a71b36cae
 			<fieldset>
 				<div class="form-group">
 					<label for="NAME" class="col-sm-2 control-label">名前</label>
@@ -96,10 +103,7 @@
 				</div>
 				<div class="form-group">
 					<label for="IMAGE" class="col-sm-2 control-label">画像</label>
-					<div class="col-sm-3">
-						<div class="preview"></div>
-					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-6">
 						<input type="file" name="file" id="IMAGE" />
 					</div>
 				</div>
