@@ -55,9 +55,7 @@ public class MailCreateConfirmServlet extends HttpServlet {
 		Users login_user = (Users)session.getAttribute("login_user");
 		String subject = (String) request.getParameter("subject");
 		String message = (String) request.getParameter("message");
-		System.out.println(to);
-		System.out.println(subject);
-		System.out.println(message);
+
 		// 値を取得
 
 		Date d = new Date();
@@ -74,8 +72,6 @@ public class MailCreateConfirmServlet extends HttpServlet {
 		session.setAttribute("time", q1);
 		session.setAttribute("subject", subject);
 		session.setAttribute("message", message);
-		System.out.println("subject");
-		System.out.println("message");
 
 		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
 	}
