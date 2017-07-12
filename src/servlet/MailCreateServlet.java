@@ -16,7 +16,7 @@ import service.MailService;
 /**
  * Servlet implementation class MailCreateServlet
  */
-@WebServlet("/MailCreateServlet")
+@WebServlet("/mailCreate")
 public class MailCreateServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
