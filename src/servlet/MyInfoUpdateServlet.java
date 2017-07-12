@@ -24,6 +24,19 @@ public class MyInfoUpdateServlet extends HttpServlet {
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
+<<<<<<< HEAD
+		// 登録（名前、かな、パスワードの取得
+		String name = request.getParameter("name");
+		String kana= request.getParameter("kana");
+		String pass = request.getParameter("pass");
+
+		if (!pass.equals("") && !pass.equals("") && !name.equals("")) {
+		//入力情報を取得
+		Users users = new Users(0,"", pass, 4, name, kana, 0, "");
+		//ユーザーを登録
+		AccountService accountService = new AccountService();
+		accountService.update(users);
+=======
 		// 新規PASSを取得
 		HttpSession session = request.getSession();
 		String pass = (String) session.getAttribute("pass");
@@ -47,6 +60,7 @@ public class MyInfoUpdateServlet extends HttpServlet {
 
 		// 入力情報を取得
 		Users users = new Users(Integer.parseInt(id), name, kana, pass);
+>>>>>>> 0c77fae2e766e719aad0caa27b250ef34f888aac
 
 		// ユーザーを登録
 		UsersService usersService = new UsersService();

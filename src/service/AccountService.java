@@ -72,5 +72,18 @@ public class AccountService {
 				e.printStackTrace();
 			}
 		}
+<<<<<<< HEAD
+		//更新
+		public int update(Users users) {
+			try (Connection conn = DbUtil.getConnection()) {
+				AccountDao accountDao = new AccountDao(conn);
+				accountDao.Update(users);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return 0;
+		}
+=======
+>>>>>>> 0c77fae2e766e719aad0caa27b250ef34f888aac
 
 }

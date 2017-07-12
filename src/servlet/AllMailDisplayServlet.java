@@ -68,7 +68,36 @@ public class AllMailDisplayServlet extends HttpServlet {
 			int page = Integer.parseInt(request.getParameter("page"));
 
 			MailService mailService = new MailService();
+<<<<<<< HEAD
+			List<Mail> mailList = new ArrayList<Mail>();
+			//チェックの有無、idの入力、非入力で5つに分岐する
+			if(checkbox.length == 0){//チェック無し
+					mailList = mailService.mailFindByNameTo("",keyword,time);//名前検索
+			}else if(checkbox.length == 1){//片方チェックアリ
+				if(checkbox[0].equals("to")){
+					if(id.isEmpty()){//名前検索
+						mailList = mailService.mailFindByNameTo(name,keyword,time);//名前検索
+					}else{//IDでの検索
+						mailList = mailService.mailFindByIdTo(id,keyword,time);//id検索
+					}
+				}else{
+					if(id.isEmpty()){//名前検索
+						mailList = mailService.mailFindByNameFrom(name,keyword,time);//名前検索
+					}else{//IDでの検索
+						mailList = mailService.mailFindByIdFrom(id,keyword,time);//id検索
+					}
+				}
+			}else{//双方ともチェックアリ
+				if(id.isEmpty()){//名前検索
+					mailList = mailService.mailFindByName(name,keyword,time);//名前検索
+				}else{//IDでの検索
+					mailList = mailService.mailFindById(id,keyword,time);//id検索
+				}
+			}
+
+=======
 			List<Mail> mailList = mailService.mailFindAll();
+>>>>>>> 90e1335f1afa028b1dfbe7e8913b3d5b919f87ac
 			List<MailView> mailViewList = new ArrayList<MailView>();
 			for (Mail mail : mailList) {
 				UsersService UsersService = new UsersService();
