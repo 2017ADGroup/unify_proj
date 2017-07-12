@@ -34,6 +34,9 @@ public class RoomUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+
 		String reserveId = request.getParameter("reserveId");
 
 		ReserveService reserveService = new ReserveService();
@@ -46,6 +49,7 @@ public class RoomUpdateServlet extends HttpServlet {
 
 		request.setAttribute("reserve", reserve);
 		request.setAttribute("fixList", fixList);
+		request.setAttribute("reId", reserveId);
 
 		request.getRequestDispatcher("roomUpdateConfirm.jsp").forward(request, response);
 	}

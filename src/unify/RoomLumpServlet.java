@@ -37,14 +37,17 @@ public class RoomLumpServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+
 		HttpSession session = request.getSession();
 		Users user = (Users) session.getAttribute("login_user");
 
 		ReserveService reserveService = new ReserveService();
-		// List<Reserve> list = reserveService.findById(user.getLogin_id());
+		List<Reserve> list = reserveService.findById(user.getLogin_id());
 
 		// テスト用
-		List<Reserve> list = reserveService.findById("99a3445");
+		// List<Reserve> list = reserveService.findById("99a3445");
 
 		request.setAttribute("reserveList", list);
 

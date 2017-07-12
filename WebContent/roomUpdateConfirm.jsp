@@ -78,13 +78,13 @@
 										<option value="3">備品整備</option>
 										<option value="4">その他(備考欄記述)</option>
 									</c:when>
-									<c:when test="${reserve.purpose == 1}">
+									<c:when test="${reserve.purpose == 2}">
 										<option value="1">講義</option>
 										<option value="2" selected>課外活動</option>
 										<option value="3">備品整備</option>
 										<option value="4">その他(備考欄記述)</option>
 									</c:when>
-									<c:when test="${reserve.purpose == 1}">
+									<c:when test="${reserve.purpose == 3}">
 										<option value="1">講義</option>
 										<option value="2">課外活動</option>
 										<option value="3" selected>備品整備</option>
@@ -156,7 +156,8 @@
  %> <input type="checkbox" name="afFix" value="${fi}">${fi} <%
  	}
  %></td>
-						<td><textarea name="afRemarks" rows="4" cols="36"></textarea></td>
+						<td><textarea name="afRemarks" rows="4" cols="36"></textarea>
+						<input type="hidden" name="reId" value="${reId}"></td>
 					</tr>
 				</tbody>
 			</table>
