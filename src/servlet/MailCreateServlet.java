@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Users;
 import service.UsersService;
 
 /**
@@ -32,16 +34,14 @@ public class MailCreateServlet extends HttpServlet{
 		request.setCharacterEncoding("UTF-8");
 		/*HttpSession session = request.getSession();*/
 
-		String id = request.getParameter("name");
 
-		try {
+
+
 			UsersService usersservice = new UsersService();
-			 usersservice.idByName(id);
+			List<Users> list = usersservice.findAll();
 
-		}
-		catch (Exception e) {
+			request.setAttribute("usersList",list);
 
-		}
 		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
 	}
 	    	/**

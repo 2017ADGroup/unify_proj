@@ -15,7 +15,7 @@ public class UsersDao {
 		private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
 		private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
 		private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE user_id = ?";
-		private static final String SQL_SELECT = "SELECT * FROM users";
+		private static final String SQL_SELECT = "SELECT * FROM users ORDER BY kana";
 
 		private Connection connection;
 
