@@ -172,7 +172,7 @@ public class RoomsDao {
 			for (int c = 1; c <= d; c++) {
 				if (stack.getLast().equals("room")) {
 					curum = stack.removeLast();
-					stmt.setString(c, room);
+					stmt.setString(c, "%" + room + "%");
 				} else if (stack.getLast().equals("min")) {
 					curum = stack.removeLast();
 					stmt.setInt(c, min);
