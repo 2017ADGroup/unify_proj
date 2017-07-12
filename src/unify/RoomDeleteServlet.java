@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import entity.Reserve;
 import entity.Users;
 import service.ReserveService;
-import service.RoomsService;
 
 /**
  * Servlet implementation class RoomDeleteServlet
@@ -50,14 +49,14 @@ public class RoomDeleteServlet extends HttpServlet {
 		// 削除するIDの取得
 		String[] reserveDelete = request.getParameterValues("reserveDelete");
 
-		RoomsService roomsService = new RoomsService();
+		ReserveService roomsService = new ReserveService();
 
 		// 一括削除
 		if (reserveDelete != null) {
 			for (String reserveDel : reserveDelete) {
 
 				// roomを削除
-				roomsService.erase(Integer.parseInt(reserveDel));
+				roomsService.reserveErase(Integer.parseInt(reserveDel));
 
 			}
 		}
