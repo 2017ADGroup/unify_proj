@@ -139,8 +139,8 @@
 		<div class="col-sm-12" style="text-align: center;">
 
 			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="roomLump.html?page=1">1</a> <a
-					class="btn btn-default" href="roomLump.html?page=2">2</a>
+				<a class="btn btn-default" href="roomLump.jsp?page=1">1</a> <a
+					class="btn btn-default" href="roomLump.jsp?page=2">2</a>
 			</div>
 
 			<br>
@@ -158,7 +158,7 @@
 			<input type="submit" class="btn btn-danger" value="削除">
 		</div>
 		<div class="col-sm-offset-1 col-sm-11">
-			<br> <br> <a href="menu.html" class="btn btn-default">Menu</a>
+			<br> <br> <a href="back" class="btn btn-default">Menu</a>
 		</div>
 	</form>
 </body>
