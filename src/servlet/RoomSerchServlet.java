@@ -45,13 +45,13 @@ public class RoomSerchServlet extends HttpServlet {
 		}
 
 		if(!request.getParameter("sizeMax").isEmpty()){
-			min = Integer.parseInt(request.getParameter("sizeMax"));
+			max = Integer.parseInt(request.getParameter("sizeMax"));
 		}
 
 		//複数検索
 		RoomsService roomsService = new RoomsService();
 		List<Rooms> roomList = roomsService.serchRooms(
-		request.getParameter("room"),min,max,request.getParameter("fixtures"));
+				request.getParameter("room"),min,max,request.getParameter("fixtures"));
 		session.setAttribute("roomList", roomList);
 
 		Calendar thisDate = Calendar.getInstance();
