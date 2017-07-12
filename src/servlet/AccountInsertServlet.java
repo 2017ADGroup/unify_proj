@@ -61,7 +61,7 @@ public class AccountInsertServlet extends HttpServlet {
 
 				// 入力情報を取得
 				Users users = new Users(0, id[i], id[i], Integer.parseInt(property[i]), name[i], kana[i], 1, "");
-				// ユーザーを更新
+				// ユーザーを登録
 				accountService.insert(users);
 			}
 

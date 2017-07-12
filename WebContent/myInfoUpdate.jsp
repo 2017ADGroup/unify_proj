@@ -51,24 +51,24 @@ function check(){
 <h2 style="text-align: center;">アカウント情報更新</h2>
 	<br>
 	<div class="col-sm-offset-3 col-sm-9">
-	<form class="form-horizontal"method="POST" action="menu.jsp" name="form1" onSubmit="return check()">
+	<form class="form-horizontal"method="POST" action="myInfoUpdate" name="form1" onSubmit="return check()">
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name">
+					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name" value="${fn:escapeXml(users.name)}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">かな</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana">
+					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana" value="${fn:escapeXml(users.kana)}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="PASS" class="col-sm-2 control-label" >Password</label>
 				<div class="col-sm-5">
-						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass">
+						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass" value="${fn:escapeXml(users.password)}">
 				</div>
 			</div>
 			  <div class="form-group">
@@ -77,12 +77,12 @@ function check(){
     		<label>
       			<input type="checkbox" name="check1" value="ok"> この内容でよろしいですか？
     		</label>
-  			</div>
-  	 </div>
-     </div>
+  	</div>
+  	     </div>
+  </div>
 		</fieldset>
 		<div class="col-sm-offset-2 col-sm-10">
-			<input type="submit" class="btn btn-danger" value="更新">
+		<input type="submit" class="btn btn-danger" value="更新">
 		</div>
 		</form>
 	</div>
@@ -91,5 +91,6 @@ function check(){
 	<br>
 		<a href="back" class="btn btn-default">Menu</a>
 	</div>
+
 </body>
 </html>

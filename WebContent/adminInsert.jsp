@@ -183,7 +183,7 @@ function check(){
   </div>
 <div class="col-sm-offset-5 col-sm-1">
 <input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='adminMenu.jsp'; return false;">
+				onclick="location.href='updateInput.jsp'; return false;">
 
 </div>
 <div class="col-sm-6">
@@ -195,7 +195,7 @@ function check(){
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
 	<br>
-		<a href="adminMenu.jsp" class="btn btn-default">Menu</a>
+		<a href="back" class="btn btn-default">Menu</a>
 	</div>
 </form>
 </body>
