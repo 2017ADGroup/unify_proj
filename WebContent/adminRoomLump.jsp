@@ -99,16 +99,20 @@
  	String facility = (String) pageContext.getAttribute("facility");
  		String[] facilities = facility.split(",");
 
- 		for (int i=0; i<facilities.length; i++) {
- 			pageContext.setAttribute("f"+ i, facilities[i]);
+ 		int fx = facilities.length;
+ 		for (int i = 0; i < fx; i++) {
+ 			pageContext.setAttribute("f" + i, facilities[i]);
+ 		}
+ 		for (int j = fx; j < 6; j++) {
+ 			pageContext.setAttribute("f" + j, "");
  		}
  %> <input type="text" name="reserveFixtures6" value='${f0}'><br>
- <input type="text" name="reserveFixtures1" value='${f1}'><br>
+								<input type="text" name="reserveFixtures1" value='${f1}'><br>
 								<input type="text" name="reserveFixtures2" value='${f2}'><br>
 								<input type="text" name="reserveFixtures3" value='${f3}'><br>
 								<input type="text" name="reserveFixtures4" value='${f4}'><br>
 								<input type="text" name="reserveFixtures5" value='${f5}'><br>
-								</td>
+							</td>
 							<td><textarea name="reserveRemarks" rows="5" cols="32">${reserve.remarks}</textarea></td>
 							<td><input name="reserveDelete" type="checkbox"
 								value="${reserve.reserve_id}" /> <input name="reserveId"
