@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,7 @@ import service.ReserveService;
 /**
  * Servlet implementation class roomInsertServlet
  */
-@WebServlet("/roomInsertServlet")
+@WebServlet("/roomInsert")
 public class roomInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -70,6 +69,7 @@ public class roomInsertServlet extends HttpServlet {
 		}
 		String remarks = request.getParameter("remarks");
 		String[] reserve_term = request.getParameterValues("reserve_term");
+		System.out.println(reserve_term.length);//デバッグ用
 		//登録処理
 		Reserve reserve = new Reserve();
 		if(reserve_term != null){
@@ -87,8 +87,9 @@ public class roomInsertServlet extends HttpServlet {
 			}
 		}
 
-		RequestDispatcher dispatch = request.getRequestDispatcher("/back");//Menuを経由する
-		dispatch.forward(request, response);
+		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
+		/*RequestDispatcher dispatch = request.getRequestDispatcher("menu.jsp");//Menuを経由する
+		dispatch.forward(request, response);*/
 	}
 
 

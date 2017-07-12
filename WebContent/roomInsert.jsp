@@ -171,6 +171,8 @@ img {
 		</div>
 	</form>
 <c:if test="${room != null}" >
+<form class="form-horizontal" method="POST" action="roomInsert"
+		name="reserve_form" onSubmit="return check()">
 	<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
 			<caption>予約状況</caption>
@@ -189,8 +191,7 @@ img {
 			</tr>
 		</table>
 	</div>
-	<form class="form-horizontal" method="POST" action="menu.html"
-		name="reserve_form" onSubmit="return check()">
+
 		<div class="form-group">
 			<label for="PUTRPOSE" class="col-sm-4 control-label">使用目的</label>
 			<div class="col-sm-5">
