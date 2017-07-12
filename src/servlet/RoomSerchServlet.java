@@ -36,6 +36,7 @@ public class RoomSerchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		int min = -1;
 		int max = -1;
 		//最大値最小値空文字チェック
@@ -52,6 +53,10 @@ public class RoomSerchServlet extends HttpServlet {
 		List<Rooms> roomList = roomsService.serchRooms(
 		request.getParameter("room"),min,max,request.getParameter("fixtures"));
 		request.setAttribute("roomList", roomList);
+
+		Calendar thisDate = Calendar.getInstance();
+		String month = String.valueOf(thisDate.get(Calendar.MONTH));
+		session.setAttribute("thisMonth",month);
 		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
 
 	}
@@ -90,7 +95,7 @@ public class RoomSerchServlet extends HttpServlet {
 					case 3:
 						purpose = "備品整備";
 						break;
-					case 4:
+					default:
 						purpose = "その他";
 						break;
 				}

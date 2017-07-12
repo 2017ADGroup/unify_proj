@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.Reserve;
+import service.ReserveService;
+
 /**
  * Servlet implementation class roomUpdateServlet
  */
@@ -28,6 +31,15 @@ public class RoomUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String reserveId = request.getParameter("reserveId");
+
+		ReserveService reserveService = new ReserveService();
+
+		Reserve reserve = reserveService.findByReserve(Integer.parseInt(reserveId));
+
+		request.setAttribute("reserve", reserve);
+
+		request.getRequestDispatcher("roomInfoUpdate.jsp").forward(request, response);
 	}
 
 	/**
