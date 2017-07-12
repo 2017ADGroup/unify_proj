@@ -17,7 +17,7 @@ import service.ReserveService;
 /**
  * Servlet implementation class RoomLumpServlet
  */
-@WebServlet("/RoomLumpServlet")
+@WebServlet("/roomLump")
 public class RoomLumpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +42,8 @@ public class RoomLumpServlet extends HttpServlet {
 		List<Reserve> list = reserveService.findById(user.getLogin_id());
 
 		request.setAttribute("reserveList", list);
+
+		request.getRequestDispatcher("roomLump.jsp").forward(request, response);
 	}
 
 	/**
