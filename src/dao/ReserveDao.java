@@ -12,6 +12,7 @@ import entity.Reserve;
 public class ReserveDao {
 
 	private static final String SQL_SELECT_ALL = "SELECT * FROM reserve";
+	private static final String SQL_SELECT_BY_ID = "SELECT * FROM reserve WHERE reserve_host=?";
 	private static final String SQL_INSERT = "INSERT INTO reserve (reserve_date, term, room, purpose, amount, facility, remarks, reserve_host) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_UPDATE = "UPDATE reserve SET purpose=?, amount=?, facility=?, remarks=? WHERE reserve_id=?";
 	private static final String SQL_DELETE = "DELETE FROM reserve WHERE reserve_id=?";
@@ -30,6 +31,34 @@ public class ReserveDao {
 		List<Reserve> reserveList = new ArrayList<Reserve>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Reserve reserve = new Reserve(
+					rs.getInt("reserve_id"),
+					rs.getString("reserve_date"),
+					rs.getInt("term"),
+					rs.getString("room"),
+					rs.getInt("purpose"),
+					rs.getInt("amount"),
+					rs.getString("facility"),
+					rs.getString("remarks"),
+					rs.getString("reserve_host")
+					);
+				reserveList.add(reserve);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reserveList;
+	}
+
+	public List<Reserve> selectById(String id){
+
+		List<Reserve> reserveList = new ArrayList<Reserve>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_ID)) {
 
 			ResultSet rs = stmt.executeQuery();
 
