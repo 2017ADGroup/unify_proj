@@ -71,7 +71,7 @@ alert("ログアウトします");
 				<b>ミニメール</b><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
 				<br>
 			</c:when>
 			<c:otherwise>
