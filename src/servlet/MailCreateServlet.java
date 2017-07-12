@@ -1,17 +1,14 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import entity.Mail;
-import service.MailService;
+import service.UsersService;
 
 /**
  * Servlet implementation class MailCreateServlet
@@ -33,11 +30,14 @@ public class MailCreateServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();*/
+
+		String id = request.getParameter("name");
+
 		try {
-			MailService mailService = new MailService();
-			List<Mail> mailList = mailService.mailFindAll();
-			session.setAttribute("mailList", mailList);
+			UsersService usersservice = new UsersService();
+			 usersservice.idByName(id);
+
 		}
 		catch (Exception e) {
 
