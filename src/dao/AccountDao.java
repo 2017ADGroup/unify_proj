@@ -97,7 +97,6 @@ public class AccountDao {
 			stmt.setString(5, users.getKana());
 			stmt.setInt(6,  users.getAuthority());
 			stmt.setString(7, users.getOrganization());
-			stmt.setInt(8, users.getUser_id());
 
 			stmt.executeUpdate();
 
