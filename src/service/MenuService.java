@@ -37,7 +37,7 @@ public class MenuService {
 					try (Connection con = DbUtil.getConnection()) {
 						ReserveDao reserveDao = new ReserveDao(con);
 						List<Reserve> reserveTerm = reserveDao.selectReserveLoginIdRoomDayTerm(login_id,reserve_date,j);
-						if(reserveTerm.size() == 0){
+						if(reserveTerm == null){
 							schedule = schedule + "<td></td>";
 						}else{
 							schedule = schedule + "<td>〇</td>";//
@@ -51,7 +51,6 @@ public class MenuService {
 				flag.add(reserveList.get(i).getRoom());//重複フラグ用配列の構築
 			}
 		}
-		System.out.println(schedule);//デバッグ用
 		return schedule;
 	}
 }

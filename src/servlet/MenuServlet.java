@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import entity.Users;
 import service.MenuService;
 
 /**
@@ -36,13 +37,14 @@ public class MenuServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		Users user = (Users) session.getAttribute("login_user");
 		MenuService menuService = new MenuService();
 		prepData(request);
 		// カレンダー生成過程で生まれた日付を利用してスケジュールを生成
 		String scheduleDay = String.valueOf(session.getAttribute("year")) + "-" + String.valueOf(session.getAttribute("month")) + "-"
 				+  String.valueOf(session.getAttribute("date"));
 		request.setAttribute("schedule",
-				menuService.scheduleCreate((String) session.getAttribute("login_id"), scheduleDay));
+				menuService.scheduleCreate(user.getLogin_id(), scheduleDay));
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 		// フォワードによるページ遷移
