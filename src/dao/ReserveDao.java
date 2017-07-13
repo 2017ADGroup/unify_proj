@@ -141,7 +141,7 @@ public class ReserveDao {
 			while (rs.next()) {
 				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
 						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
-						rs.getString("Remarks()"), rs.getString("reserve_host"));
+						rs.getString("Remarks"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 				return reserveList;
 			}
@@ -163,7 +163,7 @@ public class ReserveDao {
 			while (rs.next()) {
 				Reserve reserve = new Reserve(rs.getInt("reserve_id"), rs.getString("reserve_date"), rs.getInt("term"),
 						rs.getString("room"), rs.getInt("purpose"), rs.getInt("amount"), rs.getString("facility"),
-						rs.getString("Remarks()"), rs.getString("reserve_host"));
+						rs.getString("Remarks"), rs.getString("reserve_host"));
 				reserveList.add(reserve);
 				return reserveList;
 			}

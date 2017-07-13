@@ -60,7 +60,20 @@ public class RoomLumpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+
+		HttpSession session = request.getSession();
+		Users user = (Users) session.getAttribute("login_user");
+
+		ReserveService reserveService = new ReserveService();
+		List<Reserve> list = reserveService.findById(user.getLogin_id());
+
+		// テスト用
+		// List<Reserve> list = reserveService.findById("99a3445");
+
+		request.setAttribute("reserveList", list);
+
+		request.getRequestDispatcher("roomLump.jsp").forward(request, response);
 	}
 
 }
