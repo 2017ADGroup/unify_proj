@@ -58,6 +58,8 @@ public class MailServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+		//遷移元を記録する
+		session.setAttribute("backDoor", "mailBox");
 		request.getRequestDispatcher("mail.jsp").forward(request, response);
 	}
 
@@ -87,6 +89,7 @@ public class MailServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+		session.setAttribute("backDoor", "mailBox");
 		request.getRequestDispatcher("mail.jsp").forward(request, response);
 	}
 }
