@@ -111,7 +111,6 @@ public class MailService {
 		try (Connection con = DbUtil.getConnection()) {
 			UsersDao usersDao = new UsersDao(con);// 先に名前からidの中身を検索
 			List<String> nameList = usersDao.idsByName(name);
-			System.out.println(nameList.size());//デバッグ用
 			String names[] = new String[nameList.size()];
 			for (int i = 0; i < nameList.size(); i++) {
 				names[i] = nameList.get(i);

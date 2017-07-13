@@ -69,7 +69,6 @@ public class Login extends HttpServlet {
 				prepData(request);
 				//カレンダー生成過程で生まれた日付を利用してスケジュールを生成
 				String scheduleDay = (int)session.getAttribute("year") + "-" + (int) session.getAttribute("month") + "-" + (int) session.getAttribute("date");
-				System.out.println(scheduleDay);
 				request.setAttribute("schedule", menuService.scheduleCreate((String)session.getAttribute("login_id"), scheduleDay));
 				request.getRequestDispatcher("menu.jsp").forward(request, response);
 			}

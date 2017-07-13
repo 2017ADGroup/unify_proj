@@ -48,7 +48,6 @@ public class UsersDao {
 
 	// 名前からidを割り出す
 	public List<String> idsByName(String name) {
-		System.out.println(name);
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_IDS_BY_NAME)) {
 			stmt.setString(1, name);
 			ResultSet rs = stmt.executeQuery();
@@ -64,7 +63,6 @@ public class UsersDao {
 	}
 
 	public String idByName(String id) {
-		System.out.println(id);
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();
@@ -78,7 +76,6 @@ public class UsersDao {
 	}
 
 	public String nameById(String id) {
-		System.out.println(id);
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_ID_BY_NAME)) {
 			stmt.setString(1, id);
 			ResultSet rs = stmt.executeQuery();

@@ -154,7 +154,6 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -182,7 +181,7 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -230,7 +229,6 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -258,7 +256,7 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -306,7 +304,6 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -334,7 +331,7 @@ public class MailDao {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				// パスワードは閲覧不可情報とし、nullを格納しておく
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -407,14 +404,14 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
 			int idCount = 0;
-			for (int c = 1; c <= stack.size() + 1; c++) {
+			int roop = stack.size();
+			for (int c = 1; c <= roop; c++) {
 				if (c <= login_id.length * 2) {
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
@@ -445,7 +442,7 @@ public class MailDao {
 			} // プレースホルダーセット終了
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -509,13 +506,13 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
-		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
-			for (int c = 1; c <= stack.size() + 1; c++) {
+			int roop = stack.size();
+			for (int c = 1; c <= roop; c++) {
 				if (c <= login_id.length) {
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
@@ -540,7 +537,7 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
@@ -607,11 +604,11 @@ public class MailDao {
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
 		List<Mail> mailList = new ArrayList<Mail>();
-		System.out.println(SQL_SELECT);
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
-			for (int c = 1; c <= stack.size() + 1; c++) {
+			int roop = stack.size();
+			for (int c = 1; c <= roop; c++) {
 				if (c <= login_id.length) {
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
@@ -639,7 +636,7 @@ public class MailDao {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
+				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("sender"), rs.getString("receiver"),
 						rs.getString("daytime"), rs.getString("subject"), rs.getString("message"));
 				mailList.add(mail);
 			}
