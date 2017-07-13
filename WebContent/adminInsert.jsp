@@ -46,7 +46,7 @@ function check(){
 </script>
 </head>
 <body>
-<form class="form-hrizonatal" method="POST" action="adminInsert" name="form1" onSubmit="return check()">
+<form class="form-hrizonatal" method="POST" action="adminInsert.jsp" name="form1" onSubmit="return check()">
 <h2 style="text-align: center;">管理者情報登録</h2>
 		<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
@@ -183,7 +183,7 @@ function check(){
   </div>
 <div class="col-sm-offset-5 col-sm-1">
 <input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='updateInput.jsp'; return false;">
+				onclick="location.href='adminMenu.jsp'; return false;">
 
 </div>
 <div class="col-sm-6">
@@ -195,7 +195,7 @@ function check(){
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
 	<br>
-		<a href="back" class="btn btn-default">Menu</a>
+		<a href="adminMenu.jsp" class="btn btn-default">Menu</a>
 	</div>
 </form>
 </body>
