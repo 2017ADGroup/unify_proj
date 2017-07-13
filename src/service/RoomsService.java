@@ -66,15 +66,6 @@ public class RoomsService {
 		return Collections.emptyList();
 	}
 
-	public void register(Rooms rooms) {
-		try (Connection con = DbUtil.getConnection()) {
-			RoomsDao roomsDao = new RoomsDao(con);
-			roomsDao.insert(rooms);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public void renew(Rooms rooms) {
 		try (Connection con = DbUtil.getConnection()) {
 			RoomsDao roomsDao = new RoomsDao(con);

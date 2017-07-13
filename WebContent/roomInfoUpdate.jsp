@@ -18,8 +18,7 @@
 <body>
 	<h2 style="text-align: center;">教室情報更新</h2>
 	<br>
-	<form class="form-horizontal" action="roomInfoUpdateConfirm"
-		method="POST">
+	<form class="form-horizontal" action="roomInfoUpdateConfirm" method="POST">
 		<fieldset>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-3 control-label">名前</label>
@@ -31,10 +30,8 @@
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-3 control-label">画像</label>
 				<div class="col-sm-3">
-					<img
-						src="C:\pleiades\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\unify\image/
-						${rooms.image_path}"
-						class="img-rounded" style="width: 300px; height: 200px;">
+					<img src="image/bRoom.jpg" class="img-rounded"
+						style="width: 300px; height: 200px;">
 				</div>
 				<div class="col-sm-3">
 					<input type="file" name="file" id="IMAGE"
@@ -59,32 +56,32 @@
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-3 control-label">備品</label>
 				<div class="col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f0}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f0}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f1}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f1}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f2}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f2}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f3}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f3}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f4}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f4}">
 				</div>
 				<div class="col-sm-3">
-					<input type="text" name="fixtures" class="form-control"
-						id="FIXTURES" placeholder="備品" value="${f5}">
+					<input type="text" name="fixtures" class="form-control" id="FIXTURES"
+						placeholder="備品" value="${f5}">
 				</div>
 			</div>
 
@@ -109,7 +106,7 @@
 	<br>
 	<br>
 	<div class="col-sm-offset-1 col-sm-11">
-		<a href="menu.html" class="btn btn-default">Menu</a>
+		<a href="back" class="btn btn-default">Menu</a>
 	</div>
 </body>
 </html>

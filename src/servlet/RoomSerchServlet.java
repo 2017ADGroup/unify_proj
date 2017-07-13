@@ -81,7 +81,7 @@ public class RoomSerchServlet extends HttpServlet {
 		Reserve reserve = null;
 		String purpose = null;
 		//時間割生成。一段目
-		for(int i = 0;i < 7 ;i++){
+		for(int i = 1;i < 8 ;i++){
 			reserve = reserveService.findByDateRoomTerm(reserve_date, room, i);
 			if(reserve == null){
 				schedule = schedule + "<td>" + "</td>";

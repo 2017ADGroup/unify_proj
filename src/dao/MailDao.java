@@ -139,9 +139,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -154,6 +154,7 @@ public class MailDao {
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -214,9 +215,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -224,11 +225,12 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
+			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -281,7 +283,7 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " receiver=?)";
+			SQL_SELECT = SQL_SELECT + " receiver=?";
 			stack.addFirst("receiver");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -289,9 +291,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -299,11 +301,12 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
+			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			int d = stack.size();
@@ -389,9 +392,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -399,19 +402,20 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
+			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
-			for (int c = 1; c <= stack.size(); c++) {
+			int idCount = 0;
+			for (int c = 1; c <= stack.size() + 1; c++) {
 				if (c <= login_id.length * 2) {
-					int idCount = 0;
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
 						stmt.setString(c, login_id[idCount]);
@@ -419,14 +423,12 @@ public class MailDao {
 						curum = stack.removeLast();
 						stmt.setString(c, login_id[idCount]);
 					} else {
-
 					}
 
 					if (c % 2 == 0) {// 2回入れるごとに挿入する値を変更する
 						idCount++;
 					} else {
 					}
-
 				} else {// 名前検索を超えた部分
 					if (stack.getLast().equals("subject")) {
 						curum = stack.removeLast();
@@ -441,7 +443,6 @@ public class MailDao {
 					}
 				}
 			} // プレースホルダーセット終了
-
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Mail mail = new Mail(rs.getInt("mail_id"), rs.getString("receiver"), rs.getString("sender"),
@@ -471,7 +472,7 @@ public class MailDao {
 			}
 
 			for (int i = 0; i < login_id.length; i++) {
-				if (login_id.length == 0) {
+				if (login_id.length == 1) {
 					SQL_SELECT = SQL_SELECT + " sender=?";
 					stack.addFirst("sender");
 				} else {
@@ -493,9 +494,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -503,17 +504,18 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
+			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
+		System.out.println(SQL_SELECT);
 		List<Mail> mailList = new ArrayList<Mail>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
-			for (int c = 1; c <= stack.size(); c++) {
+			for (int c = 1; c <= stack.size() + 1; c++) {
 				if (c <= login_id.length) {
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
@@ -566,7 +568,7 @@ public class MailDao {
 			}
 
 			for (int i = 0; i < login_id.length; i++) {
-				if (login_id.length == 0) {
+				if (login_id.length == 1) {
 					SQL_SELECT = SQL_SELECT + " receiver=?";
 					stack.addFirst("receiver");
 				} else {
@@ -589,9 +591,9 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " (subject=?";
+			SQL_SELECT = SQL_SELECT + " (subject LIKE ?";
 			stack.addFirst("subject");
-			SQL_SELECT = SQL_SELECT + " OR message=?)";
+			SQL_SELECT = SQL_SELECT + " OR message LIKE ?)";
 			stack.addFirst("message");
 		}
 		// ストックに検索条件が入っていればＡＮＤを入れる必要性がある
@@ -599,17 +601,17 @@ public class MailDao {
 			if (stack.peek() != null) {
 				SQL_SELECT = SQL_SELECT + " AND";
 			}
-			SQL_SELECT = SQL_SELECT + " daytime=?";
+			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
 
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
 		List<Mail> mailList = new ArrayList<Mail>();
-
+		System.out.println(SQL_SELECT);
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
 			@SuppressWarnings("unused")
 			String curum;
-			for (int c = 1; c <= stack.size(); c++) {
+			for (int c = 1; c <= stack.size() + 1; c++) {
 				if (c <= login_id.length) {
 					if (stack.getLast().equals("sender")) {
 						curum = stack.removeLast();
