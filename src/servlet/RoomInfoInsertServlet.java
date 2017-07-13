@@ -20,7 +20,7 @@ import service.RoomsService;
  * Servlet implementation class RoomInfoInsertServlet
  */
 @WebServlet("/roomInfoInsert")
-@MultipartConfig(location = "", maxFileSize = 1048576)
+@MultipartConfig(location = "", maxFileSize = 1024 * 1024 * 2)
 public class RoomInfoInsertServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

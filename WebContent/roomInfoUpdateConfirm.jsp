@@ -69,6 +69,7 @@
 									$preview.append($('<img>').attr({
 										src : e.target.result,
 										width : "345px",
+										height: "230px",
 										class : "preview",
 										title : file.name
 									}));
@@ -99,9 +100,8 @@
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<img
-						src="image/${rooms.image_path}"
-						style="width: 345px; height: 230px;"><br><br><br>
+					<img src="image/${rooms.image_path}"
+						style="width: 345px; height: 230px;"><br> <br> <br>
 				</div>
 			</div>
 			<div class="form-group">
@@ -176,20 +176,20 @@
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-8">
-					<input type="text" name="newName" class="form-control" id="NAME">
+					<input type="text" name="newName" class="form-control" id="NAME" value="${rooms.room}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<div class="preview"></div><br>
-					<input type="file" name="file" id="IMAGE" />
+					<div class="preview"></div>
+					<br> <input type="file" name="file" id="IMAGE" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="SCALE" class="col-sm-2 control-label">規模</label>
 				<div class="col-sm-7">
-					<input type="text" name="newSize" class="form-control" id="SCALE">
+					<input type="number" name="newSize" class="form-control" id="SCALE" value="${rooms.size}">
 				</div>
 				<div class="col-sm-1">
 					<b>人</b>
@@ -198,33 +198,33 @@
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-2 control-label">備品</label>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f0}">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f1}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f2}">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f3}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f4}">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES">
+					<input type="text" name="newFix" class="form-control" id="FIXTURES" value="${f5}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="REMARKS" class="col-sm-2 control-label">備考</label>
 				<div class="col-sm-8">
 					<textarea name="newRemarks" rows="4" class="form-control"
-						id="REMARKS"></textarea>
+						id="REMARKS">${rooms.remarks}</textarea>
 				</div>
 			</div>
 		</fieldset>
@@ -240,8 +240,7 @@
 		</div>
 
 		<div class="col-sm-offset-5 col-sm-1">
-			<input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='roomInfoLump; return false;">
+				<a href="roomInfoLump" class="btn btn-info">戻る</a>
 		</div>
 		<div class="col-sm-6">
 			<input type="submit" class="btn btn-danger" value="更新"

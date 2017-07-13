@@ -72,7 +72,7 @@ public class AccountService {
 				e.printStackTrace();
 			}
 		}
-<<<<<<< HEAD
+
 		//更新
 		public int update(Users users) {
 			try (Connection conn = DbUtil.getConnection()) {
@@ -83,7 +83,5 @@ public class AccountService {
 			}
 			return 0;
 		}
-=======
->>>>>>> 0c77fae2e766e719aad0caa27b250ef34f888aac
 
 }

@@ -15,7 +15,7 @@ public class AccountDao {
 	private static final String SQL_ID_BY_NAME = "SELECT * FROM users WHERE login_id = ?";
 	private static final String SQL_USERS_SELECT = "SELECT * FROM users";
 	private static final String SQL_MAXID = "SELECT MAX(login_id) FROM users";
-
+	private static final String SQL_UPDATE = "UPDATE users SET password= ?, name= ?, kana= ? WHERE login_id=?";
 	private Connection connection;
 
 	public AccountDao(Connection connection) {
@@ -85,30 +85,11 @@ public class AccountDao {
 				}
 				return null;
 			}
-/*
-	public void accountInsert(String login_id,String password,int property,String name,String kana,int authority,String organization){
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
-			stmt.setString(1, login_id);
-			stmt.setInt(2, property);
-			stmt.setString(3, name);
-			stmt.setString(4, kana);
-			stmt.setInt(5,  authority);
-			stmt.setString(6, organization);
 
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-<<<<<<< HEAD
 
-	public void Update(Users users) {
-		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
-=======
-	*/
 	public void accountInsert(Users users){
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_INSERT)) {
->>>>>>> 0c77fae2e766e719aad0caa27b250ef34f888aac
+
 			stmt.setString(1, users.getLogin_id());
 			stmt.setString(2, users.getPassword());
 			stmt.setInt(3, users.getProperty());
@@ -123,6 +104,20 @@ public class AccountDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void Update(Users users){
+		try (PreparedStatement stmt = connection.prepareStatement(SQL_UPDATE)) {
+
+			stmt.setString(1, users.getPassword());
+			stmt.setString(2, users.getName());
+			stmt.setString(3, users.getKana());
+			stmt.setString(4, users.getLogin_id());
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

@@ -37,17 +37,16 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String roomId = request.getParameter("roomId");
 
 		RoomsService roomsService = new RoomsService();
 
 		Rooms rooms = roomsService.find(Integer.parseInt(roomId));
 
-		request.setAttribute("rooms", rooms);
-
 		HttpSession session = request.getSession();
 		session.setAttribute("roomsId", roomId);
+		session.setAttribute("rooms", rooms);
 
 		request.getRequestDispatcher("roomInfoUpdateConfirm.jsp").forward(request, response);
 
