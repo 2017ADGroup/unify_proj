@@ -31,6 +31,7 @@ public class AdminInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.getRequestDispatcher("adminInsert.jsp").forward(request, response);
 	}
 
 	/**

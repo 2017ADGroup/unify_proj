@@ -37,8 +37,10 @@ public class MyInfoUpdateServlet extends HttpServlet {
 		accountService.update(users);
         }
 		// 次画面指定
-		request.getRequestDispatcher("myInfoUpdate.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("menu.jsp").forward(request, response);
+	}
+
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)

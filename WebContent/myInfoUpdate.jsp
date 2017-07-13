@@ -56,19 +56,19 @@ function check(){
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name">
+					<input type="text" class="form-control" id="NAME" placeholder="名前" name="name" value="${login_user.name}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">かな</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana">
+					<input type="text" class="form-control" id="NAME" placeholder="かな" pattern="[ー\u3041-\u3096]*" name="kana"value="${login_user.kana}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="PASS" class="col-sm-2 control-label" >Password</label>
 				<div class="col-sm-5">
-						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass">
+						<input type="password" class="form-control" id="PASS" placeholder="PASS" name="pass"value="${login_user.password}">
 				</div>
 			</div>
 			  <div class="form-group">
