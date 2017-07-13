@@ -39,6 +39,21 @@ public class UsersService {
 			return Collections.emptyList();
 		}
 
+		public List<Users> findByProperty(int property) {
+			List<Users> list = new ArrayList<Users>();
+			try (Connection conn = DbUtil.getConnection()) {
+				UsersDao usersDao = new UsersDao(conn);
+				list = usersDao.findByProperty(property);
+
+				return list;
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return Collections.emptyList();
+		}
+
 	// ID検索
 		/*public Users find(String id) {
 			try (Connection conn = DbUtil.getConnection()) {
