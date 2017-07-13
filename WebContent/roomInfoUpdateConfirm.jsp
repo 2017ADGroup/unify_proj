@@ -36,7 +36,7 @@
 
 		} else {
 
-			window.alert('実行しました');
+			window.alert('更新しました');
 			return true; // 実行を実行
 
 		}
