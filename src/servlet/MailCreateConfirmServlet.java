@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +74,9 @@ public class MailCreateConfirmServlet extends HttpServlet {
 		session.setAttribute("subject", subject);
 		session.setAttribute("message", message);
 
-		request.getRequestDispatcher("mailCreate.jsp").forward(request, response);
+		RequestDispatcher dispatch = request.getRequestDispatcher("/back");
+
+		  dispatch.forward(request, response);
 	}
 
 }
