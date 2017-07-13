@@ -70,7 +70,6 @@ public class roomInsertServlet extends HttpServlet {
 		}
 		String remarks = request.getParameter("remarks");
 		String[] reserve_term = request.getParameterValues("reserve_term");
-		System.out.println(reserve_term.length);//デバッグ用
 		//登録処理
 		Reserve reserve = new Reserve();
 		if(reserve_term != null){
