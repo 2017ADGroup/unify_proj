@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -87,7 +88,9 @@ public class roomInsertServlet extends HttpServlet {
 			}
 		}
 
-		request.getRequestDispatcher("roomInsert.jsp").forward(request, response);
+		RequestDispatcher dispatch = request.getRequestDispatcher("roomLump");
+
+		  dispatch.forward(request, response);
 		/*RequestDispatcher dispatch = request.getRequestDispatcher("menu.jsp");//Menuを経由する
 		dispatch.forward(request, response);*/
 	}
