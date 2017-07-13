@@ -36,7 +36,7 @@ alert("送信しました");
 			<div class="form-group">
 				<label for="SUBJECT" class="col-sm-3 control-label">件名</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="SUBJECT" placeholder="件名" name="subject">
+					<input type="text" class="form-control" id="SUBJECT" placeholder="件名" name="subject" required>
 				</div>
 			</div>
 			<div class="form-group">
