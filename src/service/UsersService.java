@@ -39,11 +39,11 @@ public class UsersService {
 			return Collections.emptyList();
 		}
 
-		public List<Users> findByProperty(int property) {
+		public List<Users> findByProperty(int property, String organization) {
 			List<Users> list = new ArrayList<Users>();
 			try (Connection conn = DbUtil.getConnection()) {
 				UsersDao usersDao = new UsersDao(conn);
-				list = usersDao.findByProperty(property);
+				list = usersDao.findByProperty(property, organization);
 
 				return list;
 
