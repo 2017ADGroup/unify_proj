@@ -46,7 +46,7 @@ function check(){
 </script>
 </head>
 <body>
-<form class="form-hrizonatal" method="POST" action="adminInsert.jsp" name="form1" onSubmit="return check()">
+<form class="form-hrizonatal" method="POST" action="adminInsert" name="form1" onSubmit="return check()">
 <h2 style="text-align: center;">管理者情報登録</h2>
 		<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
