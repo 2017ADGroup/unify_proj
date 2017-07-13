@@ -17,7 +17,7 @@ public class UsersDao {
 	private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
 	private static final String SQL_DELETE_LOGINID = "DELETE FROM users WHERE user_id = ?";
 	private static final String SQL_SELECT = "SELECT * FROM users ORDER BY kana";
-	private static final String SQL_SELECT_BY_PROPERTY = "SELECT * FROM users WHERE property = ?";
+	private static final String SQL_SELECT_BY_PROPERTY = "SELECT * FROM users WHERE property=? AND organization=?";
 
 	private Connection connection;
 
@@ -128,12 +128,14 @@ public class UsersDao {
 		return null;
 	}
 
-	public List<Users> findByProperty(int property) {
+	public List<Users> findByProperty(int property, String organization) {
 		List<Users> list = new ArrayList<Users>();
 
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_BY_PROPERTY)) {
 
 			stmt.setInt(1, property);
+			stmt.setString(2, organization);
+
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {

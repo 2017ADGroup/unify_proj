@@ -46,10 +46,6 @@ public class AdminLumpServlet extends HttpServlet {
 						// ユーザーを削除
 
 						usersservice.delete(Integer.parseInt(login_id));
-
-
-
-
 					}
 
 				}

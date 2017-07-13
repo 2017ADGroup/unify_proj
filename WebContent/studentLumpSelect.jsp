@@ -49,7 +49,7 @@
 <body>
 	<h2 style="text-align: center;">生徒情報削除</h2>
 	<form class="form-hrizonatal" method="POST"
-		action="StudentLumpSelect" name="form1" onSubmit="return check()">
+		action="studentLumpSelect" name="form1" onSubmit="return check()">
 		<div class="col-sm-offset-1 col-sm-10">
 
 			<table class="table">
@@ -73,7 +73,7 @@
 								value="${student.name}" readonly="readonly"></td>
 							<td><input type="text" name="kana" class="form-control"
 								value="${student.kana}" readonly="readonly"></td>
-							<td><input type="checkbox"></td>
+							<td><input type="checkbox" name="studentDelete" value="${student.user_id}"></td>
 						</tr>
 					</c:forEach>
 				</tbody>
