@@ -51,6 +51,7 @@ public class AllMailDisplayServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+		session.setAttribute("backDoor", "allMailDisplay");
 		request.getRequestDispatcher("allMailDisplay.jsp").forward(request, response);
 	}
 
@@ -114,6 +115,9 @@ public class AllMailDisplayServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+
+		//遷移元を記録する
+		session.setAttribute("backDoor", "allMailDisplay");
 		request.getRequestDispatcher("allMailDisplay.jsp").forward(request, response);
 	}
 

@@ -47,8 +47,16 @@
 			</fieldset>
 			<br>
 			<div class="col-sm-offset-3 col-sm-9">
-		<input type="submit" class="btn btn-info" name="button" value="戻る"
+<c:choose>
+			<c:when test="${backDoor == 'mailBox'}">
+				<input type="submit" class="btn btn-info" name="button" value="戻る"
 				onclick="location.href='mail'; return false;">
+			</c:when>
+			<c:when test="${backDoor == 'allMailDisplay'}">
+				<input type="submit" class="btn btn-info" name="button" value="戻る"
+				onclick="location.href='allMailDisplay'; return false;">
+			</c:when>
+		</c:choose>
 		</div>
 
 	</form>
