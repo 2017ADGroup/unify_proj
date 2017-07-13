@@ -76,7 +76,6 @@ public class RoomSerchServlet extends HttpServlet {
 		Calendar thisDate = Calendar.getInstance();
 		String year = String.valueOf(thisDate.get(Calendar.YEAR));
 		String reserve_date = year + "-" + month + "-" + date;
-		System.out.println(reserve_date);
 		ReserveService reserveService = new ReserveService();
 		String schedule = "<td></td>";
 		Reserve reserve = null;
