@@ -31,7 +31,6 @@ public class RoomInfoInsertServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		Part part = request.getPart("file");
-		System.out.println(part);
 		String name = this.getFileName(part);
 		if (!name.equals("")) {
 			part.write(getServletContext().getRealPath("/image") + "/" + name);
