@@ -189,7 +189,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -265,7 +265,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -341,7 +341,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -452,7 +452,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -548,7 +548,7 @@ public class MailDao {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
@@ -646,7 +646,7 @@ public class MailDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
-			SQL_SELECT = "SELECT user_id, user_name, telephone FROM user_info";
+			SQL_SELECT = "SELECT * FROM mail";
 		}
 		return mailList;
 	}
