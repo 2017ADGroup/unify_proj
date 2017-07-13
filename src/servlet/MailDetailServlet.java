@@ -20,7 +20,6 @@ public class MailDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String mail_id = (String) request.getParameter("mail_id");
-		System.out.println(mail_id);
 		MailService mailservice = new MailService();
 		Mail mail = mailservice.mailFindByMailId(Integer.parseInt(mail_id));
 
@@ -34,7 +33,6 @@ public class MailDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String mail_id = (String) request.getParameter("mail_id");
-		System.out.println(mail_id);
 		MailService mailservice = new MailService();
 		Mail mail = mailservice.mailFindByMailId(Integer.parseInt(mail_id));
 

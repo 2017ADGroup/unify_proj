@@ -227,7 +227,6 @@ public class MailDao {
 			SQL_SELECT = SQL_SELECT + " daytime LIKE ?";
 			stack.addFirst("daytime");
 		}
-
 		SQL_SELECT = SQL_SELECT + " ORDER BY mail_id";
 		List<Mail> mailList = new ArrayList<Mail>();
 		try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT)) {
