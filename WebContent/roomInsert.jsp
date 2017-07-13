@@ -176,7 +176,7 @@ img {
 		</form>
 	</c:if>
 	<c:if test="${room != null}">
-		<form class="form-horizontal" method="POST" action="roomLump"
+		<form class="form-horizontal" method="POST" action="roomInsert"
 			name="reserve_form" onSubmit="return check()">
 			<div class="col-sm-offset-1 col-sm-10">
 				<table class="table">
