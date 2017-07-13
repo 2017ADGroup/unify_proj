@@ -51,7 +51,7 @@ function check(){
 <body>
 <h2 style="text-align: center;">団体・教員情報登録</h2>
 
-		<form class="form-hrizonatal" method="POST" action="accountInsert.jsp" name="form1" onSubmit="return check()">
+		<form class="form-hrizonatal" method="POST" action="accountInsert" name="form1" onSubmit="return check()">
 		<div class="col-sm-offset-1 col-sm-10">
 		<table class="table">
 		<caption>団体・教員情報登録</caption>

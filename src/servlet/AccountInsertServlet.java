@@ -64,7 +64,6 @@ public class AccountInsertServlet extends HttpServlet {
 				// ユーザーを登録
 				accountService.insert(users);
 			}
-
 		}
 		request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
 	}
