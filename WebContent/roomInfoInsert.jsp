@@ -35,7 +35,7 @@
 
 		} else {
 
-			window.alert('実行しました');
+			window.alert('登録しました');
 			return true; // 実行を実行
 
 		}
@@ -159,7 +159,7 @@
 				</div>
 			</div>
 			<div class="col-sm-offset-4 col-sm-8">
-				<button type="submit" class="btn btn-primary" value="確認">確認</button>
+				<button type="submit" class="btn btn-danger" value="登録">登録</button>
 			</div>
 		</form>
 	</div>
