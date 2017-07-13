@@ -72,7 +72,7 @@
 						<tr>
 							<td>${rooms.room}</td>
 							<td><img
-								src="C:\pleiades\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\unify\image/${rooms.image_path}"
+								src="image/${rooms.image_path}"
 								class="img-rounded" style="width: 210px; height: 140px;"></td>
 							<td><input name="ninnzuu" type="number"
 								value="${rooms.size}" disabled='disabled' /></td>
