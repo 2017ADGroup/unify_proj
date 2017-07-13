@@ -15,10 +15,69 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
 <!--
-	function myEnter() {
-		alert("更新しました");
+	function check() {
+
+		var flag = 0;
+
+		// 設定開始（チェックする項目を設定してください）
+
+		if (!document.form1.check1.checked) {
+
+			flag = 1;
+
+		}
+
+		// 設定終了
+
+		if (flag) {
+
+			window.alert('チェックされていません'); // チェックされていない場合は警告ダイアログを表示
+			return false; // 実行を中止
+
+		} else {
+
+			window.alert('実行しました');
+			return true; // 実行を実行
+
+		}
+
 	}
 // -->
+</script>
+<script>
+	$(function() {
+		//画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+		$('form')
+				.on(
+						'change',
+						'input[type="file"]',
+						function(e) {
+							var file = e.target.files[0], reader = new FileReader(), $preview = $(".preview");
+							t = this;
+
+							// 画像ファイル以外の場合は何もしない
+							if (file.type.indexOf("image") < 0) {
+								return false;
+							}
+
+							// ファイル読み込みが完了した際のイベント登録
+							reader.onload = (function(file) {
+								return function(e) {
+									//既存のプレビューを削除
+									$preview.empty();
+									// .prevewの領域の中にロードした画像を表示するimageタグを追加
+									$preview.append($('<img>').attr({
+										src : e.target.result,
+										width : "345px",
+										class : "preview",
+										title : file.name
+									}));
+								};
+							})(file);
+
+							reader.readAsDataURL(file);
+						});
+	});
 </script>
 </head>
 <body>
@@ -26,34 +85,36 @@
 
 	<br>
 	<form class="form-horizontal" action="roomInfoUpdateResult"
-		method="POST">
+		method="POST" enctype="multipart/form-data" name="form1"
+		onSubmit="return check()">
 		<fieldset class="col-md-5 control-label">
 			<legend>変更前</legend>
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-8">
 					<input type="text" name="name" class="form-control" id="NAME"
-						value="${room.room}" readonly>
+						value="${rooms.room}" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<img src="image/aRoom.jpg" class="img-rounded"
-						style="width: 345px; height: 230px;">
+					<img
+						src="image/${rooms.image_path}"
+						style="width: 345px; height: 230px;"><br><br><br>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="SCALE" class="col-sm-2 control-label">規模</label>
 				<div class="col-sm-7">
 					<input type="text" name="scale" class="form-control" id="SCALE"
-						value="${room.size}" readonly>
+						value="${rooms.size}" readonly>
 				</div>
 				<div class="col-sm-1">
 					<b>人</b>
 				</div>
 			</div>
-			<c:set var="facility">${room.facility}</c:set>
+			<c:set var="facility">${rooms.facility}</c:set>
 			<%
 				String facility = (String) pageContext.getAttribute("facility");
 				String[] facilities = facility.split(",");
@@ -97,7 +158,7 @@
 				<label for="REMARKS" class="col-sm-2 control-label">備考</label>
 				<div class="col-sm-8">
 					<textarea name="remarks" rows="4" class="form-control" id="REMARKS"
-						readonly>${room.remarks}</textarea>
+						readonly>${rooms.remarks}</textarea>
 				</div>
 			</div>
 		</fieldset>
@@ -115,80 +176,72 @@
 			<div class="form-group">
 				<label for="NAME" class="col-sm-2 control-label">名前</label>
 				<div class="col-sm-8">
-					<input type="text" name="newName" class="form-control" id="NAME"
-						value="${name}" readonly>
+					<input type="text" name="newName" class="form-control" id="NAME">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<img src="image/bRoom.jpg" class="img-rounded"
-						style="width: 345px; height: 230px;">
+					<div class="preview"></div><br>
+					<input type="file" name="file" id="IMAGE" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="SCALE" class="col-sm-2 control-label">規模</label>
 				<div class="col-sm-7">
-					<input type="text" name="newSize" class="form-control" id="SCALE"
-						value="${scale}" readonly>
+					<input type="text" name="newSize" class="form-control" id="SCALE">
 				</div>
 				<div class="col-sm-1">
 					<b>人</b>
 				</div>
 			</div>
-			<c:set var="fix">${fix}</c:set>
-			<%
-				String fixture = (String) pageContext.getAttribute("fix");
-				session.setAttribute("newFixs", fixture);
-				String[] fixtures = fixture.split(",");
-				for (int i = 0; i < fixtures.length; i++) {
-					pageContext.setAttribute("ff" + i, fixtures[i]);
-				}
-			%>
 			<div class="form-group">
 				<label for="FIXTURES" class="col-sm-2 control-label">備品</label>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff0}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff1}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff2}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff3}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff4}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 				<div class="col-sm-4">
-					<input type="text" name="newFix" class="form-control" id="FIXTURES"
-						value="${ff5}" readonly>
+					<input type="text" name="newFix" class="form-control" id="FIXTURES">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="REMARKS" class="col-sm-2 control-label">備考</label>
 				<div class="col-sm-8">
 					<textarea name="newRemarks" rows="4" class="form-control"
-						id="REMARKS" readonly>${remarks}</textarea>
+						id="REMARKS"></textarea>
 				</div>
 			</div>
 		</fieldset>
 		<br>
+		<div class="form-group">
+			<div class="col-sm-offset-5 col-sm-7">
+				<div class="checkbox">
+					<label> <input type="checkbox" name="check1" value="ok">
+						この内容でよろしいですか？
+					</label>
+				</div>
+			</div>
+		</div>
 
 		<div class="col-sm-offset-5 col-sm-1">
 			<input type="submit" class="btn btn-info" name="button" value="戻る"
-				onclick="location.href='roomInfoUpdate'; return false;">
+				onclick="location.href='roomInfoLump; return false;">
 		</div>
 		<div class="col-sm-6">
 			<input type="submit" class="btn btn-danger" value="更新"

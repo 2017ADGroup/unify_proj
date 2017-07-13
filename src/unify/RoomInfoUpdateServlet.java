@@ -35,6 +35,9 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		// 文字化け対策
+		request.setCharacterEncoding("UTF-8");
+		
 		String roomId = request.getParameter("roomId");
 
 		RoomsService roomsService = new RoomsService();
@@ -46,7 +49,7 @@ public class RoomInfoUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("roomsId", roomId);
 
-		request.getRequestDispatcher("roomInfoUpdate.jsp").forward(request, response);
+		request.getRequestDispatcher("roomInfoUpdateConfirm.jsp").forward(request, response);
 
 	}
 
