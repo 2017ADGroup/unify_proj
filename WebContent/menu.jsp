@@ -39,8 +39,8 @@ alert("ログアウトします");
 				・<a href="roomInfoLump">教室情報更新・削除</a><br>
 				<b>アカウント管理</b><br>
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>
-				・<a href="accountInsert">団体・教員情報登録</a><br>
-				・<a href="accountLump">団体・教員情報更新・削除</a><br>
+				・<a href="accountInsert.jsp">団体・教員情報登録</a><br>
+				・<a href="accountLump.jsp">団体・教員情報更新・削除</a><br>
 				<br>
 			</c:when>
 			<c:when test="${login_user.property == 3}">
@@ -52,7 +52,7 @@ alert("ログアウトします");
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
 				・<a href="myInfoUpdate">アカウント情報更新</a><br>
-				・<a href="studentInsert">生徒情報登録</a><br>
+				・<a href="studentInsert.jsp">生徒情報登録</a><br>
 				・<a href="studentLumpSelect">生徒情報削除</a><br>
 				<br>
 			</c:when>
