@@ -73,7 +73,7 @@
 								value="${student.name}" readonly="readonly"></td>
 							<td><input type="text" name="kana" class="form-control"
 								value="${student.kana}" readonly="readonly"></td>
-							<td><input type="checkbox" name="studentDelete"></td>
+							<td><input type="checkbox" name="studentDelete" value="${student.user_id}"></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -27,6 +27,8 @@ public class StudentLumpSelectServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Users users = (Users) session.getAttribute("login_user");
 
+		System.out.println(users.getName());
+
 		UsersService usersService = new UsersService();
 		List<Users> studentList = usersService.findByProperty(5, users.getName());
 		request.setAttribute("studentList", studentList);
