@@ -69,6 +69,7 @@
 									$preview.append($('<img>').attr({
 										src : e.target.result,
 										width : "345px",
+										height: "230px",
 										class : "preview",
 										title : file.name
 									}));
@@ -99,9 +100,8 @@
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<img
-						src="image/${rooms.image_path}"
-						style="width: 345px; height: 230px;"><br><br><br>
+					<img src="image/${rooms.image_path}"
+						style="width: 345px; height: 230px;"><br> <br> <br>
 				</div>
 			</div>
 			<div class="form-group">
@@ -182,14 +182,14 @@
 			<div class="form-group">
 				<label for="IMAGE" class="col-sm-2 control-label">画像</label>
 				<div class="col-sm-8">
-					<div class="preview"></div><br>
-					<input type="file" name="file" id="IMAGE" />
+					<div class="preview"></div>
+					<br> <input type="file" name="file" id="IMAGE" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="SCALE" class="col-sm-2 control-label">規模</label>
 				<div class="col-sm-7">
-					<input type="text" name="newSize" class="form-control" id="SCALE">
+					<input type="number" name="newSize" class="form-control" id="SCALE">
 				</div>
 				<div class="col-sm-1">
 					<b>人</b>
