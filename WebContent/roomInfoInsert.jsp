@@ -84,7 +84,7 @@
 	<br>
 
 	<div class="col-sm-offset-2 col-sm-10">
-		<form class="form-horizontal" action="roomInfoInsert" method="POST"
+		<form class="form-horizontal" action="roomInfoLump" method="POST"
 			enctype="multipart/form-data" name="form1" onSubmit="return check()">
 			<fieldset>
 				<div class="form-group">
