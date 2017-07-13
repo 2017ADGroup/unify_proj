@@ -23,15 +23,17 @@ public class MyInfoUpdateServlet extends HttpServlet {
 		// 文字化け対策
 		request.setCharacterEncoding("UTF-8");
 
-		// 登録（名前、かな、パスワードの取得
+
+
+		// 登録（名前、かな、パスワードの取得;
 		String pass = request.getParameter("pass");
 		String name = request.getParameter("name");
 		String kana= request.getParameter("kana");
+		String id = request.getParameter("login_id");
 
-
-		if (!pass.equals("") && !name.equals("") && !kana.equals("")) {
+		if (!pass.equals("") && !name.equals("") && !kana.equals("") && !id.equals("")) {
 		//入力情報を取得
-		Users users = new Users(0,"", pass, 4, name, kana, 0, "");
+		Users users = new Users(4, name, kana, id);
 		//ユーザーを登録
 		AccountService accountService = new AccountService();
 		accountService.update(users);
