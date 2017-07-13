@@ -254,7 +254,7 @@ function check(){
 	<div class="col-sm-offset-1 col-sm-11">
 		<br>
 			<br>
-		<a href="menu.jsp" class="btn btn-default">Menu</a>
+		<a href="back" class="btn btn-default">Menu</a>
 	</div>
 </body>
 </html>

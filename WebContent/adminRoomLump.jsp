@@ -146,11 +146,6 @@
 
 		<div class="col-sm-12" style="text-align: center;">
 
-			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="adminRoomLump.html?page=1">1</a> <a
-					class="btn btn-default" href="adminRoomLump.html?page=2">2</a>
-			</div>
-
 			<br>
 		</div>
 

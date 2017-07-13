@@ -82,7 +82,7 @@ public class MailService {
 	public List<Mail> mailFindBy(String keyword, String daytime) {
 		try (Connection con = DbUtil.getConnection()) {
 			MailDao mailDao = new MailDao(con);
-			return mailDao.SelectWhereIdFromTo("", keyword, daytime);
+			return mailDao.SelectWhereIdFrom("", keyword, daytime);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

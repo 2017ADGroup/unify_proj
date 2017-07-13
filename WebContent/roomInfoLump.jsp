@@ -71,9 +71,8 @@
 					<c:forEach var="rooms" items="${roomsList}">
 						<tr>
 							<td>${rooms.room}</td>
-							<td><img
-								src="image/${rooms.image_path}"
-								class="img-rounded" style="width: 210px; height: 140px;"></td>
+							<td><img src="image/${rooms.image_path}" class="img-rounded"
+								style="width: 210px; height: 140px;"></td>
 							<td><input name="ninnzuu" type="number"
 								value="${rooms.size}" disabled='disabled' /></td>
 							<td><c:set var="facility">${rooms.facility}</c:set> <%
@@ -99,12 +98,6 @@
 
 
 		<div class="col-sm-12" style="text-align: center;">
-
-			<div class="btn-group" role="group">
-				<a class="btn btn-default" href="roomInfoLump.html?page=1">1</a> <a
-					class="btn btn-default" href="roomInfoLump.html?page=2">2</a>
-			</div>
-
 			<br>
 		</div>
 
