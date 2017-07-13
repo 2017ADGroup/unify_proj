@@ -55,7 +55,9 @@ public class RoomInfoUpdateConfirmServlet extends HttpServlet {
 				fix = fix + str + ",";
 			}
 		}
+		if (!fix.equals("")) {
 		fix = fix.substring(0, fix.length() - 1);
+		}
 
 		request.setAttribute("name", request.getParameter("name"));
 		request.setAttribute("scale", request.getParameter("scale"));
