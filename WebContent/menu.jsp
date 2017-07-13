@@ -38,7 +38,7 @@ alert("ログアウトします");
 				・<a href="roomInfoInsert.jsp">教室情報登録</a><br>
 				・<a href="roomInfoLump">教室情報更新・削除</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
 				・<a href="accountInsert.jsp">団体・教員情報登録</a><br>
 				・<a href="accountLump.jsp">団体・教員情報更新・削除</a><br>
 				<br>
@@ -51,7 +51,7 @@ alert("ログアウトします");
 				・<a href="mailCreate">メール新規作成</a><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
 				・<a href="studentInsert.jsp">生徒情報登録</a><br>
 				・<a href="studentLumpSelect">生徒情報削除</a><br>
 				<br>
@@ -64,14 +64,14 @@ alert("ログアウトします");
 				・<a href="mailCreate">メール新規作成</a><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
 				<br>
 			</c:when>
 			<c:when test="${login_user.property == 5}">
 				<b>ミニメール</b><br>
 				・<a href="mail">メールボックス</a><br>
 				<b>アカウント管理</b><br>
-				・<a href="myInfoUpdate">アカウント情報更新</a><br>
+				・<a href="myInfoUpdate.jsp">アカウント情報更新</a><br>
 				<br>
 			</c:when>
 			<c:otherwise>
