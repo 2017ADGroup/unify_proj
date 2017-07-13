@@ -32,7 +32,7 @@ public class AccountInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -64,7 +64,6 @@ public class AccountInsertServlet extends HttpServlet {
 				// ユーザーを登録
 				accountService.insert(users);
 			}
-
 		}
 		request.getRequestDispatcher("accountInsert.jsp").forward(request, response);
 	}
